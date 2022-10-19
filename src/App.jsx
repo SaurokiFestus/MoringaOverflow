@@ -11,6 +11,10 @@ import Home from './components/Home'
 
 
 function App() {
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
   return (
     <div className="App">
       {/* <Signup/> */}
