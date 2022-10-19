@@ -52,7 +52,7 @@ function Signup() {
         <div className="mb-3 form-check">
           
         </div>
-        <button type="submit" className="btn bg-light  mb-4">
+        <button type="submit" className="btn bg-info  mb-4">
           Sign Up
         </button>
         <br></br>
