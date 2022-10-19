@@ -1,9 +1,10 @@
 import React from 'react'
 
 function Login() {
+  
   return (
     <div>
-        <form  className="bg-secondary w-auto p-3 float-end rounded">
+        <form  className="bg-secondary w-auto p-3 float-start rounded">
       <button type="submit" className="btn bg-light mb-4">
       <i className="bi bi-google m-3 w-100 p-3 "></i>Log In With Google
         </button>
