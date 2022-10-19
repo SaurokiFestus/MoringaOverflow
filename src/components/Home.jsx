@@ -87,10 +87,17 @@ export default function Home() {
       </div>
 
       <div className="text-center my-5">
-        <h2>Products</h2>
+      <div className="container my-5">
+          <hr style={{ float: "left", width: "40%" }}></hr>
+          <hr style={{ float: "right", width: "40%" }}></hr>
+          <h2 class=" text-center">Products</h2>
 
-        <div class="d-flex justify-content-center" >
-          <div class="card d-flex justify-content-center col-10 py-4" style={{backgroundColor: '#f0f8fe'}}>
+        </div>
+        <div class="d-flex justify-content-center">
+          <div
+            class="card d-flex justify-content-center col-10 py-4"
+            style={{ backgroundColor: "#f0f8fe" }}
+          >
             <h1 class="header">
               <i style={{ color: "#f48d4f" }} class="bi bi-stack-overflow"></i>
             </h1>
@@ -107,16 +114,21 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container ">
-        <h2 class="header text-center">Our Core Values</h2>
+      <div className="container my-5 py-4">
+        <div className="">
+          <hr style={{ float: "left", width: "35%" }}></hr>
+          <hr style={{ float: "right", width: "35%" }}></hr>
+          <h2 class=" text-center">Our Core Values</h2>
 
-        <div class="row">
-          <div class="col-lg-4 col-sm-12 my-4  ">
+        </div>
+
+        <div class="row my-3">
+          <div class="col-lg-4 col-sm-12 my-3  ">
             <div class="card-body-content">
               <h1 class="header py-3">
                 <i style={{ color: "#f48d4f" }} class="bi bi-heart-fill"></i>
               </h1>
-              <p class="card-title">Adopt a customer-first mindset</p>
+              <h4 class="card-title">Adopt a customer-first mindset</h4>
               <p class="card-text">
                 Authentically serve our customers by empowering, listening, and
                 collaborating with our fellow Stackers
@@ -124,13 +136,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div class="col-lg-4 col-sm-12 my-4 ">
+          <div class="col-lg-4 col-sm-12 my-3 ">
             <div class="card-body-content">
-              <h1 class="header py-3" 
-              style={{ color: "#f48d4f" }}>
+              <h1 class="header py-3" style={{ color: "#f48d4f" }}>
                 <i class="bi bi-hand-thumbs-up"></i>{" "}
               </h1>
-              <p class="card-title">Be flexible and inclusive</p>
+              <h4 class="card-title">Be flexible and inclusive</h4>
               <p class="card-text">
                 We do our best work when a diverse group of people collaborate
                 in an environment of respect and trust. Create space for
@@ -139,13 +150,13 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-12 my-4 ">
+          <div class="col-lg-4 col-sm-12 my-3 ">
             {" "}
             <div class="card-body-content">
               <h1 class="header py-3">
                 <i style={{ color: "#f48d4f" }} class="bi bi-compass"></i>
               </h1>
-              <p class="card-title">Be transparent</p>
+              <h4 class="card-title">Be transparent</h4>
               <p class="card-text">
                 Communicate openly and honestly, both inside and outside the
                 company. Encourage transparency from others by being empathetic,
@@ -153,43 +164,43 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-12 my-4 ">
+          <div class="col-lg-4 col-sm-12 my-3 ">
             {" "}
             <div class="card-body-content">
               <h1 class="card-title py-3">
                 <i style={{ color: "#f48d4f" }} class="bi bi-command"></i>
               </h1>
 
-              <p class="card-title">
+              <h4 class="card-title">
                 Empower people to deliver outstanding results
-              </p>
+              </h4>
               <p class="card-text">
                 Give people space to get their job done, support them when they
                 need it, and practice blameless accountability.
               </p>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-12 my-4 ">
+          <div class="col-lg-4 col-sm-12 my-3 ">
             <div class="card-body-content">
               <div class="header py-3">
-                <h1 >
+                <h1>
                   <i style={{ color: "#f48d4f" }} class="bi bi-people-fill"></i>
                 </h1>
               </div>
-              <p class="card-title">Keep community at our center</p>
+              <h4 class="card-title">Keep community at our center</h4>
               <p class="card-text">
                 Community is at the heart of everything we do. Nurture healthy
                 communities where everyone is encouraged to learn and give back.
               </p>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-12 my-4 ">
+          <div class="col-lg-4 col-sm-12 my-3 ">
             <div class="header py-3">
               <h1>
                 <i style={{ color: "#f48d4f" }} class="bi bi-graph-up"></i>{" "}
               </h1>
             </div>
-            <p class="card-title">Learn, share, grow</p>
+            <h4 class="card-title">Learn, share, grow</h4>
             <p class="card-text">
               Adopt a Growth Mindset. Be curious and eager to learn. Aim for
               ethical, sustainable, long-term growth, both personally and in the
