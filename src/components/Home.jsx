@@ -34,8 +34,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div class="container shadow p-3 mb-4 bg-body rounded d-flex justify-content-center  ">
-        <div class="row text-center mx-4 pt-3">
+      <div class="container shadow p-3 my-5 bg-body rounded d-flex justify-content-center  ">
+        <div class="row text-center mt-2 mb-4 pt-3">
           <div className=" col-lg-3 px-4 ">
             <span>
               <strong>100+ million</strong>
@@ -69,20 +69,20 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container mt-5">
-        <div className="row">
-          <div className="col-lg-6">
+      <div className="container my-3">
+        <div className="row mt-5">
+          <p className="col-lg-6 py-3 my-4">
             Stack Overflow helps people find the answers they need, when they
             need them. We're best known for our public Q&A platform that over
             100 million people visit every month to ask questions, learn, and
             share technical knowledge.
-          </div>
-          <div className="col-lg-6">
+          </p>
+          <p className="col-lg-6 py-3 my-4">
             Our products and tools empower people to find what they need to
             develop technology at work or at home. These products include, Stack
             Overflow for Teams, Stack Overflow Advertising, Collectives™ on
             Stack Overflow, and Stack Overflow Talent.
-          </div>
+          </p>
         </div>
       </div>
 
