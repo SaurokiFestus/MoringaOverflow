@@ -9,9 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.10",
+=======
+    "@ant-design/icons": "^4.7.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.10",
+    "antd": "^4.23.6",
+>>>>>>> a946e5088e116465252ac3add0b3bb4b2242f13d
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "react": "^18.2.0",
