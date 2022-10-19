@@ -4,8 +4,8 @@ import './App.css'
 import Signup from './components/Signup'
 import Login from './components/Login'
 import  {BrowserRouter, Route, Routes} from "react-router-dom"
-
-
+import Navbar from './components/Navbar'
+// import Sidebar from './components/Sidebar'
 function App() {
   
 
@@ -16,6 +16,8 @@ function App() {
       <Routes>
         <Route exact="true" path="/login" element={<Login/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
+        <Route exact="true" path="/navbar" element={<Navbar/>}/>
+        {/* <Route exact="true" path="/sidebar" element={<Sidebar/>}/> */}
       </Routes>
       </BrowserRouter>
      
