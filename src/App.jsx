@@ -1,13 +1,14 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import Questions from "./components/Questions/Questions";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import About from "./components/About";
-import Home from "./components/Home";
-import Footer from "./components/Footer";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import './App.css'
+import Signup from './components/Signup'
+import Login from './components/Login'
+import Questions from './components/Questions'
+import  {BrowserRouter, Route, Routes} from "react-router-dom"
+import About from './components/About'
+import Home from './components/Home'
+
+
 
 function App() {
   return (
