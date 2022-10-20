@@ -7,6 +7,7 @@ import Questions from './components/Questions'
 import  {BrowserRouter, Route, Routes} from "react-router-dom"
 import About from './components/About'
 import Home from './components/Home'
+import SideBar from './components/Sidebar/Sidebar'
 
 import Navbar from './components/Navbar'
 
@@ -24,6 +25,7 @@ function App() {
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/questions" element={<Questions/>}/>
         <Route exact="true" path="/about" element={<About/>}/>
+        <Route exact="true" path="/sidebar" element={<SideBar/>}/>
       </Routes>
       </BrowserRouter>
     </div>
