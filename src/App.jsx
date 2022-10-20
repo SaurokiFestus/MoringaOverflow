@@ -7,6 +7,7 @@ import Questions from './components/Questions'
 import  {BrowserRouter, Route, Routes} from "react-router-dom"
 import About from './components/About'
 import Home from './components/Home'
+import Footer from './components/Footer'
 
 
 
@@ -17,7 +18,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
-
           <Route exact="true" path="/login" element={<Login />} />
           <Route exact="true" path="/signup" element={<Signup />} />
           <Route exact="true" path="/questions" element={<Questions />} />
