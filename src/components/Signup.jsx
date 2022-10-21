@@ -1,6 +1,47 @@
-import React from "react";
+import { OutlinedFlagOutlined } from "@mui/icons-material";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Error from "./Error";
 
 function Signup() {
+  const History = useHistory();
+
+  const [ name, setName ] = useState("");
+  const [ email, setEmail ] = useState("");
+  const [ password, setPassword ] = useState("");
+  const [ errors, setErrors ] = useState([]);
+
+  const handleClick = () => {
+    history.pushState("/");
+  };
+
+  const handleSubmit = () => {
+    email.preventDefault();
+    const newUser = {
+      name: name,
+      email: email,
+      password: password,
+    };
+
+    fetch("/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    }).then((res) => {
+      if(res.ok) {
+        res.json().then((newUser) => onLogin(newUser));
+      } else {
+        res.json().then((error) => setErrors(error.errors))
+      }
+    });
+
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
+  
   return (
     <div className="d-flex">
       <div className="p-2 flex-grow-1 ">
