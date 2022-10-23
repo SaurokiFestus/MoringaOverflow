@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
 
 function Login() {
+  const history = useHistory()
+    
+  const[username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState([])
+
+  useEffect(() => {
+      if(user){
+    history.push("/home")}
+  }, [])
   
   return (
     <div>

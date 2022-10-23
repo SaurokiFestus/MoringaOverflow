@@ -96,7 +96,9 @@ function Signup() {
         </button>
         
         <br></br>
-        <h3 className="text-black-50">By clicking “Sign up”, you agree to our terms of service, privacy policy and cookie policy</h3>
+        <h3 className="text-black-50">
+          By clicking “Sign up”, you agree to our terms of service, privacy policy and cookie policy
+        </h3>
         
       </form>
 
