@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 
 function Login({ onLogin, user }) {
-  const history = useHistory()
+  const history = useNavigate()
     
   const[username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -31,7 +31,7 @@ function Login({ onLogin, user }) {
       if (r.ok) {
         r.json().then((user) => onLogin(user));
       } else{
-        r.json().then((error)=> setErrors(error.error))
+        r.json().then((error)=> setErrors(error.errors))
       }
     })
   }
@@ -44,13 +44,13 @@ function Login({ onLogin, user }) {
         
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">
-            Email address
+            Username
           </label>
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            placeholder="Enter username"
+            onChange={(e) => setUsername(e.target.value)}
           />
           
         </div>
@@ -60,14 +60,15 @@ function Login({ onLogin, user }) {
           </label>
           <input
             type="password"
-            className="form-control"
-            id="exampleInputPassword1"
+            className='form-control'
+            placeholder="Enter Password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="mb-3 form-check">
           
         </div>
-        <button type="submit" className="btn bg-info mb-4 w-75 ">
+        <button type="submit" className="btn bg-info mb-4 w-75 " onClick={handleSubmit}>
           Log In
         </button>
         
