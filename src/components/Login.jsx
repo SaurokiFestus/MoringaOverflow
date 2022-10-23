@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 
 function Login({ onLogin, user }) {
-  const history = useNavigate()
+  const navigate = useNavigate();
     
   const[username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
 
+  //if user sends them to the Home page
   useEffect(() => {
-      if(user){
-    history.push("/home")}
+    if(user){
+      navigate("http://localhost:3000/home")}
   }, [])
   
+  //handles the submition of the login form for authentication
   const handleSubmit = (e) => {
     e.preventDefault()
     const user = {
@@ -20,7 +22,7 @@ function Login({ onLogin, user }) {
       password: password
     }
 
-    fetch("/login", {
+    fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,10 +30,10 @@ function Login({ onLogin, user }) {
       body: JSON.stringify(user),
     })
     .then((res) => {
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
+      if (res.ok) {
+        res.json().then((user) => onLogin(user));
       } else{
-        r.json().then((error)=> setErrors(error.errors))
+        res.json().then((error)=> setErrors(error.errors))
       }
     })
   }

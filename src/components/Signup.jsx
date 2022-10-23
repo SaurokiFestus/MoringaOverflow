@@ -4,37 +4,41 @@ import Error from "./Error";
 
 function Signup() {
 
-  const [ name, setName ] = useState("");
-  const [ email, setEmail ] = useState("");
-  const [ password, setPassword ] = useState("");
-  const [ errors, setErrors ] = useState([]);
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    email: "",
+  });
 
-  const handleSubmit = () => {
-    email.preventDefault();
-    const newUser = {
-      name: name,
-      email: email,
-      password: password,
-    };
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  function handleSubmit(e) {
+    e.preventDefault();
 
-    fetch("http://localhost:3000/users", {
+    const userCreds = { ...formData };
+
+    fetch("/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newUser),
+      body: JSON.stringify(userCreds),
     }).then((res) => {
-      if(res.ok) {
-        res.json().then((newUser) => onLogin(newUser));
+      if (res.ok) {
+        res.json().then((user) => {
+          setCurrentUser(user);
+        });
       } else {
-        res.json().then((error) => setErrors(error.errors))
+        res.json().then((errors) => {
+          console.error(errors);
+        });
       }
     });
-
-    setName("");
-    setEmail("");
-    setPassword("");
-  };
+  }
 
   return (
     <div className="d-flex">
@@ -47,30 +51,34 @@ function Signup() {
       </div>
 
       <div className="p-3">
-      <form  className="bg-secondary w-auto p-3 float-end rounded">
+      <form  onSubmit={ handleSubmit } className="bg-secondary w-auto p-3 float-end rounded">
       <button type="submit" className="btn bg-light mb-4">
       <i className="bi bi-google m-3"></i>Sign Up With Google
         </button>
         <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label">
+          <label htmlFor="exampleInputEmail1" className="form-label">
             Display name
           </label>
           <input
             type="text"
+            name="username"
             className="form-control"
-            placeholder="Display Name"
-            onChange={(e) => setName(e.target.value)}
+            placeholder="Username"
+            value={formData.username}
+            onChange={ handleChange }
           />
         </div>
         <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label">
+          <label htmlFor="email" className="form-label">
             Email address
           </label>
           <input
             type="email"
+            name="email"
             className="form-control"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={ handleChange }
           />
           
         </div>
