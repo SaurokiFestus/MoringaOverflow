@@ -1,19 +1,13 @@
 import { OutlinedFlagOutlined } from "@mui/icons-material";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import Error from "./Error";
 
 function Signup() {
-  const History = useHistory();
 
   const [ name, setName ] = useState("");
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
   const [ errors, setErrors ] = useState([]);
-
-  const handleClick = () => {
-    history.pushState("/");
-  };
 
   const handleSubmit = () => {
     email.preventDefault();
@@ -23,7 +17,7 @@ function Signup() {
       password: password,
     };
 
-    fetch("/users", {
+    fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +35,7 @@ function Signup() {
     setEmail("");
     setPassword("");
   };
-  
+
   return (
     <div className="d-flex">
       <div className="p-2 flex-grow-1 ">
@@ -49,7 +43,7 @@ function Signup() {
         <h4>Get unstuck — ask a question</h4>
         <h5>Unlock new privileges like voting and commenting</h5>
         <h6>Save your favorite tags, filters, and jobs</h6>
-        <h7>Earn reputation and badges</h7>
+        <h6>Earn reputation and badges</h6>
       </div>
 
       <div className="p-3">
@@ -64,8 +58,8 @@ function Signup() {
           <input
             type="text"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            placeholder="Display Name"
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="mb-3">
@@ -75,8 +69,8 @@ function Signup() {
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
           />
           
         </div>
@@ -87,17 +81,22 @@ function Signup() {
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="mb-3 form-check">
           
         </div>
-        <button type="submit" className="btn bg-info  mb-4">
+        {errors.map((err) => (
+          <Error key={err} err={err}/>
+        ))}
+        <button type="submit" className="btn bg-info  mb-4" onClick={handleSubmit}>
           Sign Up
         </button>
+        
         <br></br>
-        <h10 className="text-black-50">By clicking “Sign up”, you agree to our terms of service, privacy policy and cookie policy</h10>
+        <h3 className="text-black-50">By clicking “Sign up”, you agree to our terms of service, privacy policy and cookie policy</h3>
         
       </form>
 
