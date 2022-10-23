@@ -13,6 +13,28 @@ function Login() {
     history.push("/home")}
   }, [])
   
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const user = {
+      username: username,
+      password: password
+    }
+
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+    .then((res) => {
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
+      } else{
+        r.json().then((error)=> setErrors(error.error))
+      }
+    })
+  }
   return (
     <div>
         <form  className="bg-secondary w-auto p-3 float-start rounded">
