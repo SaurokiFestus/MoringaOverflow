@@ -71,6 +71,9 @@ function Login({ onLogin, user }) {
         <button type="submit" className="btn bg-info mb-4 w-75 " onClick={handleSubmit}>
           Log In
         </button>
+        <p className="text-center rounded" style={{ color: "red" }}>
+          {errors}
+        </p>
         
       </form>
     </div>
