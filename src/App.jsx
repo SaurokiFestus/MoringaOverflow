@@ -6,20 +6,20 @@ import Login from './components/Login'
 import  {BrowserRouter, Route, Routes} from "react-router-dom"
 import Home from './components/Home'
 import SideBar from './components/Sidebar/Sidebar'
-import About from './components/About'
 import Navbar from './components/Navbar'
-import Questions from './components/Questions'
-
+import Footer from './components/Footer'
 
 function App() {
   return (
     <div className="App">
-      {/* <Signup/> */}
-      <Navbar/>
+
+     
+
       <BrowserRouter>
+      <Navbar/>
       <Routes>
       <Route exact="true" path="/" element={<Home/>}/>
-
+     
         <Route exact="true" path="/login" element={<Login/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
@@ -28,6 +28,7 @@ function App() {
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
       </Routes>
       </BrowserRouter>
+      <Footer/>
     </div>
   );
 }
