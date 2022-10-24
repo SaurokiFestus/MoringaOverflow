@@ -14,12 +14,12 @@ import Navbar from './components/Navbar'
 function App() {
   return (
     <div className="App">
-      {/* <Signup/> */}
+
       <Navbar/>
       <BrowserRouter>
       <Routes>
       <Route exact="true" path="/" element={<Home/>}/>
-
+      {/* <Route exact="true" path="/navbar" element={<Navbar/>}/> */}
         <Route exact="true" path="/login" element={<Login/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
         {/* <Route exact="true" path="/questions" element={<Questions/>}/> */}
