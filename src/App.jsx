@@ -8,12 +8,14 @@ import  {BrowserRouter, Route, Routes} from "react-router-dom"
 import Home from './components/Home'
 import SideBar from './components/Sidebar/Sidebar'
 
+import Navbar from './components/Navbar'
 
 
 function App() {
   return (
     <div className="App">
       {/* <Signup/> */}
+      <Navbar/>
       <BrowserRouter>
       <Routes>
       <Route exact="true" path="/" element={<Home/>}/>
