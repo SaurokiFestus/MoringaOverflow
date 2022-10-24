@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 
@@ -38,11 +37,6 @@ function Login({ onLogin, user }) {
       }
     })
   }
-=======
-import React from "react";
-
-function Login() {
->>>>>>> 6f16677af65063661f86e068856c4f6e383c81b7
   return (
     <div className="d-flex justify-content-center align-items-center">
       <form className="bg-secondary rounded p-9 p-sm-3 m-5">
@@ -72,7 +66,6 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-<<<<<<< HEAD
         <div className="mb-3 form-check">
           
         </div>
@@ -83,12 +76,6 @@ function Login() {
           {errors}
         </p>
         
-=======
-        <div className="mb-3 form-check"></div>
-        <button type="submit" className="btn bg-info mb-4 w-100 ">
-          Log In
-        </button>
->>>>>>> 6f16677af65063661f86e068856c4f6e383c81b7
       </form>
     </div>
   );
