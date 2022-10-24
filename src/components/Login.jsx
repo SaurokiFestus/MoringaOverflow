@@ -3,7 +3,7 @@ import React from "react";
 function Login() {
   const flowColor = { backgroundColor: "#f1f2f3" }
   return (
-    <div className="container-fluid" style={flowColor}>
+    <div className="container-fluid vh-100" style={flowColor}>
       <div className="d-flex justify-content-center align-items-center " >
         <div>
         <button type="submit" className="btn bg-light mx-5 mt-4">
