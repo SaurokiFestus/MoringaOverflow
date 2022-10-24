@@ -1,115 +1,46 @@
 import React from "react";
 
-export default function Footer() {
- 
+function Footer() {
+  const icons = { color: "#f48d4f", fontSize: "60px" };
+  const socials = { color: "white", fontSize: "30px" };
+  const bg = { backgroundColor: "#232629" };
+
   return (
-    // <footer class=" bg-dark row row-cols-5 py-5  border-top text-white">
-    //   <div class="col-lg-3">
-    //     <a
-    //       href="/"
-    //       class="d-flex align-items-center mb-3 link-dark text-decoration-none"
-    //     ></a>
-    //     <h1 class="text-muted ">
-    //       <i
-    //         style={{ color: "#f48d4f", fontSize: "50px" }}
-    //         class="m-5 bi bi-stack-overflow"
-    //       ></i>
-    //     </h1>
-    //   </div>
-
-    //   <div class="col-lg-3">
-    //     <h5>Section</h5>
-    //     <ul class="nav flex-column">
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           Home
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           Features
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           Pricing
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           FAQs
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           About
-    //         </a>
-    //       </li>
-    //     </ul>
-    //   </div>
-
-    //   <div class="col-lg-3">
-    //     <h5>Section</h5>
-    //     <ul class="nav flex-column">
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           Home
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           Features
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           Pricing
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           FAQs
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           About
-    //         </a>
-    //       </li>
-    //     </ul>
-    //   </div>
-
-    //   <div class="col-lg-3">
-    //     <h5>Section</h5>
-    //     <ul class="nav flex-column">
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           Home
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           Features
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           Pricing
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           FAQs
-    //         </a>
-    //       </li>
-    //       <li class="nav-item mb-2">
-    //         <a href="#" class="nav-link p-0 text-muted">
-    //           About
-    //         </a>
-    //       </li>
-    //     </ul>
-    //   </div>
-    // </footer>
-    <div></div>
+    <div
+      className="container-fluid text-white pt-4"
+      style={bg}
+    >
+      <div className="row">
+        <div className="col-5  pl-5 ">
+          <i style={icons} class="bi bi-stack-overflow"></i>
+          <span>Moringa OverFlow</span>
+        </div>
+        <div className="col-5 ">
+          <div className="">
+            <span className="border-bottom  border-white  mx-1 pb-1">
+              CONTACT US
+            </span>
+              <div className="p-1">Moringa Overflow</div>
+              <div className="p-1">+2547********</div>
+          </div>
+          <div className="pt-2">
+            <a href="#">
+              <i style={socials} class="bi bi-github "></i>
+            </a>
+            <a href="#">
+              <i style={socials} class="bi bi-twitter px-3"></i>
+            </a>
+            <a>
+              <i style={socials} class="bi bi-facebook  "></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="text-center p-3">
+        <p>Copyright 2022 MoringaOverflow All rights Reserved</p>
+      </div>
+    </div>
   );
 }
+
+export default Footer;
