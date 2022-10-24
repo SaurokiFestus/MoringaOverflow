@@ -2,7 +2,9 @@ import React, { Fragment } from "react";
 import image from "../assets/images/flow.png";
 
 export default function Home() {
-  return (
+    const icons={ color: "#f48d4f"} 
+  
+     return (
     <Fragment>
       <div className="container-fluid mt-5">
         <div className="row">
@@ -36,7 +38,7 @@ export default function Home() {
 
       <div class="container shadow p-3 my-5 bg-body rounded d-flex justify-content-center  ">
         <div class="row text-center mt-2 mb-4 pt-3">
-          <div className=" col-lg-3 px-4 ">
+          <div className=" col-lg-3 px-2 ">
             <span>
               <strong>100+ million</strong>
             </span>
@@ -86,7 +88,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="text-center my-5">
+      <div className="text-center ">
       <div className="container my-5">
           <hr style={{ float: "left", width: "40%" }}></hr>
           <hr style={{ float: "right", width: "40%" }}></hr>
@@ -99,10 +101,10 @@ export default function Home() {
             style={{ backgroundColor: "#f0f8fe" }}
           >
             <h1 class="header">
-              <i style={{ color: "#f48d4f" }} class="bi bi-stack-overflow"></i>
+              <i style={icons} class="bi bi-stack-overflow"></i>
             </h1>
             <div class="card-body">
-              <h5 class="card-title">Our Public Platform</h5>
+              <h5 class="card-title" >Our Public Platform</h5>
               <p class="card-text">
                 Where developers and technologies go to gain and share knowledgr
               </p>
@@ -114,7 +116,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container my-5 py-4">
+      <div className="container-fluid my-5 py-4">
         <div className="">
           <hr style={{ float: "left", width: "35%" }}></hr>
           <hr style={{ float: "right", width: "35%" }}></hr>
@@ -126,7 +128,7 @@ export default function Home() {
           <div class="col-lg-4 col-sm-12 my-3  ">
             <div class="card-body-content">
               <h1 class="header py-3">
-                <i style={{ color: "#f48d4f" }} class="bi bi-heart-fill"></i>
+                <i style={icons} class="bi bi-heart-fill"></i>
               </h1>
               <h4 class="card-title">Adopt a customer-first mindset</h4>
               <p class="card-text">
@@ -138,7 +140,7 @@ export default function Home() {
 
           <div class="col-lg-4 col-sm-12 my-3 ">
             <div class="card-body-content">
-              <h1 class="header py-3" style={{ color: "#f48d4f" }}>
+              <h1 class="header py-3" style={icons}>
                 <i class="bi bi-hand-thumbs-up"></i>{" "}
               </h1>
               <h4 class="card-title">Be flexible and inclusive</h4>
@@ -154,7 +156,7 @@ export default function Home() {
             {" "}
             <div class="card-body-content">
               <h1 class="header py-3">
-                <i style={{ color: "#f48d4f" }} class="bi bi-compass"></i>
+                <i style={icons} class="bi bi-compass"></i>
               </h1>
               <h4 class="card-title">Be transparent</h4>
               <p class="card-text">
@@ -168,7 +170,7 @@ export default function Home() {
             {" "}
             <div class="card-body-content">
               <h1 class="card-title py-3">
-                <i style={{ color: "#f48d4f" }} class="bi bi-command"></i>
+                <i style={icons} class="bi bi-command"></i>
               </h1>
 
               <h4 class="card-title">
@@ -184,7 +186,7 @@ export default function Home() {
             <div class="card-body-content">
               <div class="header py-3">
                 <h1>
-                  <i style={{ color: "#f48d4f" }} class="bi bi-people-fill"></i>
+                  <i style={icons} class="bi bi-people-fill"></i>
                 </h1>
               </div>
               <h4 class="card-title">Keep community at our center</h4>
@@ -197,7 +199,7 @@ export default function Home() {
           <div class="col-lg-4 col-sm-12 my-3 ">
             <div class="header py-3">
               <h1>
-                <i style={{ color: "#f48d4f" }} class="bi bi-graph-up"></i>{" "}
+                <i style={icons} class="bi bi-graph-up"></i>{" "}
               </h1>
             </div>
             <h4 class="card-title">Learn, share, grow</h4>

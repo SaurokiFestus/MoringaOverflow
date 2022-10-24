@@ -8,14 +8,16 @@ import  {BrowserRouter, Route, Routes} from "react-router-dom"
 import Home from './components/Home'
 import SideBar from './components/Sidebar/Sidebar'
 import Navbar from './components/Navbar'
-
+import Footer from './components/Footer'
 
 function App() {
   return (
     <div className="App">
 
-      <Navbar/>
+     
+
       <BrowserRouter>
+      <Navbar/>
       <Routes>
       <Route exact="true" path="/" element={<Home/>}/>
      
@@ -26,6 +28,7 @@ function App() {
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
       </Routes>
       </BrowserRouter>
+      <Footer/>
     </div>
   );
 }
