@@ -1,14 +1,13 @@
-import React from 'react'
+import React from "react";
 
 function Login() {
-  
   return (
-    <div>
-        <form  className="bg-secondary w-auto p-3 float-start rounded">
-      <button type="submit" className="btn bg-light mb-4">
-      <i className="bi bi-google m-3 w-100 p-3 "></i>Log In With Google
+    <div className="d-flex justify-content-center align-items-center">
+      <form className="bg-secondary rounded p-9 p-sm-3 m-5">
+        <button type="submit" className="btn bg-light mb-4 w-100">
+          <i className="bi bi-google m-3  p-3 "></i>Log In With Google
         </button>
-        
+
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">
             Email address
@@ -19,7 +18,6 @@ function Login() {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
           />
-          
         </div>
         <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label">
@@ -31,16 +29,13 @@ function Login() {
             id="exampleInputPassword1"
           />
         </div>
-        <div className="mb-3 form-check">
-          
-        </div>
-        <button type="submit" className="btn bg-info mb-4 w-75 ">
+        <div className="mb-3 form-check"></div>
+        <button type="submit" className="btn bg-info mb-4 w-100 ">
           Log In
         </button>
-        
       </form>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
