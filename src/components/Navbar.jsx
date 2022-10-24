@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 function Navbar() {
   const flowColor = { color: "#f48d4f" }
@@ -32,7 +33,8 @@ function Navbar() {
 
                 >
                   <i class="bi bi-list bg-dark m-3"></i>
-                  <i style={flowColor} class="bi bi-stack-overflow text-dark m-2">MoringaFlow</i>
+                  <i style={flowColor} class="bi bi-stack-overflow m-2"></i>
+                  <span className="text-dark">Moringa Flow</span>
                  
                 </a>
                 <ul
@@ -64,8 +66,8 @@ function Navbar() {
           <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         
-        <button class="btn btn-primary m-1" type="submit">Login</button>
-        <button class="btn btn-primary m-1" type="submit">Signup</button>
+        <Link to="/login"> <button class="btn btn-primary m-1">Login</button></Link>
+        <Link to="/signup"><button class="btn btn-primary m-1">Signup</button></Link>
       </form>
         </div>
       </nav>
