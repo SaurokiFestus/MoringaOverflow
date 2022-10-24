@@ -1,13 +1,16 @@
 import React from "react";
 
 function Login() {
- 
+  const flowColor = { backgroundColor: "#f1f2f3" }
   return (
-    <div className="d-flex justify-content-center align-items-center">
-      <form className="bg-light rounded p-9 p-sm-3 m-5">
-        <button type="submit" className="btn bg-light mb-4 w-100">
-          <i className="bi bi-google m-3  p-3 "></i>Log In With Google
+    <div className="container-fluid" style={flowColor}>
+      <div className="d-flex justify-content-center align-items-center " >
+        <div>
+        <button type="submit" className="btn bg-light mx-5 mt-4">
+          <i className="bi bi-google m-3  "></i>Log In With Google
         </button>
+      <form className="bg-light rounded  p-sm-3 mx-5 my-4">
+       
 
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">
@@ -35,7 +38,11 @@ function Login() {
           Log In
         </button>
       </form>
+        </div>
+      
     </div>
+    </div>
+    
   );
 }
 

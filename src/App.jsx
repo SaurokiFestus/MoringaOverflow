@@ -14,8 +14,10 @@ function App() {
   return (
     <div className="App">
 
-      <Navbar/>
+     
+
       <BrowserRouter>
+      <Navbar/>
       <Routes>
       <Route exact="true" path="/" element={<Home/>}/>
      
