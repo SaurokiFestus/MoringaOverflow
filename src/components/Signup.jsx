@@ -12,13 +12,13 @@ function Signup() {
       </div>
 
       <div className="p-9 ">
-      <form  className="bg-secondary p-4 w-75 rounded">
+      <form  className="bg-light m-5 p-5 w-60 rounded">
       <button type="submit" className="btn bg-light mb-4  w-75">
       <i className="bi bi-google  m-3"></i>Sign Up With Google
         </button>
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">
-            Display name
+            Name
           </label>
           <input
             type="text"
