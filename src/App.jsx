@@ -6,6 +6,7 @@ import Login from './components/Login'
 import  {BrowserRouter, Route, Routes} from "react-router-dom"
 // import About from './components/About'
 import Home from './components/Home'
+import SideBar from './components/Sidebar/Sidebar'
 
 
 
@@ -19,8 +20,9 @@ function App() {
 
         <Route exact="true" path="/login" element={<Login/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
-        {/* <Route exact="true" path="/allquestions" element={<Allquestions/>}/> */}
-        {/* <Route exact="true" path="/about" element={<About/>}/> */}
+        <Route exact="true" path="/questions" element={<Questions/>}/>
+        <Route exact="true" path="/about" element={<About/>}/>
+        <Route exact="true" path="/sidebar" element={<SideBar/>}/>
       </Routes>
       </BrowserRouter>
     </div>
