@@ -42,19 +42,19 @@ function Signup() {
   }
 
   return (
-    <div className="d-flex">
-      <div className="p-2 flex-grow-1 ">
-        <h2>Join the Moringa Overflow community</h2>
+    <div className="d-flex justify-content-center align-items-center" >
+      <div className="p-1 flex-grow-1 ">
+        <h1>Join the Moringa Overflow community</h1>
         <h4>Get unstuck — ask a question</h4>
         <h5>Unlock new privileges like voting and commenting</h5>
         <h6>Save your favorite tags, filters, and jobs</h6>
         <h6>Earn reputation and badges</h6>
       </div>
 
-      <div className="p-3">
-      <form  onSubmit={ handleSubmit } className="bg-secondary w-auto p-3 float-end rounded">
-      <button type="submit" className="btn bg-light mb-4">
-      <i className="bi bi-google m-3"></i>Sign Up With Google
+      <div className="p-9 ">
+      <form  className="bg-secondary p-4 w-75 rounded">
+      <button type="submit" className="btn bg-light mb-4  w-75">
+      <i className="bi bi-google  m-3"></i>Sign Up With Google
         </button>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">

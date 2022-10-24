@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 
@@ -37,13 +38,18 @@ function Login({ onLogin, user }) {
       }
     })
   }
+=======
+import React from "react";
+
+function Login() {
+>>>>>>> 6f16677af65063661f86e068856c4f6e383c81b7
   return (
-    <div>
-        <form  className="bg-secondary w-auto p-3 float-start rounded">
-      <button type="submit" className="btn bg-light mb-4">
-      <i className="bi bi-google m-3 w-100 p-3 "></i>Log In With Google
+    <div className="d-flex justify-content-center align-items-center">
+      <form className="bg-secondary rounded p-9 p-sm-3 m-5">
+        <button type="submit" className="btn bg-light mb-4 w-100">
+          <i className="bi bi-google m-3  p-3 "></i>Log In With Google
         </button>
-        
+
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">
             Username
@@ -54,7 +60,6 @@ function Login({ onLogin, user }) {
             placeholder="Enter username"
             onChange={(e) => setUsername(e.target.value)}
           />
-          
         </div>
         <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label">
@@ -67,6 +72,7 @@ function Login({ onLogin, user }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+<<<<<<< HEAD
         <div className="mb-3 form-check">
           
         </div>
@@ -77,9 +83,15 @@ function Login({ onLogin, user }) {
           {errors}
         </p>
         
+=======
+        <div className="mb-3 form-check"></div>
+        <button type="submit" className="btn bg-info mb-4 w-100 ">
+          Log In
+        </button>
+>>>>>>> 6f16677af65063661f86e068856c4f6e383c81b7
       </form>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
