@@ -9,6 +9,7 @@ function Signup() {
     password: "",
     email: "",
   });
+  const [ errors, setErrors ] = useState([]) 
 
   const handleChange = (e) => {
     setFormData({
@@ -21,7 +22,7 @@ function Signup() {
 
     const userCreds = { ...formData };
 
-    fetch("/users", {
+    fetch("http://localhost:3000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -83,14 +84,16 @@ function Signup() {
           
         </div>
         <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">
+          <label htmlFor="exampleInputPassword1" className="form-label">
             Password
           </label>
           <input
             type="password"
+            name="password"
             className="form-control"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={ handleChange }
           />
         </div>
         <div className="mb-3 form-check">
