@@ -9,6 +9,7 @@ import Home from './components/Home'
 import SideBar from './components/Sidebar/Sidebar'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Profile from './components/Profile'
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         {/* <Route exact="true" path="/questions" element={<Questions/>}/> */}
         {/* <Route exact="true" path="/about" element={<About/>}/> */}
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
+        <Route exact="true" path="/myprofile" element={<Profile/>}/>
+
       </Routes>
       </BrowserRouter>
       <Footer/>
