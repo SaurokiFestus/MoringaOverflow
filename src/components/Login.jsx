@@ -1,44 +1,51 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 
-function Login({ onLogin, user }) {
+const Login = ({user}) => {
   const flowColor ={backgroundColor:"#f1f2f3"}
   const navigate = useNavigate();
-  
-    
-  const[username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [errors, setErrors] = useState([])
 
-  //if user sends them to the Home page
+  const [errors, setErrors ] = useState([]);
+
+  //if user sends them to the Questions page
   useEffect(() => {
     if(user){
-      navigate("http://localhost:3000/home")}
+      navigate("http://localhost:3000/questions")}
   }, [])
   
   //handles the submition of the login form for authentication
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const user = {
-      username: username,
-      password: password
-    }
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
 
-    fetch("http://localhost:3000/login", {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
-    })
-    .then((res) => {
+      body: JSON.stringify(formData),
+    }).then((res) => {
       if (res.ok) {
-        res.json().then((user) => onLogin(user));
-      } else{
-        res.json().then((error)=> setErrors(error.errors))
+        res.json().then((user) => {
+          setCurrentUser(user);
+        });
+      } else {
+        res.json().then((errors) => {
+          console.error(errors);
+        });
       }
-    })
-  }
+    });
+  };
+
   return (
     <div className="container-fluid vh-100" style={flowColor}>
       <div className="d-flex justify-content-center align-items-center " >
@@ -56,8 +63,10 @@ function Login({ onLogin, user }) {
           <input
             type="text"
             className="form-control"
+            name='username'
             placeholder="Enter username"
-            onChange={(e) => setUsername(e.target.value)}
+            value={formData.username}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-3">
@@ -66,9 +75,11 @@ function Login({ onLogin, user }) {
           </label>
           <input
             type="password"
+            name='password'
             className='form-control'
             placeholder="Enter Password"
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-3 form-check">
