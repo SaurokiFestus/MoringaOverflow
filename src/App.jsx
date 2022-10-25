@@ -9,6 +9,7 @@ import SideBar from './components/Sidebar/Sidebar'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Questions from './components/Questions'
+import About from './components/About'
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/questions" element={<Questions/>}/>
-        {/* <Route exact="true" path="/about" element={<About/>}/> */}
+        <Route exact="true" path="/about" element={<About/>}/>
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
       </Routes>
       </BrowserRouter>
