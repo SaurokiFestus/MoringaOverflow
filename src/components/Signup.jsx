@@ -1,8 +1,10 @@
-import { OutlinedFlagOutlined } from "@mui/icons-material";
 import React, { useState } from "react";
+import { OutlinedFlagOutlined } from "@mui/icons-material";
 import Error from "./Error";
 
 function Signup() {
+  
+  const flowColor = {backgroundColor: "#f1f2f3"}
   const [formData, setFormData] = useState({
     username: "",
     password: "",

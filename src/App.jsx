@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Questions from './components/Questions'
 import EachQuestion from './components/EachQuestion'
+import Profile from "./components/Profile"
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route exact="true" path="/question" element={<EachQuestion/>}/>
         {/* <Route exact="true" path="/about" element={<About/>}/> */}
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
-        <Route exact="true" path="/myprofile" element={<Profile/>}/>
+        <Route exact="true" path="/profile" element={<Profile/>}/>
 
       </Routes>
       </BrowserRouter>
