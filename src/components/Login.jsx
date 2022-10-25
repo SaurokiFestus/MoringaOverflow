@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 
 function Login({ onLogin, user }) {
-
-  
-  const flowColor = {backgroundColor: "#f1f2f3"}
+  const flowColor ={backgroundColor:"#f1f2f3"}
   const navigate = useNavigate();
+  
     
   const[username, setUsername] = useState("")
   const [password, setPassword] = useState("")
