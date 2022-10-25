@@ -116,7 +116,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="container-fluid my-5 py-4">
+      <div className="container my-5 py-4">
         <div className="">
           <hr style={{ float: "left", width: "35%" }}></hr>
           <hr style={{ float: "right", width: "35%" }}></hr>
@@ -125,7 +125,7 @@ export default function Home() {
         </div>
 
         <div class="row my-3">
-          <div class="col-lg-4 col-sm-12 my-3  ">
+          <div class="col-lg-4 col-sm-10 my-3  ">
             <div class="card-body-content">
               <h1 class="header py-3">
                 <i style={icons} class="bi bi-heart-fill"></i>
