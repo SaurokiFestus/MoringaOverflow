@@ -17,6 +17,8 @@ import About from "./components/About"
 
 
 function App() {
+  const [currentUser, setCurrentUser] = useState({});
+  console.log(currentUser);
   return (
     <div className="App">
 

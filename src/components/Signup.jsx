@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { OutlinedFlagOutlined } from "@mui/icons-material";
 import Error from "./Error";
 
-function Signup() {
+function Signup({ setCurrentUser }) {
   const flowColor = { backgroundColor: "#f1f2f3" };
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     email: "",
-  });
+});
   const [errors, setErrors] = useState([]);
 
   const handleChange = (e) => {
@@ -17,6 +17,8 @@ function Signup() {
       [e.target.name]: e.target.value,
     });
   };
+  // console.log(formData);
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -27,7 +29,11 @@ function Signup() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userCreds),
+      body: JSON.stringify({
+        username: formData.username,
+        password: formData.password,
+        email: formData.email
+      }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
