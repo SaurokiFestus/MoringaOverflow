@@ -12,18 +12,18 @@ const Login = ({setUser}) => {
 
     async function handleSubmit(e) {
       e.preventDefault();
-      await fetch("/login", {
+      await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUser(user));
+      }).then((res) => {
+        if (res.ok) {
+          res.json().then((user) => setUser(user));
           navigate("/");
         } else {
-          r.json().then((errorData) => setErrors(errorData.errors));
+          res.json().then((errorData) => setErrors(errorData.errors));
         }
       });
       navigate("/questions");
