@@ -61,16 +61,20 @@ function Navbar() {
             >
               <h5 className="m-2">About</h5>
             </Link>
-            <h5 className="m-2">Tags</h5>
+            
           </div>
 
           <form class="d-flex">
             <input
+              
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
+           
+              <button class="btn btn-primary m-1" action="/search">Search</button>
+            
 
             <Link to="/login">
               {" "}
