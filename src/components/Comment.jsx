@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Comment({ comments }) {
-  // console.log(comments);
+  console.log(comments.reverse());
   const body = comments?.map((comment) => {
     return <li className="pb-1" key={comment.id}>{comment.body}</li>;
   });
