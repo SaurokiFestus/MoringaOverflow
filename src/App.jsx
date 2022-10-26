@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Questions from './components/Questions'
 import EachQuestion from './components/EachQuestion'
+import AskQuestion from './components/AskQuestion'
 
 function App() {
   return (
@@ -21,12 +22,14 @@ function App() {
       <Navbar/>
       <Routes>
       <Route exact="true" path="/" element={<Home/>}/>
-     
+
+      <Route exact="true" path="/askquestion" element={<AskQuestion/>}/>
+
         <Route exact="true" path="/login" element={<Login/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/questions" element={<Questions/>}/>
-        <Route exact="true" path="/question" element={<EachQuestion/>}/>
+        <Route exact="true" path="/question/:id" element={<EachQuestion/>}/>
         {/* <Route exact="true" path="/about" element={<About/>}/> */}
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
       </Routes>
