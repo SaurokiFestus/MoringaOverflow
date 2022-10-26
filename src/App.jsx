@@ -12,6 +12,8 @@ import Questions from './components/Questions'
 import EachQuestion from './components/EachQuestion'
 
 function App() {
+  const [currentUser, setCurrentUser] = useState({});
+  console.log(currentUser);
   return (
     <div className="App">
 
@@ -22,7 +24,7 @@ function App() {
       <Routes>
       <Route exact="true" path="/" element={<Home/>}/>
      
-        <Route exact="true" path="/login" element={<Login/>}/>
+        <Route exact="true" path="/login" element={<Login setCurrentUser={setCurrentUser}/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/questions" element={<Questions/>}/>
