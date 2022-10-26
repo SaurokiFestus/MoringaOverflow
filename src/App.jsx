@@ -32,6 +32,8 @@ function App() {
         <Route exact="true" path="/question/:id" element={<EachQuestion/>}/>
         {/* <Route exact="true" path="/about" element={<About/>}/> */}
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
+        <Route exact="true" path="/profile" element={<Profile/>}/>
+
       </Routes>
       </BrowserRouter>
       <Footer/>
