@@ -11,10 +11,14 @@ import Footer from './components/Footer'
 import Questions from './components/Questions'
 import EachQuestion from './components/EachQuestion'
 import AskQuestion from './components/AskQuestion'
+
 import Profile from "./components/Profile"
 import About from "./components/About"
 
+
 function App() {
+  const [currentUser, setCurrentUser] = useState({});
+  console.log(currentUser);
   return (
     <div className="App">
 
