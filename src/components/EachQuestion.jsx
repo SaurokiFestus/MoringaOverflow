@@ -1,9 +1,10 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
+import Comment from "./Comment";
 
 function EachQuestion() {
   const [question, setQuestion] = useState([]);
-  const [showComments, setShowComments]=useState(false)
+  const [showComments, setShowComments] = useState(false);
 
   let { id } = useParams();
 
@@ -35,7 +36,7 @@ function EachQuestion() {
               <h6>{question.answers?.length} Answers</h6>
               {question.answers?.map((answer) => {
                 return (
-                  <div>
+                  <div key={answer.id}>
                     <div className="row">
                       {/* {answers.map} */}
                       <div className="col-1 ">
@@ -81,15 +82,14 @@ function EachQuestion() {
                       </div>
                     </div>
 
-                    <button class="btn  shadow-none">Comments</button>
-                    {}
-                    <div className="row p-0">
-                      <div className="col-1"></div>
-                      <div className="col-10">
-                        <p>gfhjkl</p>
-                        <hr className=""></hr>
-                      </div>
-                    </div>
+                    <button class="btn 
+                    shadow-none"
+                    onClick={()=>setShowComments(!showComments)}>Comments</button>
+                    {showComments ? (
+                       <Comment comments={answer.comments}/>
+                    ) : (
+                    ''
+                    )}
                   </div>
                 );
               })}
