@@ -44,21 +44,36 @@ const questions = () => {
           return (
             <>
               <div className="row">
-                <div className="col-2">
-                  <h5>0 votes</h5>
-                  <h5>3 answers</h5>
-                  <h5>6 views</h5>
+                <div className="col-2  text-end">
+                  <ul className="list-unstyled">
+                    <li>0 votes</li>
+                    <li>3 answers</li>
+                    <li>6 views</li>
+                  </ul>
                 </div>
                 <div key={quiz.id} className="col-10">
-                  <Link to={`/question/${quiz.id}`}>
-                    <h5>{quiz.title}</h5>
+                  <ul className="list-unstyled">
+                    <Link
+                      to={`/question/${quiz.id}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <li style={{color: '#0b7dda'}}>{quiz.title}</li>
+                    </Link>{" "}
+                    <li>{quiz.body}</li>
+                  </ul>
+                  {/* <Link
+                    to={`/question/${quiz.id}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <li>{quiz.title}</li>
                   </Link>
-                  <p>{quiz.body}</p>
+                  <p>{quiz.body}</p> */}
                 </div>
+                <div>
+                <hr  className="mx-5" tyle={{ size: "80px", width: "100%" }}></hr>
               </div>
-              <div>
-                <hr style={{ size: "80px", width: "100%" }}></hr>
               </div>
+              
             </>
           );
         })}
