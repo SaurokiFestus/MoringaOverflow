@@ -24,8 +24,8 @@ function EachQuestion() {
         <div class=" mt-3 d-flex justify-content-between">
           <h2>{question.title}</h2>
           <Link to="/askquestion">
-          <button class="btn btn-primary m-1">Ask Question</button>
-        </Link>
+            <button class="btn btn-primary m-1">Ask Question</button>
+          </Link>
         </div>
         <span>Asked </span>
         <span className="px-5">Viewed </span>
@@ -38,23 +38,28 @@ function EachQuestion() {
                 return (
                   <div key={answer.id}>
                     <div className="row">
-                      {/* {answers.map} */}
                       <div className="col-1 ">
-                        <button className="btn btn-white">
-                          <i
-                            class="bi bi-caret-up-fill fs-1 text"
-                            style={{ color: "#dcdee1" }}
-                          ></i>
-                        </button>
-
-                        <span className="px-4 fs-5 text p-0">3</span>
-
-                        <button className="btn btn-white ">
+                        <ul className="list-unstyled">
+                          <li>
+                            <a href="#" className="shadow-none">
+                              <i
+                                class="bi bi-caret-up-fill fs-1 text"
+                                style={{ color: "#dcdee1" }}
+                              ></i>
+                            </a>
+                          </li>
+                          <li>
+                            <span className="px-3 fs-6 text p-0">3</span>
+                          </li>
+                          <li><a  href='#' className="shadow-none">
                           <i
                             class="bi bi-caret-down-fill fs-1 text"
                             style={{ color: "#dcdee1" }}
                           ></i>
-                        </button>
+                        </a></li>
+                        </ul>
+
+                        
                       </div>
                       <div className="col fs-5">
                         <p>{answer.body}</p>
@@ -82,14 +87,15 @@ function EachQuestion() {
                       </div>
                     </div>
 
-                    <button class="btn 
+                    <button
+                      class="btn 
                     shadow-none"
-                    onClick={()=>setShowComments(!showComments)}>Comments</button>
-                    {showComments ? (
-                       <Comment comments={answer.comments}/>
-                    ) : (
-                    ''
-                    )}
+                      disabled={answer.comments.length == 0}
+                      onClick={() => setShowComments(!showComments)}
+                    >
+                      Comments
+                    </button>
+                    {showComments ? <Comment comments={answer.comments} /> : ""}
                   </div>
                 );
               })}
