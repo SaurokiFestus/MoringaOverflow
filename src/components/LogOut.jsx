@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function LogOut({ user, setUser }) {
     let navigate = useNavigate()
@@ -22,7 +22,7 @@ function LogOut({ user, setUser }) {
 
     return (
         <div>
-            sign 
+            <Link to="/signout" onClick={()=> handleLogout() }>Sign Out</Link>
         </div>
     )
 }
