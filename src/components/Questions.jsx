@@ -50,7 +50,9 @@ const questions = () => {
                   <h5>6 views</h5>
                 </div>
                 <div key={quiz.id} className="col-10">
-                  <h5>{quiz.title}</h5>
+                  <Link to={`/question/${quiz.id}`}>
+                    <h5>{quiz.title}</h5>
+                  </Link>
                   <p>{quiz.body}</p>
                 </div>
               </div>

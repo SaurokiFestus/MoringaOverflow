@@ -29,7 +29,7 @@ function App() {
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/questions" element={<Questions/>}/>
-        <Route exact="true" path="/question" element={<EachQuestion/>}/>
+        <Route exact="true" path="/question/:id" element={<EachQuestion/>}/>
         {/* <Route exact="true" path="/about" element={<About/>}/> */}
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
       </Routes>
