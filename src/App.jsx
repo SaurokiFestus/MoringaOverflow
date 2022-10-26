@@ -12,7 +12,7 @@ import Questions from './components/Questions'
 import EachQuestion from './components/EachQuestion'
 import AskQuestion from './components/AskQuestion'
 import About from './components/About'
-
+import Profile from './components/Profile'
 function App() {
   return (
     <div className="App">
