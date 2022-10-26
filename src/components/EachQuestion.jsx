@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Comment from "./Comment";
 
 function EachQuestion() {
@@ -23,9 +23,9 @@ function EachQuestion() {
       <div className="container">
         <div class=" mt-3 d-flex justify-content-between">
           <h2>{question.title}</h2>
-          <button type="button" class="btn btn-primary">
-            Ask question
-          </button>
+          <Link to="/askquestion">
+          <button class="btn btn-primary m-1">Ask Question</button>
+        </Link>
         </div>
         <span>Asked </span>
         <span className="px-5">Viewed </span>

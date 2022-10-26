@@ -10,7 +10,7 @@ export default function Comment({ comments }) {
       <div className="row p-0">
         <div className="col-1"></div>
         <div className="col-10">
-          <ul>{body}</ul>
+          <ul className="list-unstyled">{body}</ul>
           <hr className=""></hr>
         </div>
       </div>
