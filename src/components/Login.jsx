@@ -21,12 +21,12 @@ const Login = ({setUser}) => {
       }).then((res) => {
         if (res.ok) {
           res.json().then((user) => setUser(user));
-          navigate("/questions");
+          navigate("/");
         } else {
           res.json().then((errorData) => setErrors(errorData.errors));
         }
       });
-      navigate("/login");
+      navigate("/questions");
     }
 
   return (
