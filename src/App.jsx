@@ -11,8 +11,11 @@ import Footer from './components/Footer'
 import Questions from './components/Questions'
 import EachQuestion from './components/EachQuestion'
 import AskQuestion from './components/AskQuestion'
-import About from './components/About'
-import Profile from './components/Profile'
+
+import Profile from "./components/Profile"
+import About from "./components/About"
+
+
 function App() {
   return (
     <div className="App">
