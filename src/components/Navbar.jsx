@@ -7,9 +7,7 @@ function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-light">
         <div className="container-fluid">
-
           <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
-
             <ul className="navbar-nav">
               <li className="nav-item dropdown">
                 <a
@@ -21,8 +19,13 @@ function Navbar() {
                   aria-expanded="false"
                 >
                   <i class="bi bi-list bg-dark m-3"></i>
-                  <i style={flowColor} class="bi bi-stack-overflow m-2"></i>
-                  <span className="text-dark">Moringa Flow</span>
+                  <Link
+                    to="/"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <i style={flowColor} class="bi bi-stack-overflow m-2"></i>
+                    <span className="text-dark">Moringa Flow</span>
+                  </Link>
                 </a>
                 <ul
                   className="dropdown-menu dropdown-menu-primary"
@@ -46,11 +49,21 @@ function Navbar() {
                 </ul>
               </li>
             </ul>
-            <h5 className="m-2">Questions</h5>
-            <h5 className="m-2">About</h5>
+            <Link
+              to="/questions"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <h5 className="m-2">Questions</h5>
+            </Link>
+            <Link
+              to="/about"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <h5 className="m-2">About</h5>
+            </Link>
             <h5 className="m-2">Tags</h5>
           </div>
-          
+
           <form class="d-flex">
             <input
               class="form-control me-2"
