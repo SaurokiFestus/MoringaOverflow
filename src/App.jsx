@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 import Questions from './components/Questions'
 import EachQuestion from './components/EachQuestion'
 import Profile from "./components/Profile"
-
+import About from './components/About'
 function App() {
   return (
     <div className="App">
@@ -28,7 +28,7 @@ function App() {
         <Route exact="true" path="/signup" element={<Signup/>}/>
         <Route exact="true" path="/questions" element={<Questions/>}/>
         <Route exact="true" path="/question" element={<EachQuestion/>}/>
-        {/* <Route exact="true" path="/about" element={<About/>}/> */}
+        <Route exact="true" path="/about" element={<About/>}/>
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
         <Route exact="true" path="/profile" element={<Profile/>}/>
 
