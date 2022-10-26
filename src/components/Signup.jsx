@@ -1,5 +1,5 @@
-import { OutlinedFlagOutlined } from "@mui/icons-material";
 import React, { useState } from "react";
+import { OutlinedFlagOutlined } from "@mui/icons-material";
 import Error from "./Error";
 
 function Signup({ setCurrentUser }) {
