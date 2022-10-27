@@ -5,6 +5,7 @@ import Comment from "./Comment";
 function EachQuestion() {
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState();
+  const [buttonState, setButtonState] = useState(false);
 
   // console.log(newC);
 
@@ -25,6 +26,8 @@ function EachQuestion() {
 
   function decreaseVotes(answer) {
     // console.log(answer);
+    setButtonState(true);
+
     const id = answer.id;
     const obj = {
       downvote: answer.downvote - 1,
@@ -41,6 +44,8 @@ function EachQuestion() {
   }
 
   function increaseVotes(answer) {
+    setButtonState(true);
+
     // console.log(answer);
     const id = answer.id;
     const obj = {
@@ -122,7 +127,7 @@ function EachQuestion() {
                           </li>
                         </ul>
                       </div>
-                      <div className="col fs-5">
+                      <div className="col fs-5 pt-3">
                         <p>{answer.body}</p>
                       </div>
                     </div>
