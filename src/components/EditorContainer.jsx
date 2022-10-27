@@ -1,29 +1,39 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from "draft-js";
+import { EditorState, convertToRaw } from "draft-js";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import draftToHtml from "draftjs-to-html";
 
-export default function EditorContainer(props) {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState);
+export default class EditorContainer extends Component {
+  state = {
+    editorState: EditorState.createEmpty(),
   };
-  console.log(editorState);
-  return (
-    <>
-      <div className="editor">
+
+  onEditorStateChange = (editorState) => {
+    this.setState({
+      editorState,
+    });
+  };
+
+  render() {
+    const { editorState } = this.state;
+    const x=(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+    console.log(x)
+    return (
+      <div>
         <Editor
-          onEditorStateChange={setEditorState}
           editorState={editorState}
           toolbarClassName="toolbarClassName"
           wrapperClassName="wrapperClassName"
           editorClassName="editorClassName"
+          onEditorStateChange={this.onEditorStateChange}
         />
+        <textarea
+          disabled
+          value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+        ></textarea>
       </div>
-      <button type="submit" class="btn btn-primary mt-3">
-        Submit
-      </button>
-    </>
-  );
+    );
+  }
 }
