@@ -37,7 +37,7 @@ export default function Comment({ x, answer }) {
   return (
     <div>
       <div className="col-1"></div>
-      <div className="col-10">
+      <div className="col">
         <hr className=""></hr>
       </div>
 
@@ -79,6 +79,7 @@ export default function Comment({ x, answer }) {
       ) : (
         ""
       )}
+      <hr className=""></hr>
     </div>
   );
 }

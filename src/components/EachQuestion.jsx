@@ -19,6 +19,40 @@ function EachQuestion() {
     fetchDetails();
   }, []);
 
+  function decreaseVotes(answer){
+    console.log(answer)
+    const id = answer.id;
+    const obj = {
+      downvote: answer.downvote - 1,
+    };
+    fetch(`http://127.0.0.1:3000/answers/${id}/decrease`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data));
+  }
+
+  function increaseVotes(answer){
+    console.log(answer)
+    const id = answer.id;
+    const obj = {
+      downvote: answer.downvote - 1,
+    };
+    fetch(`http://127.0.0.1:3000/answers/${id}/increase`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data));
+  }
+
   return (
     <Fragment>
       <div className="container">
@@ -36,32 +70,40 @@ function EachQuestion() {
             <div className="col-12">
               <h6>{question.answers?.length} Answers</h6>
               {question.answers?.map((answer) => {
-              const x = answer.comments;
+                const x = answer.comments;
                 return (
                   <div key={answer.id}>
                     <div className="row">
-                      <div className="col-1 ">
+                      <div className="col-1 p-2 ">
                         <ul className="list-unstyled">
                           <li>
-                            <a href="#" className="shadow-none">
+                            <button
+                              onClick={() => increaseVotes(answer)}
+                              type="button shadow-none"
+                              class="btn shadow-none"
+                            >
                               <i
                                 class="bi bi-caret-up-fill fs-1 text"
                                 style={{ color: "#dcdee1" }}
                               ></i>
-                            </a>
+                            </button>
                           </li>
                           <li>
-                            <span className="px-3 fs-6 text p-0">
+                            <span className="px-4 fs-6 text p-0">
                               {answer.upvote - answer.downvote}
                             </span>
                           </li>
                           <li>
-                            <a href="#" className="shadow-none">
+                            <button
+                              onClick={() => decreaseVotes(answer)}
+                              type="button shadow-none"
+                              class="btn shadow-none"
+                            >
                               <i
                                 class="bi bi-caret-down-fill fs-1 text"
                                 style={{ color: "#dcdee1" }}
                               ></i>
-                            </a>
+                            </button>
                           </li>
                         </ul>
                       </div>
@@ -69,7 +111,7 @@ function EachQuestion() {
                         <p>{answer.body}</p>
                       </div>
                     </div>
-                    {<Comment answer={answer} x={x}/>}
+                    {<Comment answer={answer} x={x} />}
                   </div>
                 );
               })}
