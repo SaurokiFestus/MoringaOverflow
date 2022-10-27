@@ -1,8 +1,7 @@
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import EditorContainer from "./EditorContainer";
 
 function AskQuestion() {
-  //   const { editorState } = this.state;
+  
 
   return (
     <div
@@ -11,7 +10,7 @@ function AskQuestion() {
     >
       <form className="container col-10">
         <h3 className="py-4">Ask a public question</h3>
-        <div className="border p-3 bg-white " style={{ height: "500px" }}>
+        <div className="border p-3 bg-white ">
           <div class="mb-3">
             <span className="font-weight-bold">Title</span>
             <div id="emailHelp" class="form-text">
@@ -27,18 +26,11 @@ function AskQuestion() {
             </div>
           </div>
           <div className="">
-            <Editor
-            // editorState={editorState}
-            toolbarClassName="toolbarClassName"
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
-            // onEditorStateChange={this.onEditorStateChange}
-            />
+            <EditorContainer/>
+           
           </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">
-          Submit
-        </button>
+      
       </form>
     </div>
   );

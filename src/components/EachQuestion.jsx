@@ -4,7 +4,8 @@ import Comment from "./Comment";
 
 function EachQuestion() {
   const [question, setQuestion] = useState([]);
-  const [showComments, setShowComments] = useState(false);
+
+  // console.log(newC);
 
   let { id } = useParams();
 
@@ -24,8 +25,8 @@ function EachQuestion() {
         <div class=" mt-3 d-flex justify-content-between">
           <h2>{question.title}</h2>
           <Link to="/askquestion">
-          <button class="btn btn-primary m-1">Ask Question</button>
-        </Link>
+            <button class="btn btn-primary m-1">Ask Question</button>
+          </Link>
         </div>
         <span>Asked </span>
         <span className="px-5">Viewed </span>
@@ -35,61 +36,40 @@ function EachQuestion() {
             <div className="col-12">
               <h6>{question.answers?.length} Answers</h6>
               {question.answers?.map((answer) => {
+              const x = answer.comments;
                 return (
                   <div key={answer.id}>
                     <div className="row">
-                      {/* {answers.map} */}
                       <div className="col-1 ">
-                        <button className="btn btn-white">
-                          <i
-                            class="bi bi-caret-up-fill fs-1 text"
-                            style={{ color: "#dcdee1" }}
-                          ></i>
-                        </button>
-
-                        <span className="px-4 fs-5 text p-0">3</span>
-
-                        <button className="btn btn-white ">
-                          <i
-                            class="bi bi-caret-down-fill fs-1 text"
-                            style={{ color: "#dcdee1" }}
-                          ></i>
-                        </button>
+                        <ul className="list-unstyled">
+                          <li>
+                            <a href="#" className="shadow-none">
+                              <i
+                                class="bi bi-caret-up-fill fs-1 text"
+                                style={{ color: "#dcdee1" }}
+                              ></i>
+                            </a>
+                          </li>
+                          <li>
+                            <span className="px-3 fs-6 text p-0">
+                              {answer.upvote - answer.downvote}
+                            </span>
+                          </li>
+                          <li>
+                            <a href="#" className="shadow-none">
+                              <i
+                                class="bi bi-caret-down-fill fs-1 text"
+                                style={{ color: "#dcdee1" }}
+                              ></i>
+                            </a>
+                          </li>
+                        </ul>
                       </div>
                       <div className="col fs-5">
                         <p>{answer.body}</p>
                       </div>
                     </div>
-                    <form>
-                      <div className="row">
-                        <div className="col-1"></div>
-                        <div class="form-group  col-10 ">
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="inputPassword2"
-                            placeholder="Leave a comment
-                    "
-                          />
-                        </div>
-                      </div>
-                    </form>
-
-                    <div className="row">
-                      <div className="col-1"></div>
-                      <div className="col-10">
-                        <hr className=""></hr>
-                      </div>
-                    </div>
-
-                    <button class="btn 
-                    shadow-none"
-                    onClick={()=>setShowComments(!showComments)}>Comments</button>
-                    {showComments ? (
-                       <Comment comments={answer.comments}/>
-                    ) : (
-                    ''
-                    )}
+                    {<Comment answer={answer} x={x}/>}
                   </div>
                 );
               })}
