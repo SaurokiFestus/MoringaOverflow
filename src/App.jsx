@@ -18,6 +18,7 @@ import About from "./components/About"
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
+  const [user, setUser] = useState({});
   console.log(currentUser);
   return (
     <div className="App">
@@ -31,9 +32,9 @@ function App() {
 
       <Route exact="true" path="/askquestion" element={<AskQuestion/>}/>
 
-        <Route exact="true" path="/login" element={<Login/>}/>
-        <Route exact="true" path="/signup" element={<Signup/>}/>
-        <Route exact="true" path="/signup" element={<Signup/>}/>
+        <Route exact="true" path="/login" element={<Login setUser={setUser}/>}/>
+        <Route exact="true" path="/signup" element={<Signup setCurrentUser={setCurrentUser}/>}/>
+        {/* <Route exact="true" path="/signup" element={<Signup/>}/> */}
         <Route exact="true" path="/questions" element={<Questions/>}/>
         <Route exact="true" path="/question/:id" element={<EachQuestion/>}/>
         <Route exact="true" path="/about" element={<About/>}/>
