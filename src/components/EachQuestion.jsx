@@ -4,6 +4,7 @@ import Comment from "./Comment";
 
 function EachQuestion() {
   const [question, setQuestion] = useState([]);
+  const [answers, setAnswers] = useState();
 
   // console.log(newC);
 
@@ -12,15 +13,18 @@ function EachQuestion() {
   const fetchDetails = () => {
     fetch(`http://127.0.0.1:3000/questions/${id}`)
       .then((res) => res.json())
-      .then((quiz) => setQuestion(quiz));
-    // let size =question.answers.length
+      .then((quiz) => {
+        setQuestion(quiz);
+        setAnswers(quiz.answers);
+      });
+    // let size =answers.length
   };
   useEffect(() => {
     fetchDetails();
   }, []);
 
-  function decreaseVotes(answer){
-    console.log(answer)
+  function decreaseVotes(answer) {
+    // console.log(answer);
     const id = answer.id;
     const obj = {
       downvote: answer.downvote - 1,
@@ -33,11 +37,11 @@ function EachQuestion() {
       body: JSON.stringify(obj),
     })
       .then((r) => r.json())
-      .then((data) => console.log(data));
+      .then((data) => updateList(data));
   }
 
-  function increaseVotes(answer){
-    console.log(answer)
+  function increaseVotes(answer) {
+    // console.log(answer);
     const id = answer.id;
     const obj = {
       downvote: answer.downvote - 1,
@@ -50,7 +54,18 @@ function EachQuestion() {
       body: JSON.stringify(obj),
     })
       .then((r) => r.json())
-      .then((data) => console.log(data));
+      .then((data) => updateList(data));
+  }
+  function updateList(updatedItem) {
+    // console.log(updatedItem);
+    const updatedItems = answers.map((answer) => {
+      if (answer.id === updatedItem.id) {
+        return updatedItem;
+      } else {
+        return answer;
+      }
+    });
+    setAnswers(updatedItems);
   }
 
   return (
@@ -68,8 +83,8 @@ function EachQuestion() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h6>{question.answers?.length} Answers</h6>
-              {question.answers?.map((answer) => {
+              <h6>{answers?.length} Answers</h6>
+              {answers?.map((answer) => {
                 const x = answer.comments;
                 return (
                   <div key={answer.id}>
