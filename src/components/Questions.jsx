@@ -28,7 +28,7 @@ const questions = () => {
 
   // console.log(questions);
   return (
-    <div className="h-100">
+    <div className="">
       <div class=" mx-5 mt-3 d-flex justify-content-between">
         <h2>All Questions</h2>
 
@@ -39,7 +39,7 @@ const questions = () => {
       <div>
         <hr style={{ size: "80px", width: "100%" }}></hr>
       </div>
-      <div className="container">
+      <div className="container vh-100">
         {currentQuizs.map((quiz) => {
           return (
             <>
@@ -61,13 +61,7 @@ const questions = () => {
                     </Link>{" "}
                     <li>{quiz.body}</li>
                   </ul>
-                  {/* <Link
-                    to={`/question/${quiz.id}`}
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <li>{quiz.title}</li>
-                  </Link>
-                  <p>{quiz.body}</p> */}
+                 
                 </div>
                 <div>
                 <hr  className="mx-5" tyle={{ size: "80px", width: "100%" }}></hr>

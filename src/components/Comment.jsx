@@ -2,13 +2,11 @@ import React, { useState } from "react";
 
 export default function Comment({ x, answer }) {
   const [newC, setNewC] = useState();
-  const [comments,setComments] = useState(x);
+  const [comments, setComments] = useState(x);
   const [showComments, setShowComments] = useState(false);
 
   function updateList(updatedItem) {
-    console.log(comments)
-      setComments([...comments, updatedItem]);
-    console.log(comments);
+    setComments([...comments, updatedItem]);
   }
 
   function Submit(e) {
@@ -24,7 +22,10 @@ export default function Comment({ x, answer }) {
       }),
     })
       .then((response) => response.json())
-      .then((data) => updateList(data));
+      .then((data) => {
+        updateList(data);
+        setNewC("");
+      });
   }
   const body = comments?.map((comment) => {
     return (
@@ -41,9 +42,7 @@ export default function Comment({ x, answer }) {
       </div>
 
       <button
-        class="btn 
-                    shadow-none"
-        disabled={answer.comments.length == 0}
+        class="btn shadow-none"
         onClick={() => setShowComments(!showComments)}
       >
         Comments
@@ -56,20 +55,26 @@ export default function Comment({ x, answer }) {
             <ul className="list-unstyled">{body}</ul>
             <hr className=""></hr>
             <div class="col-10 d-flex">
-            <form>
-              <input
-                onChange={(e) => setNewC(e.target.value)}
-                type="text"
-                class="form-control"
-                id="inputPassword2"
-                placeholder="Leave a comment
+              <form>
+                <input
+                  value={newC}
+                  onChange={(e) => setNewC(e.target.value)}
+                  type="text"
+                  class="form-control"
+                  id="inputPassword2"
+                  placeholder="Leave a comment
                     "
-              />
-            </form>
-            <input onClick={(e) => Submit(e)} type="submit" class="btn" />
+                />
+              </form>
+              <button
+                onClick={(e) => Submit(e)}
+                type="button shadow-none"
+                class="btn shadow-none"
+              >
+                Submit
+              </button>
+            </div>
           </div>
-          </div>
-          
         </div>
       ) : (
         ""
