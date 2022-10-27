@@ -4,8 +4,6 @@ import Comment from "./Comment";
 
 function EachQuestion() {
   const [question, setQuestion] = useState([]);
-  const [showComments, setShowComments] = useState(false);
-  const [newC, setNewC] = useState();
 
   // console.log(newC);
 
@@ -38,24 +36,7 @@ function EachQuestion() {
             <div className="col-12">
               <h6>{question.answers?.length} Answers</h6>
               {question.answers?.map((answer) => {
-                const submit = (e) => {
-                  console.log("vipi");
-                  // e.preventDefault()
-
-                  fetch("http://127.0.0.1:3000/comments", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      body: newC,
-                      user_id: 2,
-                      answer_id: answer.id,
-                    }),
-                  })
-                    .then((response) => response.json())
-                    .then((data) => console.log(data));
-                };
-
-                const x = answer.comments;
+              const x = answer.comments;
                 return (
                   <div key={answer.id}>
                     <div className="row">
@@ -88,45 +69,7 @@ function EachQuestion() {
                         <p>{answer.body}</p>
                       </div>
                     </div>
-                    <form>
-                      <div className="row">
-                        <div className="col-1"></div>
-                        <div class="d-flex col-10">
-                          <form>
-                            <input
-                              onChange={(e) => setNewC(e.target.value)}
-                              type="text"
-                              class="form-control"
-                              id="inputPassword2"
-                              placeholder="Leave a comment
-                    "
-                            />
-                          </form>
-                          <input
-                            onClick={() => submit()}
-                            type="submit"
-                            class="btn"
-                          />
-                        </div>
-                      </div>
-                    </form>
-
-                    <div className="row">
-                      <div className="col-1"></div>
-                      <div className="col-10">
-                        <hr className=""></hr>
-                      </div>
-                    </div>
-
-                    <button
-                      class="btn 
-                    shadow-none"
-                      disabled={answer.comments.length == 0}
-                      onClick={() => setShowComments(!showComments)}
-                    >
-                      Comments
-                    </button>
-                    {showComments  ? <Comment comments={x} /> : ""}
+                    {<Comment answer={answer} x={x}/>}
                   </div>
                 );
               })}
