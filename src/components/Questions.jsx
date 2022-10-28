@@ -36,8 +36,8 @@ const questions = () => {
   }
 
   return (
-    <div className="">
-      <div class="mx-5 mt-3 d-flex justify-content-between">
+    <div className="my-5">
+      <div class="mx-5  mt-3 d-flex justify-content-between">
         <h2>All Questions</h2>
 
         <Link to="/askquestion">
@@ -56,7 +56,7 @@ const questions = () => {
           return (
             <>
               <div className="row">
-                <div className="col-2   text-end">
+                <div className="col-2 text-end">
                   <ul className="list-unstyled">
                     <li>{result} votes</li>
                     <li>{quiz.answers?.length} Answers</li>
@@ -71,7 +71,7 @@ const questions = () => {
                     </span>
                   </ul>
                 </div>
-                <div key={quiz.id} className="col-9 col-sm-8">
+                <div key={quiz.id}  style={{backgroundColor:'#f6f6f6'}} className="col-9 col-sm-8">
                   <ul className="list-unstyled">
                     <Link
                       to={`/question/${quiz.id}`}
