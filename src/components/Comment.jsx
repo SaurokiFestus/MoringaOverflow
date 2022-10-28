@@ -35,9 +35,9 @@ export default function Comment({ x, answer }) {
     );
   });
   return (
-    <div>
+    <div >
       <div className="col-1"></div>
-      <div className="col-10">
+      <div className="col" >
         <hr className=""></hr>
       </div>
 
@@ -51,7 +51,7 @@ export default function Comment({ x, answer }) {
       {showComments ? (
         <div className="row p-0">
           <div className="col-1"></div>
-          <div className="col-10">
+          <div className="col-10" >
             <ul className="list-unstyled">{body}</ul>
             <hr className=""></hr>
             <div class="col-10 d-flex">
@@ -79,6 +79,7 @@ export default function Comment({ x, answer }) {
       ) : (
         ""
       )}
+      <hr className=""></hr>
     </div>
   );
 }

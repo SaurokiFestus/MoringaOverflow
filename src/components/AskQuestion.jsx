@@ -1,7 +1,40 @@
-import EditorContainer from "./EditorContainer";
+// import React, { Fragment } from "react";
+import React, { useState } from "react";
 
 function AskQuestion() {
-  
+  const [questionForm, setQuestionForm] = useState({
+    title: "",
+    body: "",
+    user_id: 1,
+  });
+
+  function handleChange(e) {
+    let name = e.target.name;
+    let value = e.target.value;
+    setQuestionForm({
+      ...questionForm,
+      [name]: value,
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(questionForm)
+    fetch("http://127.0.0.1:3000/questions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(questionForm),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((data) => console.log(data));
+        setQuestionForm({ title: "", body: "" });
+      } else {
+        r.json().then((error) => console.log(Object.values(error)));
+      }
+    });
+  }
 
   return (
     <div
@@ -16,7 +49,12 @@ function AskQuestion() {
             <div id="emailHelp" class="form-text">
               Be specific and imagine you're asking a question to another person
             </div>
-            <input type="text" class="form-control" />
+            <input
+              onChange={(e) => handleChange(e)}
+              name="title"
+              type="text"
+              className="form-control"
+            />
           </div>
           <div class="">
             <span className="font-weight-bold">Body</span>
@@ -26,11 +64,23 @@ function AskQuestion() {
             </div>
           </div>
           <div className="">
-            <EditorContainer/>
-           
+            {/* <EditorContainer/> */}
+            <textarea
+              name="body"
+              className="form-control"
+              id="exampleFormControlTextarea1"
+              rows="5"
+              onChange={handleChange}
+            ></textarea>
           </div>
         </div>
-      
+        <button
+          onClick={handleSubmit}
+          type="button"
+          className="btn btn-primary mt-3 "
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
