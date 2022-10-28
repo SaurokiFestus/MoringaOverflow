@@ -9,6 +9,11 @@ export default function Comment({ x, answer }) {
     setComments([...comments, updatedItem]);
   }
 
+  function deleteEvent(id) {
+    const updatedEvents = comments?.filter((one) => one.id !== id);
+    setComments(updatedEvents);
+  }
+
   function Submit(e) {
     e.preventDefault();
     console.log("vipi");
@@ -27,17 +32,31 @@ export default function Comment({ x, answer }) {
         setNewC("");
       });
   }
+  function handleDelete(id) {
+    fetch(`http://127.0.0.1:3000/comments${id}`, {
+      method: "DELETE",
+    });
+    deleteEvent(id);
+  }
   const body = comments?.map((comment) => {
     return (
       <li className="pb-1" key={comment.id}>
         {comment.body}
+        <span>
+          <button
+            onClick={()=>handleDelete(comment.id)}
+            className="bg-danger text-white shadow-none"
+          >
+            X
+          </button>
+        </span>
       </li>
     );
   });
   return (
-    <div >
+    <div>
       <div className="col-1"></div>
-      <div className="col" >
+      <div className="col">
         <hr className=""></hr>
       </div>
 
@@ -51,8 +70,9 @@ export default function Comment({ x, answer }) {
       {showComments ? (
         <div className="row p-0">
           <div className="col-1"></div>
-          <div className="col-10" >
+          <div className="col-10">
             <ul className="list-unstyled">{body}</ul>
+
             <hr className=""></hr>
             <div class="col-10 d-flex">
               <form>
