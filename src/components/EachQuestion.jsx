@@ -1,15 +1,14 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useParams, Link } from "react-router-dom";
 import Comment from "./Comment";
+import AnswerQuiz from "./AnswerQuiz";
 
 function EachQuestion() {
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState();
   const [buttonState, setButtonState] = useState(false);
-
-  // console.log(newC);
-
   let { id } = useParams();
+
 
   const fetchDetails = () => {
     fetch(`http://127.0.0.1:3000/questions/${id}`)
@@ -18,14 +17,12 @@ function EachQuestion() {
         setQuestion(quiz);
         setAnswers(quiz.answers);
       });
-    // let size =answers.length
   };
   useEffect(() => {
     fetchDetails();
   }, []);
 
   function decreaseVotes(answer) {
-    // console.log(answer);
     setButtonState(true);
 
     const id = answer.id;
@@ -72,8 +69,6 @@ function EachQuestion() {
     });
     setAnswers(updatedItems);
   }
-
- 
 
   return (
     <Fragment>
@@ -139,6 +134,7 @@ function EachQuestion() {
               })}
             </div>
           </div>
+          <AnswerQuiz id={id} />
         </div>
       </div>
     </Fragment>
