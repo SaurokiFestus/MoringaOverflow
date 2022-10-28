@@ -69,6 +69,9 @@ function EachQuestion() {
     });
     setAnswers(updatedItems);
   }
+  function AddAnswer(addedElem) {
+    setAnswers([...answers, addedElem]);
+  }
 
   return (
     <Fragment>
@@ -134,7 +137,7 @@ function EachQuestion() {
               })}
             </div>
           </div>
-          <AnswerQuiz id={id} />
+          <AnswerQuiz id={id} AddAnswer={AddAnswer}/>
         </div>
       </div>
     </Fragment>

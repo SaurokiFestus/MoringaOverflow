@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function AnswerQuiz({ id }) {
+export default function AnswerQuiz({ id,AddAnswer }) {
   const [askedQuiz, setAskedQuiz] = useState({
     upvote: 0,
     downvote: 0,
@@ -30,7 +30,7 @@ export default function AnswerQuiz({ id }) {
       body: JSON.stringify(askedQuiz),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((data) => console.log(data));
+        r.json().then((data) => AddAnswer(data));
         setAskedQuiz({ body: "" });
       } else {
         r.json().then((error) => console.log(Object.values(error)));
