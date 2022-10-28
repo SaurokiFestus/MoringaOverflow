@@ -26,10 +26,11 @@ const questions = () => {
     });
   }, []);
 
-  console.log(questions);
+  
+
   return (
     <div className="">
-      <div class=" mt-3 d-flex justify-content-between">
+      <div class="mx-5 mt-3 d-flex justify-content-between">
         <h2>All Questions</h2>
 
         <Link to="/askquestion">
@@ -41,12 +42,16 @@ const questions = () => {
       </div>
       <div className="container vh-100">
         {currentQuizs.map((quiz) => {
+          const result = quiz.answers?.reduce((accumulator, obj) => {
+            return accumulator + (obj.upvote - obj.downvote);
+          }, 0);
+          // console.log(result);
           return (
             <>
               <div className="row">
                 <div className="col-2   text-end">
                   <ul className="list-unstyled">
-                    <li>0 votes</li>
+                    <li>{result} votes</li>
                     <li>{quiz.answers?.length} Answers</li>
                     <li>6 views</li>
                   </ul>

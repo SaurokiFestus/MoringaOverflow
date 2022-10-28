@@ -73,6 +73,8 @@ function EachQuestion() {
     setAnswers(updatedItems);
   }
 
+ 
+
   return (
     <Fragment>
       <div className="container">
