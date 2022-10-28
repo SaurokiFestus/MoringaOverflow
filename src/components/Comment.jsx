@@ -33,7 +33,7 @@ export default function Comment({ x, answer }) {
       });
   }
   function handleDelete(id) {
-    fetch(`http://127.0.0.1:3000/comments${id}`, {
+    fetch(`http://127.0.0.1:3000/comments/${id}`, {
       method: "DELETE",
     });
     deleteEvent(id);

@@ -9,7 +9,6 @@ function EachQuestion() {
   const [buttonState, setButtonState] = useState(false);
   let { id } = useParams();
 
-
   const fetchDetails = () => {
     fetch(`http://127.0.0.1:3000/questions/${id}`)
       .then((res) => res.json())
@@ -72,6 +71,15 @@ function EachQuestion() {
   function AddAnswer(addedElem) {
     setAnswers([...answers, addedElem]);
   }
+  function handleDelete(id) {
+    console.log('delete')
+    fetch(`http://127.0.0.1:3000/answers/${id}`, {
+      method: "DELETE",
+    });
+    const updatedEvents = answers?.filter((one) => one.id !== id);
+  setAnswers(updatedEvents);
+  }
+  
 
   return (
     <Fragment>
@@ -130,6 +138,14 @@ function EachQuestion() {
                       <div className="col fs-5 pt-3">
                         <p>{answer.body}</p>
                       </div>
+                      <span>
+                        <button
+                          onClick={() => handleDelete(answer.id)}
+                          className="bg-danger text-white"
+                        >
+                          Delete
+                        </button>
+                      </span>
                     </div>
                     {<Comment answer={answer} x={x} />}
                   </div>
@@ -137,7 +153,7 @@ function EachQuestion() {
               })}
             </div>
           </div>
-          <AnswerQuiz id={id} AddAnswer={AddAnswer}/>
+          <AnswerQuiz id={id} AddAnswer={AddAnswer} />
         </div>
       </div>
     </Fragment>
