@@ -15,18 +15,21 @@ import AskQuestion from './components/AskQuestion'
 import Profile from "./components/Profile"
 import About from "./components/About"
 
+import Search from './components/Search'
 
 function App() {
+  const [wordEntered, setWordEntered] = useState("");
+  // console.log(wordEntered)
+
   const [currentUser, setCurrentUser] = useState({});
   const [user, setUser] = useState({});
   console.log(currentUser);
   return (
     <div className="App">
-
      
 
       <BrowserRouter>
-      <Navbar/>
+      <Navbar setWordEntered={setWordEntered}/>
       <Routes>
       <Route exact="true" path="/" element={<Home/>}/>
 
@@ -35,7 +38,7 @@ function App() {
         <Route exact="true" path="/login" element={<Login setUser={setUser}/>}/>
         <Route exact="true" path="/signup" element={<Signup setCurrentUser={setCurrentUser}/>}/>
         {/* <Route exact="true" path="/signup" element={<Signup/>}/> */}
-        <Route exact="true" path="/questions" element={<Questions/>}/>
+        <Route exact="true" path="/questions" element={<Questions wordEntered={wordEntered}/>}/>
         <Route exact="true" path="/question/:id" element={<EachQuestion/>}/>
         <Route exact="true" path="/about" element={<About/>}/>
         <Route exact="true" path="/sidebar" element={<SideBar/>}/>
