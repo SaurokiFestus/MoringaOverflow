@@ -2,16 +2,28 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Pagination from "./Pagination";
-const questions = () => {
+const questions = ({ wordEntered }) => {
   const [questions, setQuestions] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [quizsPerPage] = useState(5);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+
+  const filteredData = questions.filter((quiz) => {
+   
+    if (wordEntered === "") {
+      return quiz;
+    } else {
+      return( quiz.title.toLowerCase().includes(wordEntered.toLowerCase()) ||
+      quiz.body.toLowerCase().includes(wordEntered.toLowerCase()))
+    }
+  });
+
+
   // Get current posts
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
-  const currentQuizs = questions.slice(indexOfFirstQuiz, indexOfLastQuiz);
+  const currentQuizs = filteredData.slice(indexOfFirstQuiz, indexOfLastQuiz);
 
   useEffect(() => {
     fetch("http://127.0.0.1:3000/questions", {
@@ -21,7 +33,10 @@ const questions = () => {
       },
     }).then((r) => {
       if (r.ok) {
-        r.json().then((quizs) => setQuestions(quizs));
+        r.json().then((quizs) => {
+          setQuestions(quizs);
+          setQuizMutate(quizs);
+        });
       }
     });
   }, []);
@@ -66,13 +81,14 @@ const questions = () => {
                     </Link>
                     <li>{quiz.body}</li>
                   </ul>
-                 
                 </div>
                 <div>
-                <hr  className="mx-5" tyle={{ size: "80px", width: "100%" }}></hr>
+                  <hr
+                    className="mx-5"
+                    tyle={{ size: "80px", width: "100%" }}
+                  ></hr>
+                </div>
               </div>
-              </div>
-              
             </>
           );
         })}
