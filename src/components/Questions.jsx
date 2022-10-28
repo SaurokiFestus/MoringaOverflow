@@ -26,7 +26,14 @@ const questions = () => {
     });
   }, []);
 
-  
+  function handleDelete(id) {
+    console.log('delete')
+    fetch(`http://127.0.0.1:3000/questions/${id}`, {
+      method: "DELETE",
+    });
+    const updatedEvents = questions?.filter((one) => one.id !== id);
+  setQuestions(updatedEvents);
+  }
 
   return (
     <div className="">
@@ -54,6 +61,14 @@ const questions = () => {
                     <li>{result} votes</li>
                     <li>{quiz.answers?.length} Answers</li>
                     <li>6 views</li>
+                    <span>
+                      <button
+                        onClick={() => handleDelete(quiz.id)}
+                        className="bg-danger text-white"
+                      >
+                        Delete
+                      </button>
+                    </span>
                   </ul>
                 </div>
                 <div key={quiz.id} className="col-9 col-sm-8">
@@ -62,17 +77,19 @@ const questions = () => {
                       to={`/question/${quiz.id}`}
                       style={{ textDecoration: "none", color: "black" }}
                     >
-                      <li style={{color: '#0b7dda'}}>{quiz.title}</li>
+                      <li style={{ color: "#0b7dda" }}>{quiz.title}</li>
                     </Link>
                     <li>{quiz.body}</li>
                   </ul>
-                 
                 </div>
+
                 <div>
-                <hr  className="mx-5" tyle={{ size: "80px", width: "100%" }}></hr>
+                  <hr
+                    className="mx-5"
+                    tyle={{ size: "80px", width: "100%" }}
+                  ></hr>
+                </div>
               </div>
-              </div>
-              
             </>
           );
         })}

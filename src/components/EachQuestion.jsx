@@ -71,6 +71,7 @@ function EachQuestion() {
   function AddAnswer(addedElem) {
     setAnswers([...answers, addedElem]);
   }
+  
   function handleDelete(id) {
     console.log('delete')
     fetch(`http://127.0.0.1:3000/answers/${id}`, {
