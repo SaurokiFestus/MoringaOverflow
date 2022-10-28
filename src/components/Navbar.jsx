@@ -76,9 +76,6 @@ function Navbar({setWordEntered}) {
               onChange={(e)=>setWordEntered(e.target.value)}
             />
 
-            <button class="btn btn-primary m-1" action="/search">
-              Search
-            </button>
 
             <Link to="/login">
               {" "}
