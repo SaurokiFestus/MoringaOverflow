@@ -6,7 +6,7 @@ import AnswerQuiz from "./AnswerQuiz";
 function EachQuestion() {
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState();
-  const [buttonState, setButtonState] = useState(false);
+  const [timeQ, setTimeQ] = useState();
   let { id } = useParams();
 
   const fetchDetails = () => {
@@ -20,10 +20,31 @@ function EachQuestion() {
   useEffect(() => {
     fetchDetails();
   }, []);
+  useEffect(() => {
+    var d1 = new Date();
+    var d2 = new Date(question?.created_at);
+    var gap = Math.abs(d1 - d2);
+    console.log(gap);
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+
+    const txtDay = Math.floor(gap / day);
+    const txtHour = Math.floor((gap % day) / hour);
+    const txtMinute = Math.floor((gap % hour) / minute);
+    const txtSecond = Math.floor((gap % minute) / second);
+
+    setTimeQ({
+      days: txtDay,
+      hours: txtHour,
+      minutes: txtMinute,
+      seconds: txtSecond,
+    });
+    console.log(timeQ);
+  }, [question]);
 
   function decreaseVotes(answer) {
-    setButtonState(true);
-
     const id = answer.id;
     const obj = {
       downvote: answer.downvote - 1,
@@ -40,9 +61,6 @@ function EachQuestion() {
   }
 
   function increaseVotes(answer) {
-    setButtonState(true);
-
-    // console.log(answer);
     const id = answer.id;
     const obj = {
       downvote: answer.downvote - 1,
@@ -71,16 +89,16 @@ function EachQuestion() {
   function AddAnswer(addedElem) {
     setAnswers([...answers, addedElem]);
   }
-  
+
   function handleDelete(id) {
-    console.log('delete')
+    console.log("delete");
     fetch(`http://127.0.0.1:3000/answers/${id}`, {
       method: "DELETE",
     });
     const updatedEvents = answers?.filter((one) => one.id !== id);
-  setAnswers(updatedEvents);
+    setAnswers(updatedEvents);
   }
-  
+  console.log(timeQ?.days);
 
   return (
     <Fragment>
@@ -91,7 +109,23 @@ function EachQuestion() {
             <button class="btn btn-primary m-1">Ask Question</button>
           </Link>
         </div>
-        <span>Asked </span>
+        <span>
+          Asked{" "}
+          {timeQ?.days > 0
+            ? `${timeQ?.days} ${timeQ?.days == 1 ? "day" : ""} ${
+                timeQ?.hours
+              } hours ${timeQ?.minutes} mins `
+            : `${
+                timeQ?.hours > 0
+                  ? `${timeQ?.hours} hours`
+                  : `${
+                      timeQ?.minutes > 0
+                        ? `${timeQ?.minutes} minutes`
+                        : `${timeQ?.seconds} seconds`
+                    }  `
+              }`}
+          ago
+        </span>
         <span className="px-5">Viewed </span>
         <hr></hr>
         <div className="container">
