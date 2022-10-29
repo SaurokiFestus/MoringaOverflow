@@ -4,10 +4,19 @@ import Comment from "./Comment";
 import AnswerQuiz from "./AnswerQuiz";
 
 function EachQuestion() {
+  let { id } = useParams();
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState();
   const [timeQ, setTimeQ] = useState();
-  let { id } = useParams();
+  const [postEdit, setPostEdit] = useState(true);
+  const [askedQuiz, setAskedQuiz] = useState({
+    upvote: 0,
+    downvote: 0,
+    body: "",
+    user_id: 1,
+    question_id: id,
+  });
+
 
   const fetchDetails = () => {
     fetch(`http://127.0.0.1:3000/questions/${id}`)
@@ -24,7 +33,6 @@ function EachQuestion() {
     var d1 = new Date();
     var d2 = new Date(question?.created_at);
     var gap = Math.abs(d1 - d2);
-    console.log(gap);
     const second = 1000;
     const minute = second * 60;
     const hour = minute * 60;
@@ -41,7 +49,6 @@ function EachQuestion() {
       minutes: txtMinute,
       seconds: txtSecond,
     });
-    console.log(timeQ);
   }, [question]);
 
   function decreaseVotes(answer) {
@@ -58,6 +65,12 @@ function EachQuestion() {
     })
       .then((r) => r.json())
       .then((data) => updateList(data));
+  }
+  function handleEdit(answer) {
+    console.log(answer)
+    setPostEdit(false);
+    setAskedQuiz(answer);
+
   }
 
   function increaseVotes(answer) {
@@ -90,6 +103,17 @@ function EachQuestion() {
     setAnswers([...answers, addedElem]);
   }
 
+  function updateList(updatedItem) {
+    const updatedItems = answers.map((answer) => {
+      if (answer.id === updatedItem.id) {
+        return updatedItem;
+      } else {
+        return answer;
+      }
+    });
+    setAnswers(updatedItems);
+  }
+
   function handleDelete(id) {
     console.log("delete");
     fetch(`http://127.0.0.1:3000/answers/${id}`, {
@@ -98,7 +122,7 @@ function EachQuestion() {
     const updatedEvents = answers?.filter((one) => one.id !== id);
     setAnswers(updatedEvents);
   }
-  console.log(timeQ?.days);
+  // console.log(timeQ?.days);
 
   return (
     <Fragment>
@@ -112,7 +136,7 @@ function EachQuestion() {
         <span>
           Asked{" "}
           {timeQ?.days > 0
-            ? `${timeQ?.days} ${timeQ?.days == 1 ? "day" : ""} ${
+            ? `${timeQ?.days} ${timeQ?.days == 1 ? "day" : 'days'} ${
                 timeQ?.hours
               } hours ${timeQ?.minutes} mins `
             : `${
@@ -180,6 +204,12 @@ function EachQuestion() {
                         >
                           Delete
                         </button>
+                        <button
+                          onClick={() => handleEdit(answer)}
+                          className="bg-info mx-2 text-white"
+                        >
+                          Edit
+                        </button>
                       </span>
                     </div>
                     {<Comment answer={answer} x={x} />}
@@ -188,7 +218,7 @@ function EachQuestion() {
               })}
             </div>
           </div>
-          <AnswerQuiz id={id} AddAnswer={AddAnswer} />
+          <AnswerQuiz id={id} updateList={updateList} AddAnswer={AddAnswer} postEdit={postEdit} setPostEdit={setPostEdit}  askedQuiz={askedQuiz} setAskedQuiz={setAskedQuiz}/>
         </div>
       </div>
     </Fragment>

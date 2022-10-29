@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 
-export default function AnswerQuiz({ id,AddAnswer }) {
-  const [askedQuiz, setAskedQuiz] = useState({
-    upvote: 0,
-    downvote: 0,
-    body: "",
-    user_id: 1,
-    question_id: id,
-  });
+export default function AnswerQuiz({ AddAnswer,updateList,postEdit,setPostEdit,askedQuiz,setAskedQuiz }) {
+
 
   function handleChange(e) {
     let name = e.target.name;
@@ -16,12 +10,11 @@ export default function AnswerQuiz({ id,AddAnswer }) {
       ...askedQuiz,
       [name]: value,
     });
-    console.log(askedQuiz);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(askedQuiz);
+    if(postEdit){
     fetch("http://127.0.0.1:3000/answers", {
       method: "POST",
       headers: {
@@ -36,6 +29,23 @@ export default function AnswerQuiz({ id,AddAnswer }) {
         r.json().then((error) => console.log(Object.values(error)));
       }
     });
+  }else{
+    fetch(`http://127.0.0.1:3000/answers/${askedQuiz.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(askedQuiz),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((data) => updateList(data));
+        setAskedQuiz({ body: "" });
+        setPostEdit(true)
+      } else {
+        r.json().then((error) => console.log(Object.values(error)));
+      }
+    });
+  }
   }
 
   return (
@@ -48,6 +58,7 @@ export default function AnswerQuiz({ id,AddAnswer }) {
           <div className="">
             <textarea
               name="body"
+              value={askedQuiz.body}
               className="form-control"
               id="exampleFormControlTextarea1"
               rows="5"
@@ -60,7 +71,7 @@ export default function AnswerQuiz({ id,AddAnswer }) {
           type="button"
           className="btn btn-primary my-3 "
         >
-          Submit
+                {postEdit ? "Submit" : "Edit"}
         </button>
       </form>
     </div>

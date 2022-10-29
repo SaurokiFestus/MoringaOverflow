@@ -13,7 +13,7 @@ export default function Comment({ x, answer }) {
   function addList(added) {
     setComments([...comments, added]);
   }
-  function updateLit(updatedItem) {
+  function updateList(updatedItem) {
     const updatedItems = comments.map((comment) => {
       if (comment.id === updatedItem.id) {
         return updatedItem;
@@ -53,7 +53,7 @@ export default function Comment({ x, answer }) {
         .then((response) => response.json())
         .then((data) => {
           // console.log(data)
-          updateLit(data);
+          updateList(data);
           setNewC({ body: "", user_id: 2, answer_id: answer.id });
         });
     }
