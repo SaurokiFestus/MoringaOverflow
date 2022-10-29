@@ -11,7 +11,7 @@ export default function AnswerQuiz({ AddAnswer,updateList,postEdit,setPostEdit,a
       [name]: value,
     });
   }
-
+  
   function handleSubmit(e) {
     e.preventDefault();
     if(postEdit){

@@ -67,10 +67,9 @@ function EachQuestion() {
       .then((data) => updateList(data));
   }
   function handleEdit(answer) {
-    console.log(answer)
     setPostEdit(false);
     setAskedQuiz(answer);
-
+    handleScroll()
   }
 
   function increaseVotes(answer) {
@@ -114,6 +113,14 @@ function EachQuestion() {
     setAnswers(updatedItems);
   }
 
+  function handleScroll() {
+    window.scroll({
+      top: document.body.offsetHeight,
+      left: 0, 
+      behavior: 'smooth',
+    });
+  }
+
   function handleDelete(id) {
     console.log("delete");
     fetch(`http://127.0.0.1:3000/answers/${id}`, {
@@ -155,6 +162,7 @@ function EachQuestion() {
         <div className="container">
           <div className="row">
             <div className="col-12">
+            <p>{question.body}</p>
               <h6>{answers?.length} Answers</h6>
               {answers?.map((answer) => {
                 const x = answer.comments;
@@ -200,13 +208,13 @@ function EachQuestion() {
                       <span>
                         <button
                           onClick={() => handleDelete(answer.id)}
-                          className="bg-danger text-white"
+                          className="bg-danger text-white border-0"
                         >
                           Delete
                         </button>
                         <button
                           onClick={() => handleEdit(answer)}
-                          className="bg-info mx-2 text-white"
+                          className="bg-info mx-2 text-white border-0"
                         >
                           Edit
                         </button>

@@ -70,7 +70,7 @@ const questions = () => {
                     <span>
                       <button
                         onClick={() => handleDelete(quiz.id)}
-                        className="bg-danger text-white"
+                        className="bg-danger text-white border-0"
                       >
                         Delete
                       </button>
