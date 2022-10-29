@@ -117,11 +117,11 @@ function EachQuestion() {
               } hours ${timeQ?.minutes} mins `
             : `${
                 timeQ?.hours > 0
-                  ? `${timeQ?.hours} hours`
+                  ? `${timeQ?.hours} hours `
                   : `${
                       timeQ?.minutes > 0
-                        ? `${timeQ?.minutes} minutes`
-                        : `${timeQ?.seconds} seconds`
+                        ? `${timeQ?.minutes} minutes `
+                        : `${timeQ?.seconds} seconds `
                     }  `
               }`}
           ago
