@@ -36,14 +36,20 @@ const questions = () => {
   }
 
   return (
-    <div className="my-5">
-      <div class="mx-5  mt-3 d-flex justify-content-between">
+    <div className="my-5 ">
+      <div class="container  mt-3 d-flex justify-content-between">
         <h2>All Questions</h2>
 
         <Link to="/askquestion">
           <button class="btn btn-primary m-1">Ask Question</button>
         </Link>
       </div>
+      <div className="container">
+      <p>{questions?.length} questions</p>
+
+      </div>
+
+
       <div>
         <hr style={{ size: "80px", width: "100%" }}></hr>
       </div>
