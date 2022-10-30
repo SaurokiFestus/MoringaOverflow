@@ -5,6 +5,20 @@ export default function Comment({ x, answer }) {
   const [comments, setComments] = useState(x);
   const [showComments, setShowComments] = useState(false);
 
+  useEffect(() => {
+    const sortArray = type => {
+      const types = {
+        body: 'body',
+        created_at: 'created_at',
+      };
+      const sortProperty = types[type];
+      const sorted = [...created_at].sort((a, b) => b[sortProperty] - a[sortProperty]);
+      setData(sorted);
+    };
+
+    sortArray(sortType);
+  }, [sortType]); 
+
   function updateList(updatedItem) {
     setComments([...comments, updatedItem]);
   }
