@@ -53,7 +53,7 @@ export default function Comment({ x, answer }) {
           <div className="col-1"></div>
           <div className="col-10" >
             <ul className="list-unstyled">{body}</ul>
-            {/* <hr className=""></hr> */}
+            <hr className=""></hr>
             <div class="col-10 d-flex">
               <form>
                 <input
@@ -72,7 +72,7 @@ export default function Comment({ x, answer }) {
               >
                 Submit
               </button>
-              <hr className=""></hr>
+              
 
             </div>
           </div>
