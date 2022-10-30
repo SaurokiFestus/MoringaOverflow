@@ -44,7 +44,7 @@ function App() {
           <Route exact="true" path="/login" element={<Login />} />
           <Route exact="true" path="/signup" element={<Signup />} />
           <Route exact="true" path="/questions" element={<Questions user={user} />} />
-          <Route exact="true" path="/question/:id" element={<EachQuestion setTg={setTg} setQuestionForm={setQuestionForm}/>} />
+          <Route exact="true" path="/question/:id" element={<EachQuestion user={user} setTg={setTg} setQuestionForm={setQuestionForm}/>} />
           <Route exact="true" path="/about" element={<About />} />
           <Route exact="true" path="/sidebar" element={<SideBar />} />
           <Route exact="true" path="/profile" element={<Profile />} />

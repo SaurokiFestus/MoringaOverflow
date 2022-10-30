@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-export default function Comment({ x, answer }) {
+export default function Comment({ x, answer, user }) {
   const [newC, setNewC] = useState({
     body: "",
-    user_id: 2,
+    user_id: user.id,
     answer_id: answer.id,
   });
   const [comments, setComments] = useState(x);
@@ -81,20 +81,24 @@ export default function Comment({ x, answer }) {
     return (
       <li className="pb-1" key={comment.id}>
         {comment.body}
-        <span>
-          <button
-            onClick={() => handleDelete(comment.id)}
-            className="bg-danger text-white shadow-none"
-          >
-            X
-          </button>
-          <button
-            onClick={() => handleEdit(comment)}
-            className="bg-info mx-2 text-white shadow-none"
-          >
-            Edit
-          </button>
-        </span>
+        {user.id === comment.user_id ? (
+          <span>
+            <button
+              onClick={() => handleDelete(comment.id)}
+              className="bg-danger text-white shadow-none"
+            >
+              X
+            </button>
+            <button
+              onClick={() => handleEdit(comment)}
+              className="bg-info mx-2 text-white shadow-none"
+            >
+              Edit
+            </button>
+          </span>
+        ) : (
+          ""
+        )}
       </li>
     );
   });

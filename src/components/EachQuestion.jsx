@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Comment from "./Comment";
 import AnswerQuiz from "./AnswerQuiz";
 
-function EachQuestion({ setQuestionForm, setTg }) {
+function EachQuestion({ setQuestionForm, setTg, user }) {
   let { id } = useParams();
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState();
@@ -13,7 +13,7 @@ function EachQuestion({ setQuestionForm, setTg }) {
     upvote: 0,
     downvote: 0,
     body: "",
-    user_id: 1,
+    user_id: user.id,
     question_id: id,
   });
 
@@ -168,15 +168,19 @@ function EachQuestion({ setQuestionForm, setTg }) {
           <div className="row">
             <div className="col-12">
               <p>{question.body}</p>
+              {user.id === question.user_id ? (
+                <Link to="/askquestion">
+                  <button
+                    onClick={() => handleEditQ(question)}
+                    class="bg-info text-white border-0"
+                  >
+                    Edit
+                  </button>
+                </Link>
+              ) : (
+                ""
+              )}
 
-              <Link to="/askquestion">
-                <button
-                  onClick={() => handleEditQ(question)}
-                  class="bg-info text-white border-0"
-                >
-                  Edit
-                </button>
-              </Link>
               <h6>{answers?.length} Answers</h6>
               {answers?.map((answer) => {
                 const x = answer.comments;
@@ -219,22 +223,26 @@ function EachQuestion({ setQuestionForm, setTg }) {
                       <div className="col fs-5 pt-3">
                         <p>{answer.body}</p>
                       </div>
-                      <span>
-                        <button
-                          onClick={() => handleDelete(answer.id)}
-                          className="bg-danger text-white border-0"
-                        >
-                          Delete
-                        </button>
-                        <button
-                          onClick={() => handleEdit(answer)}
-                          className="bg-info mx-2 text-white border-0"
-                        >
-                          Edit
-                        </button>
-                      </span>
+                      {user.id === answer.user_id ? (
+                        <span>
+                          <button
+                            onClick={() => handleDelete(answer.id)}
+                            className="bg-danger text-white border-0"
+                          >
+                            Delete
+                          </button>
+                          <button
+                            onClick={() => handleEdit(answer)}
+                            className="bg-info mx-2 text-white border-0"
+                          >
+                            Edit
+                          </button>
+                        </span>
+                      ) : (
+                        ""
+                      )}
                     </div>
-                    {<Comment answer={answer} x={x} />}
+                    {<Comment answer={answer} user={user} x={x} />}
                   </div>
                 );
               })}
