@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+// import Questions from "./Questions"
 
-function Navbar() {
+function Navbar({setWordEntered}) {
   const flowColor = { color: "#f48d4f" };
+
+
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-light">
@@ -61,16 +65,17 @@ function Navbar() {
             >
               <h5 className="m-2">About</h5>
             </Link>
-            <h5 className="m-2">Tags</h5>
           </div>
 
           <form class="d-flex">
             <input
               class="form-control me-2"
-              type="search"
-              placeholder="Search"
+              type="text"
+              placeholder="search text"
               aria-label="Search"
+              onChange={(e)=>setWordEntered(e.target.value)}
             />
+
 
             <Link to="/login">
               {" "}
