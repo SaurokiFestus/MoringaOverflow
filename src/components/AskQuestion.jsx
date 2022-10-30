@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function AskQuestion({ questionForm, setQuestionForm, tg }) {
+function AskQuestion({questionForm, setQuestionForm, tg ,setTg }) {
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -43,6 +43,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg }) {
         if (r.ok) {
           r.json().then((data) => console.log(data));
           setQuestionForm({ title: "", body: "" });
+          setTg(true)
         } else {
           r.json().then((error) => console.log(Object.values(error)));
         }

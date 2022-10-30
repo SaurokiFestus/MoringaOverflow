@@ -16,22 +16,23 @@ import Profile from "./components/Profile";
 import About from "./components/About";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({
+  const [currentUser, setUser] = useState({
     id: 2,
     name: "John",
   });
+  let user = currentUser;
+
 
   const [questionForm, setQuestionForm] = useState({
     title: "",
     body: "",
-    user_id: 1,
+    user_id: user.id,
   });
 
   const [tg,setTg]=useState(true)
 
   console.log(currentUser);
 
-  let user = currentUser;
 
   return (
     <div className="App">
@@ -39,10 +40,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
-          <Route exact="true" path="/askquestion" element={<AskQuestion tg={tg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />
+          <Route exact="true" path="/askquestion" element={<AskQuestion  tg={tg} setTg={setTg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />
           <Route exact="true" path="/login" element={<Login />} />
           <Route exact="true" path="/signup" element={<Signup />} />
-          <Route exact="true" path="/questions" element={<Questions />} />
+          <Route exact="true" path="/questions" element={<Questions user={user} />} />
           <Route exact="true" path="/question/:id" element={<EachQuestion setTg={setTg} setQuestionForm={setQuestionForm}/>} />
           <Route exact="true" path="/about" element={<About />} />
           <Route exact="true" path="/sidebar" element={<SideBar />} />

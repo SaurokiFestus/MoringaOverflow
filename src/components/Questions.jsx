@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Pagination from "./Pagination";
-const questions = () => {
+const questions = ({ user }) => {
   const [questions, setQuestions] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [quizsPerPage] = useState(5);
@@ -12,6 +12,7 @@ const questions = () => {
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
   const currentQuizs = questions.slice(indexOfFirstQuiz, indexOfLastQuiz);
+  console.log(questions)
 
   useEffect(() => {
     fetch("http://127.0.0.1:3000/questions", {
@@ -27,12 +28,12 @@ const questions = () => {
   }, []);
 
   function handleDelete(id) {
-    console.log('delete')
+    console.log("delete");
     fetch(`http://127.0.0.1:3000/questions/${id}`, {
       method: "DELETE",
     });
     const updatedEvents = questions?.filter((one) => one.id !== id);
-  setQuestions(updatedEvents);
+    setQuestions(updatedEvents);
   }
 
   return (
@@ -45,10 +46,8 @@ const questions = () => {
         </Link>
       </div>
       <div className="container">
-      <p>{questions?.length} questions</p>
-
+        <p>{questions?.length} questions</p>
       </div>
-
 
       <div>
         <hr style={{ size: "80px", width: "100%" }}></hr>
@@ -68,16 +67,24 @@ const questions = () => {
                     <li>{quiz.answers?.length} Answers</li>
                     <li>6 views</li>
                     <span>
-                      <button
-                        onClick={() => handleDelete(quiz.id)}
-                        className="bg-danger text-white border-0"
-                      >
-                        Delete
-                      </button>
+                      {user.id === quiz.user_id ? (
+                        <button
+                          onClick={() => handleDelete(quiz.id)}
+                          className="bg-danger text-white border-0"
+                        >
+                          Delete
+                        </button>
+                      ) : (
+                        ""
+                      )}
                     </span>
                   </ul>
                 </div>
-                <div key={quiz.id}  style={{backgroundColor:'#f6f6f6'}} className="col-9 col-sm-8">
+                <div
+                  key={quiz.id}
+                  style={{ backgroundColor: "#f6f6f6" }}
+                  className="col-9 col-sm-8"
+                >
                   <ul className="list-unstyled">
                     <Link
                       to={`/question/${quiz.id}`}
