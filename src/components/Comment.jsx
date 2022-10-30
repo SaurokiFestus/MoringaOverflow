@@ -62,8 +62,7 @@ export default function Comment({ x, answer }) {
                   type="text"
                   class="form-control"
                   id="inputPassword2"
-                  placeholder="Leave a comment
-                    "
+                  placeholder="Leave a comment"
                 />
               </form>
               <button
