@@ -21,6 +21,14 @@ function App() {
     name: "John",
   });
 
+  const [questionForm, setQuestionForm] = useState({
+    title: "",
+    body: "",
+    user_id: 1,
+  });
+
+  const [tg,setTg]=useState(true)
+
   console.log(currentUser);
 
   let user = currentUser;
@@ -31,11 +39,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
-          <Route exact="true" path="/askquestion" element={<AskQuestion />} />
+          <Route exact="true" path="/askquestion" element={<AskQuestion tg={tg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />
           <Route exact="true" path="/login" element={<Login />} />
           <Route exact="true" path="/signup" element={<Signup />} />
           <Route exact="true" path="/questions" element={<Questions />} />
-          <Route exact="true" path="/question/:id" element={<EachQuestion />} />
+          <Route exact="true" path="/question/:id" element={<EachQuestion setTg={setTg} setQuestionForm={setQuestionForm}/>} />
           <Route exact="true" path="/about" element={<About />} />
           <Route exact="true" path="/sidebar" element={<SideBar />} />
           <Route exact="true" path="/profile" element={<Profile />} />

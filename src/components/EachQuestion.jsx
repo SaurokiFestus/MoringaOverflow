@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Comment from "./Comment";
 import AnswerQuiz from "./AnswerQuiz";
 
-function EachQuestion() {
+function EachQuestion({ setQuestionForm, setTg }) {
   let { id } = useParams();
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState();
@@ -16,7 +16,6 @@ function EachQuestion() {
     user_id: 1,
     question_id: id,
   });
-
 
   const fetchDetails = () => {
     fetch(`http://127.0.0.1:3000/questions/${id}`)
@@ -69,7 +68,7 @@ function EachQuestion() {
   function handleEdit(answer) {
     setPostEdit(false);
     setAskedQuiz(answer);
-    handleScroll()
+    handleScroll();
   }
 
   function increaseVotes(answer) {
@@ -116,8 +115,8 @@ function EachQuestion() {
   function handleScroll() {
     window.scroll({
       top: document.body.offsetHeight,
-      left: 0, 
-      behavior: 'smooth',
+      left: 0,
+      behavior: "smooth",
     });
   }
 
@@ -131,6 +130,12 @@ function EachQuestion() {
   }
   // console.log(timeQ?.days);
 
+  function handleEditQ(question) {
+    console.log(question);
+    setQuestionForm(question);
+    setTg(false);
+  }
+
   return (
     <Fragment>
       <div className="container">
@@ -143,7 +148,7 @@ function EachQuestion() {
         <span>
           Asked{" "}
           {timeQ?.days > 0
-            ? `${timeQ?.days} ${timeQ?.days == 1 ? "day" : 'days'} ${
+            ? `${timeQ?.days} ${timeQ?.days == 1 ? "day" : "days"} ${
                 timeQ?.hours
               } hours ${timeQ?.minutes} mins `
             : `${
@@ -162,7 +167,16 @@ function EachQuestion() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-            <p>{question.body}</p>
+              <p>{question.body}</p>
+
+              <Link to="/askquestion">
+                <button
+                  onClick={() => handleEditQ(question)}
+                  class="bg-info text-white border-0"
+                >
+                  Edit
+                </button>
+              </Link>
               <h6>{answers?.length} Answers</h6>
               {answers?.map((answer) => {
                 const x = answer.comments;
@@ -226,7 +240,15 @@ function EachQuestion() {
               })}
             </div>
           </div>
-          <AnswerQuiz id={id} updateList={updateList} AddAnswer={AddAnswer} postEdit={postEdit} setPostEdit={setPostEdit}  askedQuiz={askedQuiz} setAskedQuiz={setAskedQuiz}/>
+          <AnswerQuiz
+            id={id}
+            updateList={updateList}
+            AddAnswer={AddAnswer}
+            postEdit={postEdit}
+            setPostEdit={setPostEdit}
+            askedQuiz={askedQuiz}
+            setAskedQuiz={setAskedQuiz}
+          />
         </div>
       </div>
     </Fragment>
