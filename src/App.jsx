@@ -28,10 +28,7 @@ console.log(user)
       }
     });
   }, []);
-
-
-
-
+  console.log(user?.id)
 
   const [questionForm, setQuestionForm] = useState({
     title: "",
@@ -41,7 +38,7 @@ console.log(user)
 
   const [tg,setTg]=useState(true)
 
-  console.log(user);
+  console.log(questionForm);
 
 
   return (
@@ -50,7 +47,7 @@ console.log(user)
         <Navbar user={user} setWordEntered={setWordEntered}/>
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
-          <Route exact="true" path="/askquestion" element={<AskQuestion  tg={tg} setTg={setTg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />
+          <Route exact="true" path="/askquestion" element={<AskQuestion user={user} tg={tg} setTg={setTg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />
           <Route exact="true" path="/login" element={<Login setUser={setUser} />} />
           <Route exact="true" path="/signup" element={<Signup />} />
           <Route exact="true" path="/questions" element={<Questions user={user}  wordEntered={wordEntered}/>} />

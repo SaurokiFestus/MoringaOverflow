@@ -2,14 +2,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function AskQuestion({questionForm, setQuestionForm, tg ,setTg }) {
+function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
   const navigate = useNavigate();
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
     setQuestionForm({
       ...questionForm,
-      [name]: value,
+      [name]: value, user_id: user.id
     });
   }
 
@@ -17,40 +17,46 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(questionForm);
-    if (tg) {
-      fetch("http://127.0.0.1:3000/questions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(questionForm),
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then((data) => console.log(data));
-          setQuestionForm({ title: "", body: "" });
-        } else {
-          r.json().then((error) => console.log(Object.values(error)));
-        }
-      });
+    if(user){
+      console.log(questionForm);
+      if (tg) {
+        fetch("http://127.0.0.1:3000/questions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(questionForm),
+        }).then((r) => {
+          if (r.ok) {
+            r.json().then((data) => console.log(data));
+            setQuestionForm({ title: "", body: "" });
+          } else {
+            r.json().then((error) => console.log(Object.values(error)));
+          }
+        });
+      }else{
+        fetch(`http://127.0.0.1:3000/questions/${questionForm.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(questionForm),
+        }).then((r) => {
+          if (r.ok) {
+            r.json().then((data) => console.log(data));
+            setQuestionForm({ title: "", body: "" });
+            setTg(true)
+          } else {
+            r.json().then((error) => console.log(Object.values(error)));
+          }
+        });
+      }
+      navigate("/questions")
     }else{
-      fetch(`http://127.0.0.1:3000/questions/${questionForm.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(questionForm),
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then((data) => console.log(data));
-          setQuestionForm({ title: "", body: "" });
-          setTg(true)
-        } else {
-          r.json().then((error) => console.log(Object.values(error)));
-        }
-      });
+      navigate("/signup")
+
     }
-    navigate("/questions")
+    
   }
 
   return (

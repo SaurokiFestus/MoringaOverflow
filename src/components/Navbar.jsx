@@ -78,7 +78,7 @@ function Navbar({user, setWordEntered}) {
             {user ? (
               <>
                 <Link to="/">
-                  <button class="btn btn-primary m-1">KN</button>
+                  <button class="btn btn-primary m-1">{user.username.charAt(0)}</button>
                 </Link>
                 <Link to="/logOut">
                   <button class="btn btn-primary m-1">LogOut</button>
