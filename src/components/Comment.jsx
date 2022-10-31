@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState , useEffect , sortType , setData , s} from "react";
+
 
 export default function Comment({ x, answer, user }) {
   const [newC, setNewC] = useState({
@@ -55,6 +56,7 @@ export default function Comment({ x, answer, user }) {
           // console.log(data)
           updateList(data);
           setNewC({ body: "", user_id: 2, answer_id: answer.id });
+          setPostEdit(true);
         });
     }
   }
@@ -82,7 +84,7 @@ export default function Comment({ x, answer, user }) {
       <li className="pb-1" key={comment.id}>
         {comment.body}
         {user.id === comment.user_id ? (
-          <span>
+          <span className="mx-2">
             <button
               onClick={() => handleDelete(comment.id)}
               className="bg-danger text-white shadow-none"
@@ -109,12 +111,21 @@ export default function Comment({ x, answer, user }) {
         <hr className=""></hr>
       </div>
 
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+
       <button
         class="btn shadow-none"
         onClick={() => setShowComments(!showComments)}
       >
+        <button class= "accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Comments
       </button>
+        {/* Comments */}
+        </button>
+        </div>
+        
+
+      
 
       {showComments ? (
         <div className="row p-0">
@@ -137,8 +148,7 @@ export default function Comment({ x, answer, user }) {
                   name="body"
                   class="form-control"
                   id="inputPassword2"
-                  placeholder="Leave a comment
-                    "
+                  placeholder="Leave a comment"
                 />
               </form>
               <button
@@ -148,6 +158,8 @@ export default function Comment({ x, answer, user }) {
               >
                 {postEdit ? "Submit" : "Edit"}
               </button>
+              
+
             </div>
           </div>
         </div>

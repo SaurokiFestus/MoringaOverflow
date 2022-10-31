@@ -67,7 +67,7 @@ const questions = ({ user, wordEntered }) => {
       <div>
         <hr style={{ size: "80px", width: "100%" }}></hr>
       </div>
-      <div className="container vh-100">
+      <div className="container ">
         {currentQuizs.map((quiz) => {
           const result = quiz.answers?.reduce((accumulator, obj) => {
             return accumulator + (obj.upvote - obj.downvote);
