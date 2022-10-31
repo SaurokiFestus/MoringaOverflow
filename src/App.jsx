@@ -20,7 +20,7 @@ function App() {
   // console.log(wordEntered)
 
 
-  const [user, setUser] = useState();
+  
 
 
   useEffect(() => {
