@@ -4,7 +4,7 @@ import React, { useState , useEffect , sortType , setData , s} from "react";
 export default function Comment({ x, answer, user }) {
   const [newC, setNewC] = useState({
     body: "",
-    user_id: user.id,
+    user_id: user?.id,
     answer_id: answer.id,
   });
   const [comments, setComments] = useState(x);
@@ -83,7 +83,7 @@ export default function Comment({ x, answer, user }) {
     return (
       <li className="pb-1" key={comment.id}>
         {comment.body}
-        {user.id === comment.user_id ? (
+        {user?.id === comment.user_id ? (
           <span className="mx-2">
             <button
               onClick={() => handleDelete(comment.id)}

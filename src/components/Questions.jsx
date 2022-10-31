@@ -7,8 +7,6 @@ const questions = ({ user, wordEntered }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [quizsPerPage] = useState(5);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-
   const filteredData = questions.filter((quiz) => {
    
     if (wordEntered === "") {
@@ -23,8 +21,7 @@ const questions = ({ user, wordEntered }) => {
   // Get current posts
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
-  const currentQuizs = questions.slice(indexOfFirstQuiz, indexOfLastQuiz);
-  console.log(questions)
+  const currentQuizs = filteredData.slice(indexOfFirstQuiz, indexOfLastQuiz);
 
   useEffect(() => {
     fetch("http://127.0.0.1:3000/questions", {
@@ -36,7 +33,6 @@ const questions = ({ user, wordEntered }) => {
       if (r.ok) {
         r.json().then((quizs) => {
           setQuestions(quizs);
-          setQuizMutate(quizs);
         });
       }
     });
@@ -82,7 +78,7 @@ const questions = ({ user, wordEntered }) => {
                     <li>{quiz.answers?.length} Answers</li>
                     <li>6 views</li>
                     <span>
-                      {user.id === quiz.user_id ? (
+                      {user?.id === quiz.user_id ? (
                         <button
                           onClick={() => handleDelete(quiz.id)}
                           className="bg-danger text-white border-0"

@@ -13,7 +13,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
     upvote: 0,
     downvote: 0,
     body: "",
-    user_id: user.id,
+    user_id: user?.id,
     question_id: id,
   });
 
@@ -168,7 +168,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
           <div className="row">
             <div className="col-12">
               <p>{question.body}</p>
-              {user.id === question.user_id ? (
+              {user?.id === question.user_id ? (
                 <Link to="/askquestion">
                   <button
                     onClick={() => handleEditQ(question)}
@@ -223,7 +223,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
                       <div className="col fs-5 pt-3">
                         <p>{answer.body}</p>
                       </div>
-                      {user.id === answer.user_id ? (
+                      {user?.id === answer.user_id ? (
                         <span>
                           <button
                             onClick={() => handleDelete(answer.id)}
