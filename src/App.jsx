@@ -18,7 +18,7 @@ import Search from "./components/Search";
 
 function App() {
   const [wordEntered, setWordEntered] = useState("");
-  // const [user, setUser] = useState();
+  const [user, setUser] = useState();
   // const navigate = useNavigate();
 
   // useEffect(() => {
@@ -32,7 +32,6 @@ function App() {
   // }, []);
 
 
-  let user = currentUser;
 
   const [questionForm, setQuestionForm] = useState({
     title: "",
