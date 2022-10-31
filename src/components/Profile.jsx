@@ -11,8 +11,8 @@ function Profile() {
             Edit Your Profile
           </button>
           <form className="bg-light rounded  p-sm-3 mx-5 my-4">
-            <div className="mb-3">
-              <img src="" alt="text" />
+            <div className="mb-3 ">
+              <h1><i class="bi bi-person-circle"></i></h1>
             </div>
 
             <div className="mb-3">
@@ -33,6 +33,7 @@ function Profile() {
               </label>
               <input type="text" className="form-control" />
             </div>
+            
             <div className="mb-3 form-check"></div>
             <button type="submit" className="btn bg-info mb-4 ">
               Save Profile
