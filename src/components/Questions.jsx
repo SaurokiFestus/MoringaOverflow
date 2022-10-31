@@ -7,8 +7,6 @@ const questions = ({ user, wordEntered }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [quizsPerPage] = useState(5);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-
   const filteredData = questions.filter((quiz) => {
    
     if (wordEntered === "") {
@@ -36,7 +34,6 @@ const questions = ({ user, wordEntered }) => {
       if (r.ok) {
         r.json().then((quizs) => {
           setQuestions(quizs);
-          // setQuizMutate(quizs);
         });
       }
     });

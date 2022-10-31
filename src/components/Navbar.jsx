@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 function Navbar({user, setWordEntered}) {
   const flowColor = { color: "#f48d4f" };
 
-
-
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-light">
@@ -67,24 +65,36 @@ function Navbar({user, setWordEntered}) {
             </Link>
           </div>
 
-          <form class="d-flex">
+          <form class="col mx-2">
             <input
-              class="form-control me-2"
+              class="form-control "
               type="text"
               placeholder="search text"
               aria-label="Search"
-              onChange={(e)=>setWordEntered(e.target.value)}
+              onChange={(e) => setWordEntered(e.target.value)}
             />
-
-
-            <Link to="/login">
-             
-              <button class="btn btn-primary m-1">Login</button>
-            </Link>
-            <Link to="/signup">
-              <button class="btn btn-primary m-1">Signup</button>
-            </Link>
           </form>
+          <span>
+            {user ? (
+              <>
+                <Link to="/">
+                  <button class="btn btn-primary m-1">KN</button>
+                </Link>
+                <Link to="/logOut">
+                  <button class="btn btn-primary m-1">LogOut</button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/login">
+                  <button class="btn btn-primary m-1 ">LogIn</button>
+                </Link>
+                <Link to="/signup">
+                  <button class="btn btn-primary m-1">Sign Up</button>
+                </Link>
+              </>
+            )}
+          </span>
         </div>
       </nav>
     </div>
