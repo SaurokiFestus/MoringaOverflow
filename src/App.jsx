@@ -1,5 +1,4 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -14,32 +13,24 @@ import AskQuestion from "./components/AskQuestion";
 import Profile from "./components/Profile";
 import About from "./components/About";
 
-import Search from './components/Search'
 
 function App() {
   const [wordEntered, setWordEntered] = useState("");
   // console.log(wordEntered)
 
-  const [currentUser, setCurrentUser] = useState({});
-  const [user, setUser] = useState({});
-  const navigate = useNavigate();
+  const [user, setUser] = useState();
+
 
   useEffect(() => {
     fetch("/me").then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          setCurrentUser(user);
-          setIsAuthenticated(true);
+          setUser(user);
         });
       }
     });
   }, []);
 
-  if (!isAuthenticated) {
-    return <div>
-      navigate("/");
-    </div>;
-  }
 
   // const [currentUser, setUser] = useState({
   //   id: 2,
@@ -51,12 +42,12 @@ function App() {
   const [questionForm, setQuestionForm] = useState({
     title: "",
     body: "",
-    user_id: user.id,
+    user_id: user?.id,
   });
 
   const [tg,setTg]=useState(true)
 
-  console.log(currentUser);
+  console.log(user);
 
 
   return (
@@ -66,7 +57,7 @@ function App() {
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
           <Route exact="true" path="/askquestion" element={<AskQuestion  tg={tg} setTg={setTg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />
-          <Route exact="true" path="/login" element={<Login />} />
+          <Route exact="true" path="/login" element={<Login setUser={setUser} />} />
           <Route exact="true" path="/signup" element={<Signup />} />
           <Route exact="true" path="/questions" element={<Questions user={user}  wordEntered={wordEntered}/>} />
           <Route exact="true" path="/question/:id" element={<EachQuestion user={user} setTg={setTg} setQuestionForm={setQuestionForm}/>} />
