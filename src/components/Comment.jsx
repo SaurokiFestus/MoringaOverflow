@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Comment({ x, answer, user }) {
@@ -10,6 +11,8 @@ export default function Comment({ x, answer, user }) {
   const [comments, setComments] = useState(x);
   const [showComments, setShowComments] = useState(false);
   const [postEdit, setPostEdit] = useState(true);
+  const navigate = useNavigate();
+
 
   function addList(added) {
     setComments([...comments, added]);
@@ -33,31 +36,35 @@ export default function Comment({ x, answer, user }) {
   function Submit(e) {
     e.preventDefault();
     console.log("vipi");
-    if (postEdit) {
-      fetch("http://127.0.0.1:3000/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newC),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          addList(data);
-          setNewC({ body: "", user_id: 2, answer_id: answer.id });
-        });
-    } else {
-      console.log(newC);
-      fetch(`http://127.0.0.1:3000/comments/${newC.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newC),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log(data)
-          updateList(data);
-          setNewC({ body: "", user_id: 2, answer_id: answer.id });
-          setPostEdit(true);
-        });
+    if (user) {
+      if (postEdit) {
+        fetch("http://127.0.0.1:3000/comments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newC),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            addList(data);
+            setNewC({ body: "", user_id: 2, answer_id: answer.id });
+          });
+      } else {
+        console.log(newC);
+        fetch(`http://127.0.0.1:3000/comments/${newC.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newC),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log(data)
+            updateList(data);
+            setNewC({ body: "", user_id: 2, answer_id: answer.id });
+            setPostEdit(true);
+          });
+      }
+    }else{
+      navigate("/login");
     }
   }
   function handleEdit(comment) {
@@ -111,14 +118,22 @@ export default function Comment({ x, answer, user }) {
         <hr className=""></hr>
       </div>
       <div class="accordion" id="accordionPanelsStayOpenExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" onClick={() => setShowComments(!showComments)}>
-          Comments
-          </button>
-         </h2>
-  </div>
-</div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseOne"
+              aria-expanded="true"
+              aria-controls="panelsStayOpen-collapseOne"
+              onClick={() => setShowComments(!showComments)}
+            >
+              Comments
+            </button>
+          </h2>
+        </div>
+      </div>
       {showComments ? (
         <div className="row p-0">
           <div className="col-1"></div>
@@ -150,8 +165,6 @@ export default function Comment({ x, answer, user }) {
               >
                 {postEdit ? "Submit" : "Edit"}
               </button>
-              
-
             </div>
           </div>
         </div>
