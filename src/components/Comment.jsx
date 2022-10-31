@@ -1,4 +1,4 @@
-import React, { useState , useEffect , sortType , setData , s} from "react";
+import React, { useState } from "react";
 
 
 export default function Comment({ x, answer, user }) {
