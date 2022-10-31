@@ -80,14 +80,12 @@ function Navbar({user, setWordEntered}) {
                 <Link to="/">
                   <button class="btn btn-primary m-1">{user.username.charAt(0)}</button>
                 </Link>
-                <Link to="/logOut">
                   <button class="btn btn-primary m-1">LogOut</button>
-                </Link>
               </>
             ) : (
               <>
                 <Link to="/login">
-                  <button class="btn btn-primary m-1 ">LogIn</button>
+                  <button style={{ backgroundColor: "#f0f8fe" }} class="btn btn-primary m-1 text-primary border-1 ">LogIn</button>
                 </Link>
                 <Link to="/signup">
                   <button class="btn btn-primary m-1">Sign Up</button>

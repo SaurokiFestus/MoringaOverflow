@@ -59,6 +59,7 @@ const questions = ({ user, wordEntered }) => {
       </div>
       <div className="container">
         <p>{questions?.length} questions</p>
+        <p className="text-warning">{currentQuizs?.length===0 ? 'No record':''}</p>
       </div>
 
       <div>

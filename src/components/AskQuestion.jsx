@@ -53,7 +53,7 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
       }
       navigate("/questions")
     }else{
-      navigate("/signup")
+      navigate("/login")
 
     }
     

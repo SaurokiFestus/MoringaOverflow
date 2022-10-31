@@ -57,7 +57,7 @@ export default function AnswerQuiz({
         });
       }
     } else {
-      navigate("/signup");
+      navigate("/login");
     }
   }
 

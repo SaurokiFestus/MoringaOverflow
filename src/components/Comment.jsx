@@ -64,7 +64,7 @@ export default function Comment({ x, answer, user }) {
           });
       }
     }else{
-      navigate("/signup");
+      navigate("/login");
     }
   }
   function handleEdit(comment) {
