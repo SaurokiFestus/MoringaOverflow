@@ -82,7 +82,7 @@ const questions = ({ user, wordEntered }) => {
                     <li>{quiz.answers?.length} Answers</li>
                     <li>6 views</li>
                     <span>
-                      {user.id === quiz.user_id ? (
+                      {user?.id === quiz.user_id ? (
                         <button
                           onClick={() => handleDelete(quiz.id)}
                           className="bg-danger text-white border-0"
