@@ -14,15 +14,11 @@ import Profile from "./components/Profile";
 import About from "./components/About";
 
 
-
 function App() {
   const [wordEntered, setWordEntered] = useState("");
-  // console.log(wordEntered)
-
-
-  
-
-
+  const [user, setUser] = useState();
+  // const navigate = useNavigate();
+console.log(user)
   useEffect(() => {
     fetch("/me").then((res) => {
       if (res.ok) {
@@ -34,33 +30,7 @@ function App() {
   }, []);
 
 
-  const [currentUser, setCurrentUser] = useState({});
-  const [user, setUser] = useState({});
-  // const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   fetch("/me").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((user) => {
-  //         setCurrentUser(user);
-  //         setIsAuthenticated(true);
-  //       });
-  //     }
-  //   });
-  // }, []);
-
-  // if (!isAuthenticated) {
-  //   return <div>
-  //     navigate("/");
-  //   </div>;
-  // }
-
-
-  // const [currentUser, setUser] = useState({
-  //   id: 2,
-  //   name: "John",
-  // });
-  // let user = currentUser;
 
 
   const [questionForm, setQuestionForm] = useState({
