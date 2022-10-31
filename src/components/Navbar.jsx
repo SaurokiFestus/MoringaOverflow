@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({user}) {
   const flowColor = { color: "#f48d4f" };
   return (
     <div>

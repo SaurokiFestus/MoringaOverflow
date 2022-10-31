@@ -16,11 +16,10 @@ import Profile from "./components/Profile";
 import About from "./components/About";
 
 function App() {
-  const [currentUser, setUser] = useState({
+  const [user, setUser] = useState({
     id: 2,
     name: "John",
   });
-  let user = currentUser;
 
 
   const [questionForm, setQuestionForm] = useState({
@@ -31,13 +30,12 @@ function App() {
 
   const [tg,setTg]=useState(true)
 
-  console.log(currentUser);
 
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar user={user}/>
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
           <Route exact="true" path="/askquestion" element={<AskQuestion  tg={tg} setTg={setTg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />

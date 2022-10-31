@@ -55,6 +55,7 @@ export default function Comment({ x, answer, user }) {
           // console.log(data)
           updateList(data);
           setNewC({ body: "", user_id: 2, answer_id: answer.id });
+          setPostEdit(true);
         });
     }
   }
@@ -82,7 +83,7 @@ export default function Comment({ x, answer, user }) {
       <li className="pb-1" key={comment.id}>
         {comment.body}
         {user.id === comment.user_id ? (
-          <span>
+          <span className="mx-2">
             <button
               onClick={() => handleDelete(comment.id)}
               className="bg-danger text-white shadow-none"
