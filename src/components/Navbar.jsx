@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import Questions from "./Questions"
 
-function Navbar({user}) {
+function Navbar({user, setWordEntered}) {
   const flowColor = { color: "#f48d4f" };
 
 
@@ -78,7 +78,7 @@ function Navbar({user}) {
 
 
             <Link to="/login">
-              {" "}
+             
               <button class="btn btn-primary m-1">Login</button>
             </Link>
             <Link to="/signup">

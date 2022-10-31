@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./components/Home";
 import SideBar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar";
@@ -14,7 +14,7 @@ import AskQuestion from "./components/AskQuestion";
 import Profile from "./components/Profile";
 import About from "./components/About";
 
-import Search from './components/Search'
+// import Search from './components/Search'
 
 function App() {
   const [wordEntered, setWordEntered] = useState("");
@@ -22,24 +22,24 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
   const [user, setUser] = useState({});
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("/me").then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          setCurrentUser(user);
-          setIsAuthenticated(true);
-        });
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/me").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((user) => {
+  //         setCurrentUser(user);
+  //         setIsAuthenticated(true);
+  //       });
+  //     }
+  //   });
+  // }, []);
 
-  if (!isAuthenticated) {
-    return <div>
-      navigate("/");
-    </div>;
-  }
+  // if (!isAuthenticated) {
+  //   return <div>
+  //     navigate("/");
+  //   </div>;
+  // }
 
   // const [currentUser, setUser] = useState({
   //   id: 2,
@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar user={user} setWordEntered={setWordEntered}/>
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
           <Route exact="true" path="/askquestion" element={<AskQuestion  tg={tg} setTg={setTg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />
