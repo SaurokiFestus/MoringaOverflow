@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState , useEffect , sortType , setData , s} from "react";
+
 
 export default function Comment({ x, answer }) {
   const [newC, setNewC] = useState();
@@ -9,10 +10,10 @@ export default function Comment({ x, answer }) {
   //   const sortArray = type => {
   //     const types = {
   //       body: 'body',
-  //       created_at: 'created_at',
+  //       // created_at: 'created_at',
   //     };
   //     const sortProperty = types[type];
-  //     const sorted = [...created_at].sort((a, b) => b[sortProperty] - a[sortProperty]);
+  //     const sorted = [...body].sort((a, b) => b[sortProperty] - a[sortProperty]);
   //     setData(sorted);
   //   };
 

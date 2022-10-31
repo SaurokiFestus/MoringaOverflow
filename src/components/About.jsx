@@ -25,7 +25,7 @@ const About = () => {
         <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmFuZG9tJTIwcGVyc29ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
-          Name and details
+          Name 
 
           </p>
         </div>
