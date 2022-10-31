@@ -60,7 +60,10 @@ export default function Comment({ x, answer }) {
         class="btn shadow-none"
         onClick={() => setShowComments(!showComments)}
       >
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Comments
+      </button>
+        {/* Comments */}
       </button>
 
       {showComments ? (
