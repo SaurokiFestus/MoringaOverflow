@@ -23,8 +23,8 @@ const questions = ({ user, wordEntered }) => {
   // Get current posts
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
-  const currentQuizs = questions.slice(indexOfFirstQuiz, indexOfLastQuiz);
-  console.log(questions)
+  const currentQuizs = filteredData.slice(indexOfFirstQuiz, indexOfLastQuiz);
+  // console.log(questions)
 
   useEffect(() => {
     fetch("http://127.0.0.1:3000/questions", {
@@ -36,7 +36,7 @@ const questions = ({ user, wordEntered }) => {
       if (r.ok) {
         r.json().then((quizs) => {
           setQuestions(quizs);
-          setQuizMutate(quizs);
+          // setQuizMutate(quizs);
         });
       }
     });
