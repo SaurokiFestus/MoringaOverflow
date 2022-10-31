@@ -41,7 +41,7 @@ function Signup() {
         });
       } else {
         res.json().then((errors) => {
-          console.error(errors);
+          console.log(errors);
         });
       }
     });

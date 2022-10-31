@@ -13,7 +13,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
     upvote: 0,
     downvote: 0,
     body: "",
-    user_id: user?.id,
+    user_id: '',
     question_id: id,
   });
 
@@ -249,6 +249,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
             </div>
           </div>
           <AnswerQuiz
+            user={user}
             id={id}
             updateList={updateList}
             AddAnswer={AddAnswer}

@@ -14,15 +14,11 @@ import Profile from "./components/Profile";
 import About from "./components/About";
 
 
-
 function App() {
   const [wordEntered, setWordEntered] = useState("");
-  // console.log(wordEntered)
-
-
   const [user, setUser] = useState();
-
-
+  // const navigate = useNavigate();
+console.log(user)
   useEffect(() => {
     fetch("/me").then((res) => {
       if (res.ok) {
@@ -32,36 +28,7 @@ function App() {
       }
     });
   }, []);
-
-
-  const [currentUser, setCurrentUser] = useState({});
-
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   fetch("/me").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((user) => {
-  //         setCurrentUser(user);
-  //         setIsAuthenticated(true);
-  //       });
-  //     }
-  //   });
-  // }, []);
-
-  // if (!isAuthenticated) {
-  //   return <div>
-  //     navigate("/");
-  //   </div>;
-  // }
-
-
-  // const [currentUser, setUser] = useState({
-  //   id: 2,
-  //   name: "John",
-  // });
-  // let user = currentUser;
-
+  console.log(user?.id)
 
   const [questionForm, setQuestionForm] = useState({
     title: "",
@@ -71,7 +38,7 @@ function App() {
 
   const [tg,setTg]=useState(true)
 
-  console.log(user);
+  console.log(questionForm);
 
 
   return (
@@ -80,7 +47,7 @@ function App() {
         <Navbar user={user} setWordEntered={setWordEntered}/>
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
-          <Route exact="true" path="/askquestion" element={<AskQuestion  tg={tg} setTg={setTg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />
+          <Route exact="true" path="/askquestion" element={<AskQuestion user={user} tg={tg} setTg={setTg} questionForm={questionForm} setQuestionForm={setQuestionForm}/>} />
           <Route exact="true" path="/login" element={<Login setUser={setUser} />} />
           <Route exact="true" path="/signup" element={<Signup />} />
           <Route exact="true" path="/questions" element={<Questions user={user}  wordEntered={wordEntered}/>} />
