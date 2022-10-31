@@ -1,13 +1,9 @@
 // import React, { Fragment } from "react";
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-function AskQuestion() {
-  const [questionForm, setQuestionForm] = useState({
-    title: "",
-    body: "",
-    user_id: 1,
-  });
-
+function AskQuestion({questionForm, setQuestionForm, tg ,setTg }) {
+  const navigate = useNavigate();
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -17,23 +13,44 @@ function AskQuestion() {
     });
   }
 
+  console.log(questionForm);
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(questionForm)
-    fetch("http://127.0.0.1:3000/questions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(questionForm),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((data) => console.log(data));
-        setQuestionForm({ title: "", body: "" });
-      } else {
-        r.json().then((error) => console.log(Object.values(error)));
-      }
-    });
+    console.log(questionForm);
+    if (tg) {
+      fetch("http://127.0.0.1:3000/questions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(questionForm),
+      }).then((r) => {
+        if (r.ok) {
+          r.json().then((data) => console.log(data));
+          setQuestionForm({ title: "", body: "" });
+        } else {
+          r.json().then((error) => console.log(Object.values(error)));
+        }
+      });
+    }else{
+      fetch(`http://127.0.0.1:3000/questions/${questionForm.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(questionForm),
+      }).then((r) => {
+        if (r.ok) {
+          r.json().then((data) => console.log(data));
+          setQuestionForm({ title: "", body: "" });
+          setTg(true)
+        } else {
+          r.json().then((error) => console.log(Object.values(error)));
+        }
+      });
+    }
+    navigate("/questions")
   }
 
   return (
@@ -50,6 +67,7 @@ function AskQuestion() {
               Be specific and imagine you're asking a question to another person
             </div>
             <input
+              value={questionForm.title}
               onChange={(e) => handleChange(e)}
               name="title"
               type="text"
@@ -67,6 +85,7 @@ function AskQuestion() {
             {/* <EditorContainer/> */}
             <textarea
               name="body"
+              value={questionForm.body}
               className="form-control"
               id="exampleFormControlTextarea1"
               rows="5"
@@ -74,13 +93,15 @@ function AskQuestion() {
             ></textarea>
           </div>
         </div>
-        <button
-          onClick={handleSubmit}
-          type="button"
-          className="btn btn-primary mt-3 "
-        >
-          Submit
-        </button>
+        <Link to="/questions">
+          <button
+            onClick={handleSubmit}
+            type="button"
+            className="btn btn-primary mt-3 "
+          >
+            {tg ? "Submit" : "Edit"}
+          </button>
+        </Link>
       </form>
     </div>
   );
