@@ -50,21 +50,27 @@ export default function Comment({ x, answer }) {
     );
   });
   return (
-    <div >
-      <div className="col-1"></div>
+    <div>
+      <div className="col-1" id ="accordionPanelsStayOpenExample"></div>
       <div className="col" >
         <hr className=""></hr>
       </div>
+
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
 
       <button
         class="btn shadow-none"
         onClick={() => setShowComments(!showComments)}
       >
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button class= "accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Comments
       </button>
         {/* Comments */}
-      </button>
+        </button>
+        </div>
+        
+
+      
 
       {showComments ? (
         <div className="row p-0">
