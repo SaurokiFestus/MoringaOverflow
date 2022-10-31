@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Pagination from "./Pagination";
-const questions = ({ user }) => {
+const questions = ({ user, wordEntered }) => {
   const [questions, setQuestions] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [quizsPerPage] = useState(5);

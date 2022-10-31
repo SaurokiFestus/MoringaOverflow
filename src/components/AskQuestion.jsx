@@ -1,8 +1,9 @@
 // import React, { Fragment } from "react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function AskQuestion({questionForm, setQuestionForm, tg ,setTg }) {
+  const navigate = useNavigate();
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -49,6 +50,7 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg }) {
         }
       });
     }
+    navigate("/questions")
   }
 
   return (
