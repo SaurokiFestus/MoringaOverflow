@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import Questions from "./Questions"
 
-function Navbar({ user ,setWordEntered }) {
+function Navbar({user, setWordEntered}) {
   const flowColor = { color: "#f48d4f" };
 
   return (

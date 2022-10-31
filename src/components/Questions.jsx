@@ -22,6 +22,7 @@ const questions = ({ user, wordEntered }) => {
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
   const currentQuizs = filteredData.slice(indexOfFirstQuiz, indexOfLastQuiz);
+  // console.log(questions)
 
   useEffect(() => {
     fetch("http://127.0.0.1:3000/questions", {

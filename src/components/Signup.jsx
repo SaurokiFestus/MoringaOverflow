@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { OutlinedFlagOutlined } from "@mui/icons-material";
 import Error from "./Error";
 
-function Signup({ setCurrentUser }) {
+function Signup() {
   const flowColor = { backgroundColor: "#f1f2f3" };
   const [formData, setFormData] = useState({
     username: "",
@@ -36,8 +36,8 @@ function Signup({ setCurrentUser }) {
       }),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((user) => {
-          setCurrentUser(user);
+        res.json().then((user) => { 
+          console.log(user)
         });
       } else {
         res.json().then((errors) => {
