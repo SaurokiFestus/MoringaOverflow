@@ -1,7 +1,17 @@
 import React from "react";
 const About = () => {
   return (<>
-    <div class="text-center">
+    {/* <div class="text-center">
+        <div>
+          <h5>About us</h5>
+          <p>
+            Moringa Overflow is dedicated to helping each and every developer who seeks us out. We aim to ease the process of programming and developing therefore making it a good experience. Meet our team who makes all this possible
+          </p>
+        </div>
+      </div> */}
+    <div className="container-fluid" style={{ height: "75vh" }}>
+      <div className="row justify-content-between ">
+      <div class="text-center">
         <div>
           <h5>About us</h5>
           <p>
@@ -9,8 +19,6 @@ const About = () => {
           </p>
         </div>
       </div>
-    <div className="container-fluid" style={{ height: "75vh" }}>
-      <div className="row justify-content-between ">
         <div className="card" style={{ width: "20rem" }}>
           <img
             src="https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHJhbmRvbSUyMHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
