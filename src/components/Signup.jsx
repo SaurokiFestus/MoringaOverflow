@@ -13,14 +13,6 @@ function Signup() {
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
-  const errormessage = errors?.map((error) => {
-    return (
-      <>
-        <Error error={error} />
-      </>
-    );
-  });
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
