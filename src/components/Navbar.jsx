@@ -69,7 +69,7 @@ function Navbar({user, setWordEntered}) {
             <input
               class="form-control "
               type="text"
-              placeholder="search text"
+              placeholder="Search question"
               aria-label="Search"
               onChange={(e) => setWordEntered(e.target.value)}
             />
