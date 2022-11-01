@@ -34,18 +34,18 @@ function Navbar({user, setWordEntered}) {
                   aria-labelledby="navbarDarkDropdownMenuLink"
                 >
                   <li>
-                    <a className="dropdown-item " href="#">
+                    <a className="dropdown-item " href="/">
                       Home
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/questions">
                       Questions
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Tags
+                    <a className="dropdown-item" href="/about">
+                      About
                     </a>
                   </li>
                 </ul>
