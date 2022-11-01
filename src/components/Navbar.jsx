@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import Questions from "./Questions"
 
 function Navbar({user, setWordEntered}) {
-  const flowColor = { color: "#f48d4f" };
+  const flowColor = { color: "#f48d4f", fontSize: "30px"};
 
   return (
     <div>
