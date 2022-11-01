@@ -119,7 +119,8 @@ function Signup() {
                 onChange={handleChange}
               />
             </div>
-            {errormessage}
+            <Error errors={errors} />
+            {/* {errormessage} */}
             <button
               type="submit"
               className="btn bg-info  my-4"
