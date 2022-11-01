@@ -11,7 +11,7 @@ function Profile() {
             Edit Your Profile
           </button>
           <form className="bg-light rounded  p-sm-3 mx-5 my-4">
-            <div className="mb-3 ">
+            <div className="align-items-center">
               <h1><i class="bi bi-person-circle"></i></h1>
             </div>
 
