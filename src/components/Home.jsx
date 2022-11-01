@@ -108,7 +108,7 @@ export default function Home() {
               <p class="card-text">
                 Where developers and technologies go to gain and share knowledgr
               </p>
-              <a href="#" class="btn btn-primary">
+              <a href="/questions" class="btn btn-primary">
                 Participate <i class="bi bi-box-arrow-up-right"></i>
               </a>
             </div>
