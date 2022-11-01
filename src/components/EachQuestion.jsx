@@ -162,7 +162,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
               }`}
           ago
         </span>
-        <span className="px-5">Viewed </span>
+        <span className="px-5"> {question.views} Viewed </span>
         <hr></hr>
         <div className="container">
           <div className="row">
