@@ -1,15 +1,17 @@
 // import React, { Fragment } from "react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+// import EditorContainer from "./EditorContainer";
 
-function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
+function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
   const navigate = useNavigate();
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
     setQuestionForm({
       ...questionForm,
-      [name]: value, user_id: user.id
+      [name]: value,
+      user_id: user?.id,
     });
   }
 
@@ -17,7 +19,7 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if(user){
+    if (user) {
       console.log(questionForm);
       if (tg) {
         fetch("http://127.0.0.1:3000/questions", {
@@ -34,7 +36,7 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
             r.json().then((error) => console.log(Object.values(error)));
           }
         });
-      }else{
+      } else {
         fetch(`http://127.0.0.1:3000/questions/${questionForm.id}`, {
           method: "PATCH",
           headers: {
@@ -45,18 +47,16 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
           if (r.ok) {
             r.json().then((data) => console.log(data));
             setQuestionForm({ title: "", body: "" });
-            setTg(true)
+            setTg(true);
           } else {
             r.json().then((error) => console.log(Object.values(error)));
           }
         });
       }
-      navigate("/questions")
-    }else{
-      navigate("/login")
-
+      navigate("/questions");
+    } else {
+      navigate("/login");
     }
-    
   }
 
   return (
@@ -88,7 +88,11 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
             </div>
           </div>
           <div className="">
-            {/* <EditorContainer/> */}
+            {/* <EditorContainer
+              onChange={(text) => {
+                console.log(text);
+              }}
+            /> */}
             <textarea
               name="body"
               value={questionForm.body}

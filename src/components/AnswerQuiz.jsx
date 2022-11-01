@@ -20,6 +20,7 @@ export default function AnswerQuiz({
       [name]: value ,user_id: user?.id,
     });
   }
+  
 
   function handleSubmit(e) {
     e.preventDefault();

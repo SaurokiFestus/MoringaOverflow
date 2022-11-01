@@ -8,15 +8,15 @@ const questions = ({ user, wordEntered }) => {
   const [quizsPerPage] = useState(5);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const filteredData = questions.filter((quiz) => {
-   
     if (wordEntered === "") {
       return quiz;
     } else {
-      return( quiz.title.toLowerCase().includes(wordEntered.toLowerCase()) ||
-      quiz.body.toLowerCase().includes(wordEntered.toLowerCase()))
+      return (
+        quiz.title.toLowerCase().includes(wordEntered.toLowerCase()) ||
+        quiz.body.toLowerCase().includes(wordEntered.toLowerCase())
+      );
     }
   });
-
 
   // Get current posts
   const indexOfLastQuiz = currentPage * quizsPerPage;
@@ -57,9 +57,20 @@ const questions = ({ user, wordEntered }) => {
           <button class="btn btn-primary m-1">Ask Question</button>
         </Link>
       </div>
+
       <div className="container">
+        {questions.length === 0 ? (
+          <>
+            <div class="spinner-border text-primary mx-2" role="status"></div>
+            <span class="">Loading...</span>
+          </>
+        ) : (
+          ""
+        )}
         <p>{questions?.length} questions</p>
-        <p className="text-warning">{currentQuizs?.length===0 ? 'No record':''}</p>
+        <p className="text-warning">
+          {currentQuizs?.length === 0 ? "No record" : ""}
+        </p>
       </div>
 
       <div>
