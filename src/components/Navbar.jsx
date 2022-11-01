@@ -18,15 +18,15 @@ function Navbar({user, setWordEntered}) {
                   id="navbarDarkDropdownMenuLink"
                   role="button"
                   data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                  // aria-expanded="false"
                 >
-                  <i class="bi bi-list bg-dark m-3"></i>
+                  <i style={flowColor} class="bi bi-list  m-3"></i>
                   <Link
                     to="/"
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <i style={flowColor} class="bi bi-stack-overflow m-2"></i>
-                    <span className="text-dark">Moringa Flow</span>
+                    <i style={flowColor} class="bi bi-bezier m-2"></i>
+                    <span className="text-dark fs-5 mx-2">Moringa Flow</span>
                   </Link>
                 </a>
                 <ul
