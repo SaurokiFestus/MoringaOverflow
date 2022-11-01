@@ -7,7 +7,7 @@ const About = () => {
         <div>
           <h5>About us</h5>
           <p>
-            Moringa Overflow is dedicated to helping each and every developer who seeks us out. We aim to ease the process of programming and developing therefore making it a good experience. Meet our team who makes all this possible
+            MoringaOverflow is dedicated to helping each and every developer who seeks us out. We aim to ease the process of programming and developing therefore making it a good experience. Meet our team who makes all this possible
           </p>
         </div>
       </div>
