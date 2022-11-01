@@ -20,7 +20,8 @@ const Login = ({setUser}) => {
         body: JSON.stringify({ username, password }),
       }).then((res) => {
         if (res.ok) {
-          res.json().then((user) => setUser(user));
+          res.json().then((user) => 
+          setUser(user));
           navigate("/questions");
         } else {
           res.json().then((errorData) => setErrors(errorData.errors));

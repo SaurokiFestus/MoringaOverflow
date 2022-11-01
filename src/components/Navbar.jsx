@@ -1,9 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+
 // import Questions from "./Questions"
 
 function Navbar({user, setWordEntered}) {
   const flowColor = { color: "#f48d4f", fontSize: "20px"};
+
+  let navigate = useNavigate()
+
+  // console.log(user.name)
+
+  function handleLogout () {
+
+      fetch(`http://127.0.0.1:3000/logout`, {
+          method: "DELETE"
+      })
+          .then((res)=>{
+              if (res.ok){
+                  setUser(null)
+              }
+          })
+      // navigate('/signup')
+  
+  }
 
   return (
     <div>
@@ -77,10 +96,10 @@ function Navbar({user, setWordEntered}) {
           <span>
             {user ? (
               <>
-                <Link to="/">
-                  <button class="btn btn-primary m-1">{user.username.charAt(0)}</button>
-                </Link>
-                  <button class="btn btn-primary m-1">LogOut</button>
+                
+                  <a  href="/profile" class="btn btn-primary m-1" >{user.username.charAt(0)}</a>
+              
+                  <button class="btn btn-primary m-1" onClick={handleLogout}>LogOut</button>
               </>
             ) : (
               <>
