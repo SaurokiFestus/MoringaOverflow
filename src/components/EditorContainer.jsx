@@ -11,28 +11,29 @@ export default class EditorContainer extends Component {
   };
 
   onEditorStateChange = (editorState) => {
-    this.setState({
-      editorState,
-    });
+    this.setState({ editorState });
+
+    this.props.onChange(
+      draftToHtml(convertToRaw(editorState.getCurrentContent()))
+    );
   };
 
   render() {
     const { editorState } = this.state;
-    const x=(draftToHtml(convertToRaw(editorState.getCurrentContent())));
-    console.log(x)
+
     return (
       <div>
         <Editor
           editorState={editorState}
           toolbarClassName="toolbarClassName"
-          wrapperClassName="wrapperClassName"
+          wrapperClassNamdangerouslySetInnerHTMLe="wrapperClassName"
           editorClassName="editorClassName"
           onEditorStateChange={this.onEditorStateChange}
         />
-        <textarea
-          disabled
-          value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-        ></textarea>
+        {/* <textarea
+          // disabled
+          // value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+        ></textarea> */}
       </div>
     );
   }

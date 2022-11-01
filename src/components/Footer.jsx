@@ -12,7 +12,9 @@ function Footer() {
     >
       <div className="row">
         <div className="col-5  pl-5 ">
-          <i style={icons} class="bi bi-stack-overflow"></i>
+        <i style={icons} class="bi bi-bezier m-2"></i>
+
+          {/* <i style={icons} class="bi bi-stack-overflow"></i> */}
           <span>Moringa OverFlow</span>
         </div>
         <div className="col-5 ">

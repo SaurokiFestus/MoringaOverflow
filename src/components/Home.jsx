@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import image from "../assets/images/flow.png";
+import logo from "../assets/images/logo.png";
 
 export default function Home() {
-    const icons={ color: "#f48d4f"} 
-  
-     return (
+  const icons = { color: "#f48d4f" };
+
+  return (
     <Fragment>
       <div className="container-fluid mt-5">
         <div className="row">
@@ -18,8 +19,8 @@ export default function Home() {
               knowledge.
             </h1>
             <p>
-              Our public platform
-              <span className="text-secondary">
+              Our public platform 
+              <span className="mx-1 text-secondary">
                 serves 100 million people every month,
               </span>
               serves 100 million people every month, making it one of the most
@@ -89,11 +90,10 @@ export default function Home() {
       </div>
 
       <div className="text-center ">
-      <div className="container my-5">
+        <div className="container my-5">
           <hr style={{ float: "left", width: "40%" }}></hr>
           <hr style={{ float: "right", width: "40%" }}></hr>
           <h2 class=" text-center">Products</h2>
-
         </div>
         <div class="d-flex justify-content-center">
           <div
@@ -101,10 +101,14 @@ export default function Home() {
             style={{ backgroundColor: "#f0f8fe" }}
           >
             <h1 class="header">
-              <i style={icons} class="bi bi-stack-overflow"></i>
+              {/* <div>
+                <img className="img-fluid container" src={logo} alt="logo" />
+              </div> */}
+              <i style={icons} class="bi bi-bezier"></i>
+              {/* <i  class="bi bi-stack-overflow"></i> */}
             </h1>
             <div class="card-body">
-              <h5 class="card-title" >Our Public Platform</h5>
+              <h5 class="card-title">Our Public Platform</h5>
               <p class="card-text">
                 Where developers and technologies go to gain and share knowledgr
               </p>
@@ -121,7 +125,6 @@ export default function Home() {
           <hr style={{ float: "left", width: "35%" }}></hr>
           <hr style={{ float: "right", width: "35%" }}></hr>
           <h2 class=" text-center">Our Core Values</h2>
-
         </div>
 
         <div class="row my-3">
@@ -167,7 +170,6 @@ export default function Home() {
             </div>
           </div>
           <div class="col-lg-4 col-sm-12 my-3 ">
-            {" "}
             <div class="card-body-content">
               <h1 class="card-title py-3">
                 <i style={icons} class="bi bi-command"></i>

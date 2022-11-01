@@ -94,13 +94,13 @@ export default function Comment({ x, answer, user }) {
           <span className="mx-2">
             <button
               onClick={() => handleDelete(comment.id)}
-              className="bg-danger text-white shadow-none"
+              className="bg-danger text-white shadow-none border-0"
             >
               X
             </button>
             <button
               onClick={() => handleEdit(comment)}
-              className="bg-info mx-2 text-white shadow-none"
+              className="bg-info mx-2 text-white shadow-none border-0"
             >
               Edit
             </button>
