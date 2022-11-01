@@ -1,38 +1,35 @@
 import React, { useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // import Questions from "./Questions"
 
-function Navbar({user, setWordEntered}) {
-  const flowColor = { color: "#f48d4f", fontSize: "20px"};
+function Navbar({ user, setWordEntered }) {
+  const flowColor = { color: "#f48d4f", fontSize: "20px" };
 
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   // console.log(user.name)
 
-  function handleLogout () {
-
-      fetch(`http://127.0.0.1:3000/logout`, {
-          method: "DELETE"
-      })
-          .then((res)=>{
-              if (res.ok){
-                  setUser(null)
-              }
-          })
-      // navigate('/signup')
-  
+  function handleLogout() {
+    fetch(`http://127.0.0.1:3000/logout`, {
+      method: "DELETE",
+    }).then((res) => {
+      if (res.ok) {
+        setUser(null);
+      }
+    });
+    // navigate('/signup')
   }
 
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-light">
         <div className="container-fluid">
-          <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <div className="collapse navbar-collapse" id="">
             <ul className="navbar-nav">
-              <li className="nav-item dropdown">
+              <li className="">
                 <a
-                  className="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle  navbar-expand-lg navbar-expand-sm"
                   href="#"
                   id="navbarDarkDropdownMenuLink"
                   role="button"
@@ -84,7 +81,7 @@ function Navbar({user, setWordEntered}) {
             </Link>
           </div>
 
-          <form class="col mx-2">
+          <form class="navbar navbar-expand-lg navbar-expand-sm mx-2">
             <input
               class="form-control "
               type="text"
@@ -96,15 +93,23 @@ function Navbar({user, setWordEntered}) {
           <span>
             {user ? (
               <>
-                
-                  <a  href="/profile" class="btn btn-primary m-1" >{user.username.charAt(0)}</a>
-              
-                  <button class="btn btn-primary m-1" onClick={handleLogout}>LogOut</button>
+                <a href="/profile" class="btn btn-primary m-1">
+                  {user.username.charAt(0)}
+                </a>
+
+                <button class="btn btn-primary m-1" onClick={handleLogout}>
+                  LogOut
+                </button>
               </>
             ) : (
               <>
                 <Link to="/login">
-                  <button style={{ backgroundColor: "#f0f8fe" }} class="btn btn-primary m-1 text-primary border-1 ">LogIn</button>
+                  <button
+                    style={{ backgroundColor: "#f0f8fe" }}
+                    class="btn btn-primary m-1 text-primary border-1 "
+                  >
+                    LogIn
+                  </button>
                 </Link>
                 <Link to="/signup">
                   <button class="btn btn-primary m-1">Sign Up</button>
