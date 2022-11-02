@@ -1,15 +1,21 @@
 // import React, { Fragment } from "react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+// import EditorContainer from "./EditorContainer";
+import Error from "./Error";
 
-function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
+function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState([]);
+
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
     setQuestionForm({
       ...questionForm,
-      [name]: value, user_id: user.id
+      [name]: value,
+      user_id: user?.id,
+      views: 0,
     });
   }
 
@@ -17,7 +23,7 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if(user){
+    if (user) {
       console.log(questionForm);
       if (tg) {
         fetch("http://127.0.0.1:3000/questions", {
@@ -31,10 +37,10 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
             r.json().then((data) => console.log(data));
             setQuestionForm({ title: "", body: "" });
           } else {
-            r.json().then((error) => console.log(Object.values(error)));
+            r.json().then((error) => setErrors(error.errors));
           }
         });
-      }else{
+      } else {
         fetch(`http://127.0.0.1:3000/questions/${questionForm.id}`, {
           method: "PATCH",
           headers: {
@@ -45,18 +51,16 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
           if (r.ok) {
             r.json().then((data) => console.log(data));
             setQuestionForm({ title: "", body: "" });
-            setTg(true)
+            setTg(true);
+            navigate("/questions");
           } else {
             r.json().then((error) => console.log(Object.values(error)));
           }
         });
       }
-      navigate("/questions")
-    }else{
-      navigate("/login")
-
+    } else {
+      navigate("/login");
     }
-    
   }
 
   return (
@@ -88,7 +92,11 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
             </div>
           </div>
           <div className="">
-            {/* <EditorContainer/> */}
+            {/* <EditorContainer
+              onChange={(text) => {
+                console.log(text);
+              }}
+            /> */}
             <textarea
               name="body"
               value={questionForm.body}
@@ -99,6 +107,8 @@ function AskQuestion({questionForm, setQuestionForm, tg ,setTg,user }) {
             ></textarea>
           </div>
         </div>
+        <Error errors={errors} />
+
         <Link to="/questions">
           <button
             onClick={handleSubmit}

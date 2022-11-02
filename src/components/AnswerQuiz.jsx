@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Error from "./Error";
 
 export default function AnswerQuiz({
   AddAnswer,
@@ -11,13 +12,15 @@ export default function AnswerQuiz({
   user,
 }) {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState();
 
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
     setAskedQuiz({
       ...askedQuiz,
-      [name]: value ,user_id: user?.id,
+      [name]: value,
+      user_id: user?.id,
     });
   }
 
@@ -36,7 +39,7 @@ export default function AnswerQuiz({
             r.json().then((data) => AddAnswer(data));
             setAskedQuiz({ body: "" });
           } else {
-            r.json().then((error) => console.log(Object.values(error)));
+            r.json().then((error) => setErrors(error.body));
           }
         });
       } else {
@@ -52,7 +55,7 @@ export default function AnswerQuiz({
             setAskedQuiz({ body: "" });
             setPostEdit(true);
           } else {
-            r.json().then((error) => console.log(Object.values(error)));
+            r.json().then((error) => setErrors(error));
           }
         });
       }
@@ -68,7 +71,7 @@ export default function AnswerQuiz({
           <div class="">
             <h3 className="font-weight-bold">Your Answer</h3>
           </div>
-          <div className="">
+          <div className="mb-2">
             <textarea
               name="body"
               value={askedQuiz.body}
@@ -79,6 +82,8 @@ export default function AnswerQuiz({
             ></textarea>
           </div>
         </div>
+        <Error errors={errors} />
+
         <button
           onClick={handleSubmit}
           type="button"

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import Questions from "./Questions"
 
-function Navbar({user, setWordEntered}) {
-  const flowColor = { color: "#f48d4f" };
+function Navbar({ user, setWordEntered }) {
+  const flowColor = { color: "#f48d4f", fontSize: "20px" };
 
   return (
     <div>
@@ -20,13 +20,15 @@ function Navbar({user, setWordEntered}) {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i class="bi bi-list bg-dark m-3"></i>
+                  <i style={flowColor} class="bi bi-list  m-3"></i>
                   <Link
                     to="/"
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <i style={flowColor} class="bi bi-stack-overflow m-2"></i>
-                    <span className="text-dark">Moringa Flow</span>
+                    <i style={flowColor} class="bi bi-bezier m-2"></i>
+
+                    {/* <i class="bi bi-stack-overflow m-2"></i> */}
+                    <span className="text-dark fs-5 mx-2">Moringa Flow</span>
                   </Link>
                 </a>
                 <ul
@@ -34,18 +36,18 @@ function Navbar({user, setWordEntered}) {
                   aria-labelledby="navbarDarkDropdownMenuLink"
                 >
                   <li>
-                    <a className="dropdown-item " href="#">
+                    <a className="dropdown-item " href="/">
                       Home
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/questions">
                       Questions
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Tags
+                    <a className="dropdown-item" href="/about">
+                      About
                     </a>
                   </li>
                 </ul>
@@ -69,7 +71,7 @@ function Navbar({user, setWordEntered}) {
             <input
               class="form-control "
               type="text"
-              placeholder="search text"
+              placeholder="Search question"
               aria-label="Search"
               onChange={(e) => setWordEntered(e.target.value)}
             />
@@ -77,15 +79,22 @@ function Navbar({user, setWordEntered}) {
           <span>
             {user ? (
               <>
-                <Link to="/">
-                  <button class="btn btn-primary m-1">{user.username.charAt(0)}</button>
+                <Link to="/profile">
+                  <button class="btn btn-primary m-1">
+                    {user.username.charAt(0).toUpperCase()}
+                  </button>
                 </Link>
-                  <button class="btn btn-primary m-1">LogOut</button>
+                <button class="btn btn-primary m-1">LogOut</button>
               </>
             ) : (
               <>
                 <Link to="/login">
-                  <button style={{ backgroundColor: "#f0f8fe" }} class="btn btn-primary m-1 text-primary border-1 ">LogIn</button>
+                  <button
+                    style={{ backgroundColor: "#f0f8fe" }}
+                    class="btn btn-primary m-1 text-primary border-1 "
+                  >
+                    LogIn
+                  </button>
                 </Link>
                 <Link to="/signup">
                   <button class="btn btn-primary m-1">Sign Up</button>

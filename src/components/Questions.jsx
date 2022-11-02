@@ -8,15 +8,15 @@ const questions = ({ user, wordEntered }) => {
   const [quizsPerPage] = useState(5);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const filteredData = questions.filter((quiz) => {
-   
     if (wordEntered === "") {
       return quiz;
     } else {
-      return( quiz.title.toLowerCase().includes(wordEntered.toLowerCase()) ||
-      quiz.body.toLowerCase().includes(wordEntered.toLowerCase()))
+      return (
+        quiz.title.toLowerCase().includes(wordEntered.toLowerCase()) ||
+        quiz.body.toLowerCase().includes(wordEntered.toLowerCase())
+      );
     }
   });
-
 
   // Get current posts
   const indexOfLastQuiz = currentPage * quizsPerPage;
@@ -47,6 +47,17 @@ const questions = ({ user, wordEntered }) => {
     const updatedEvents = questions?.filter((one) => one.id !== id);
     setQuestions(updatedEvents);
   }
+  function increaseViews(id) {
+    console.log(id);
+    fetch(`http://127.0.0.1:3000/views/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data));
+  }
 
   return (
     <div className="my-5 ">
@@ -57,9 +68,20 @@ const questions = ({ user, wordEntered }) => {
           <button class="btn btn-primary m-1">Ask Question</button>
         </Link>
       </div>
+
       <div className="container">
+        {questions.length === 0 ? (
+          <>
+            <div class="spinner-border text-primary mx-2" role="status"></div>
+            <span class="">Loading...</span>
+          </>
+        ) : (
+          ""
+        )}
         <p>{questions?.length} questions</p>
-        <p className="text-warning">{currentQuizs?.length===0 ? 'No record':''}</p>
+        <p className="text-warning">
+          {currentQuizs?.length === 0 ? "No record" : ""}
+        </p>
       </div>
 
       <div>
@@ -78,7 +100,7 @@ const questions = ({ user, wordEntered }) => {
                   <ul className="list-unstyled">
                     <li>{result} votes</li>
                     <li>{quiz.answers?.length} Answers</li>
-                    <li>6 views</li>
+                    <li>{quiz.views} views</li>
                     <span>
                       {user?.id === quiz.user_id ? (
                         <button
@@ -103,7 +125,12 @@ const questions = ({ user, wordEntered }) => {
                       to={`/question/${quiz.id}`}
                       style={{ textDecoration: "none", color: "black" }}
                     >
-                      <li style={{ color: "#0b7dda" }}>{quiz.title}</li>
+                      <li
+                        onClick={() => increaseViews(quiz.id)}
+                        style={{ color: "#0b7dda" }}
+                      >
+                        {quiz.title}
+                      </li>
                     </Link>
                     <li>{quiz.body}</li>
                   </ul>

@@ -13,7 +13,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
     upvote: 0,
     downvote: 0,
     body: "",
-    user_id: '',
+    user_id: "",
     question_id: id,
   });
 
@@ -162,7 +162,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
               }`}
           ago
         </span>
-        <span className="px-5">Viewed </span>
+        <span className="px-5">{question.views} Views </span>
         <hr></hr>
         <div className="container">
           <div className="row">
