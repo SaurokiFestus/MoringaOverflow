@@ -110,7 +110,7 @@ export default function Home() {
             <div class="card-body">
               <h5 class="card-title">Our Public Platform</h5>
               <p class="card-text">
-                Where developers and technologies go to gain and share knowledgr
+                Where developers and technologies go to gain and share knowledge
               </p>
               <a href="/questions" class="btn btn-primary">
                 Participate <i class="bi bi-box-arrow-up-right"></i>
