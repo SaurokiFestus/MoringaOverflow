@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Error from "./Error";
 
 export default function AnswerQuiz({
   AddAnswer,
@@ -9,18 +10,22 @@ export default function AnswerQuiz({
   askedQuiz,
   setAskedQuiz,
   user,
+  id,
 }) {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState([]);
 
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
     setAskedQuiz({
       ...askedQuiz,
-      [name]: value ,user_id: user?.id,
+      [name]: value,
+      user_id: user?.id,
+      question_id: id,
     });
   }
-  
+  console.log(askedQuiz);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -36,8 +41,9 @@ export default function AnswerQuiz({
           if (r.ok) {
             r.json().then((data) => AddAnswer(data));
             setAskedQuiz({ body: "" });
+            setErrors("");
           } else {
-            r.json().then((error) => console.log(Object.values(error)));
+            r.json().then((error) => setErrors(error.body));
           }
         });
       } else {
@@ -52,8 +58,9 @@ export default function AnswerQuiz({
             r.json().then((data) => updateList(data));
             setAskedQuiz({ body: "" });
             setPostEdit(true);
+            setErrors("");
           } else {
-            r.json().then((error) => console.log(Object.values(error)));
+            r.json().then((error) => setErrors(error.body));
           }
         });
       }
@@ -61,6 +68,7 @@ export default function AnswerQuiz({
       navigate("/login");
     }
   }
+  // console.log(errors);
 
   return (
     <div>
@@ -69,7 +77,7 @@ export default function AnswerQuiz({
           <div class="">
             <h3 className="font-weight-bold">Your Answer</h3>
           </div>
-          <div className="">
+          <div className="mb-2">
             <textarea
               name="body"
               value={askedQuiz.body}
@@ -80,6 +88,8 @@ export default function AnswerQuiz({
             ></textarea>
           </div>
         </div>
+        {errors.length > 0 && <Error errors={errors} />}
+
         <button
           onClick={handleSubmit}
           type="button"

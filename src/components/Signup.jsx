@@ -11,6 +11,7 @@ function Signup() {
     email: "",
   });
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -40,14 +41,15 @@ function Signup() {
         res.json().then((user) => {
           console.log(user);
         });
+        navigate("/login");
       } else {
         res.json().then((errors) => {
-          console.log(errors);
+          setErrors(errors);
         });
       }
     });
   }
-
+  // console.log(errors);
   return (
     <div className="container-fluid" style={flowColor}>
       <div className="row">
@@ -96,7 +98,7 @@ function Signup() {
                 onChange={handleChange}
               />
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
               <label htmlFor="exampleInputPassword1" className="form-label">
                 Password
               </label>
@@ -109,13 +111,11 @@ function Signup() {
                 onChange={handleChange}
               />
             </div>
-            <div className=" form-check"></div>
-            {errors.map((err) => (
-              <Error key={err} err={err} />
-            ))}
+            <Error errors={errors} />
+            {/* {errormessage} */}
             <button
               type="submit"
-              className="btn bg-info  mb-4"
+              className="btn bg-info  my-4"
               onClick={handleSubmit}
             >
               Sign Up

@@ -1,33 +1,38 @@
-import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = ({setUser}) => {
-  const flowColor ={backgroundColor:"#f1f2f3"}
-  
+const Login = ({ setUser }) => {
+  const flowColor = { backgroundColor: "#f1f2f3" };
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState();
   const navigate = useNavigate();
 
-
-    async function handleSubmit(e) {
-      e.preventDefault();
-      await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }).then((res) => {
-        if (res.ok) {
-          res.json().then((user) => setUser(user));
-          navigate("/questions");
-        } else {
-          res.json().then((errorData) => setErrors(errorData.errors));
-        }
-      });
-      navigate("/");
-    }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => setUser(user));
+        navigate("/questions");
+      } else {
+        res.json().then((errorData) => setErrors(errorData.error));
+      }
+    });
+  }
+  // const errormessage = errors?.map((error) => {
+  //   return (
+  //     <>
+  //       <Error error={error} />
+  //     </>
+  //   );
+  // });
 
   return (
     <div className="container-fluid vh-100" style={flowColor}>
@@ -51,7 +56,7 @@ const Login = ({setUser}) => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
               <label htmlFor="password" className="form-label">
                 Password
               </label>
@@ -65,7 +70,9 @@ const Login = ({setUser}) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="mb-3 form-check"></div>
+            <div className="">
+              <li className="text-danger list-unstyled p-2">{errors}</li>
+            </div>
             <button
               type="submit"
               className="btn bg-info mb-4 w-75 "
@@ -73,14 +80,12 @@ const Login = ({setUser}) => {
             >
               Log In
             </button>
-            <p className="text-center rounded" style={{ color: "red" }}>
-              {errors}
-            </p>
+            <p className="text-center rounded" style={{ color: "red" }}></p>
           </form>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Login;
