@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import EditorContainer from "./EditorContainer";
-
 import Error from "./Error";
 
 function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
