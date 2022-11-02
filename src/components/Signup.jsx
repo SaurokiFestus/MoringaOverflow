@@ -33,7 +33,7 @@ function Signup() {
       body: JSON.stringify({
         username: formData.username,
         password: formData.password,
-        email: formData.email,
+        email: formData.email
       }),
     }).then((res) => {
       if (res.ok) {

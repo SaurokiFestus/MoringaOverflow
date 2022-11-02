@@ -22,7 +22,7 @@ const questions = ({ user, wordEntered }) => {
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
   const currentQuizs = filteredData.slice(indexOfFirstQuiz, indexOfLastQuiz);
-  // console.log(questions)
+  console.log(user)
 
   useEffect(() => {
     fetch("http://127.0.0.1:3000/questions", {
@@ -47,6 +47,8 @@ const questions = ({ user, wordEntered }) => {
     const updatedEvents = questions?.filter((one) => one.id !== id);
     setQuestions(updatedEvents);
   }
+
+  console.log(questions)
 
   return (
     <div className="my-5 ">
@@ -109,6 +111,7 @@ const questions = ({ user, wordEntered }) => {
                   style={{ backgroundColor: "#f6f6f6" }}
                   className="col-9 col-sm-8"
                 >
+          
                   <ul className="list-unstyled">
                     <Link
                       to={`/question/${quiz.id}`}

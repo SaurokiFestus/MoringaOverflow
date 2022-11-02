@@ -87,6 +87,7 @@ function App() {
           ) : (
             <Route exact="true" path="/" element={<Home />} />
           )}
+           <Route path='/profile' element={<Profile user={user}/>}/>
         </Routes>
       </BrowserRouter>
       <Footer />
