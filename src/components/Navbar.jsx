@@ -1,9 +1,24 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import Questions from "./Questions"
 
-function Navbar({ user, setWordEntered }) {
+function Navbar({ user, setUser, setWordEntered }) {
   const flowColor = { color: "#f48d4f", fontSize: "20px" };
+  let navigate = useNavigate()
+
+  const handleLogout = (e) => {
+
+    fetch(`/logout`, {
+      method: "DELETE"
+    })
+    .then((res)=>{
+      if (res.ok){
+        setUser(null)
+        }
+      })
+    navigate('/login')  
+  }
+  
 
   return (
     <div>
@@ -11,19 +26,6 @@ function Navbar({ user, setWordEntered }) {
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul className="navbar-nav">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDarkDropdownMenuLink"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {" "}
-                <i style={flowColor} class="bi bi-list "></i>
-              </a>
-              <li className="nav-item dropdown"></li>
-
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -33,6 +35,7 @@ function Navbar({ user, setWordEntered }) {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
+                  <i style={flowColor} class="bi bi-list  m-3"></i>
                   <Link
                     to="/"
                     style={{ textDecoration: "none", color: "black" }}
@@ -93,10 +96,12 @@ function Navbar({ user, setWordEntered }) {
               <>
                 <Link to="/profile">
                   <button class="btn btn-primary m-1">
-                    {user.username.charAt(0)}
+                    {user.username.charAt(0).toUpperCase()}
                   </button>
                 </Link>
-                <button class="btn btn-primary m-1">LogOut</button>
+                <Link to="/login">  
+                  <button class="btn btn-primary m-1" onClick={(e)=> handleLogout()}>LogOut</button>
+                </Link>
               </>
             ) : (
               <>

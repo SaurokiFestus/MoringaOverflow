@@ -25,7 +25,7 @@ const questions = ({ user, wordEntered }) => {
   // console.log(questions)
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/questions", {
+    fetch("/questions", {
       method: "GET",
       headers: {
         accept: "application/json",
@@ -46,6 +46,17 @@ const questions = ({ user, wordEntered }) => {
     });
     const updatedEvents = questions?.filter((one) => one.id !== id);
     setQuestions(updatedEvents);
+  }
+  function increaseViews(id) {
+    console.log(id);
+    fetch(`http://127.0.0.1:3000/views/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data));
   }
 
   return (
@@ -89,7 +100,7 @@ const questions = ({ user, wordEntered }) => {
                   <ul className="list-unstyled">
                     <li>{result} votes</li>
                     <li>{quiz.answers?.length} Answers</li>
-                    <li>{quiz?.views} views</li>
+                    <li>{quiz.views} views</li>
                     <span>
                       {user?.id === quiz.user_id ? (
                         <button
@@ -114,7 +125,12 @@ const questions = ({ user, wordEntered }) => {
                       to={`/question/${quiz.id}`}
                       style={{ textDecoration: "none", color: "black" }}
                     >
-                      <li style={{ color: "#0b7dda" }}>{quiz.title}</li>
+                      <li
+                        onClick={() => increaseViews(quiz.id)}
+                        style={{ color: "#0b7dda" }}
+                      >
+                        {quiz.title}
+                      </li>
                     </Link>
                     <li>{quiz.body}</li>
                   </ul>
