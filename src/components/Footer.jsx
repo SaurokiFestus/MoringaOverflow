@@ -1,3 +1,4 @@
+import "../App.css";
 import React from "react";
 
 function Footer() {
@@ -6,13 +7,10 @@ function Footer() {
   const bg = { backgroundColor: "#232629" };
 
   return (
-    <div
-      className="container-fluid text-white pt-4"
-      style={bg}
-    >
+    <div className=" container-fluid text-white pt-4" id="footer" style={bg}>
       <div className="row">
         <div className="col-5  pl-5 ">
-        <i style={icons} class="bi bi-bezier m-2"></i>
+          <i style={icons} class="bi bi-bezier m-2"></i>
 
           {/* <i style={icons} class="bi bi-stack-overflow"></i> */}
           <span>Moringa OverFlow</span>
@@ -22,8 +20,8 @@ function Footer() {
             <span className="border-bottom  border-white  mx-1 pb-1">
               CONTACT US
             </span>
-              <div className="p-1">Moringa Overflow</div>
-              <div className="p-1">+2547********</div>
+            <div className="p-1">Moringa Overflow</div>
+            <div className="p-1">+2547********</div>
           </div>
           <div className="pt-2">
             <a href="#">
