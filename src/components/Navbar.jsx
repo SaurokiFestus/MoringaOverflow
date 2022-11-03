@@ -4,8 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Navbar({ user, setWordEntered }) {
   const flowColor = { color: "#f48d4f", fontSize: "20px" };
+  let navigate = useNavigate()
 
-  function handleLogout (e) {
+  const handleLogout = (e) => {
 
     fetch(`/logout`, {
       method: "DELETE"
@@ -15,8 +16,9 @@ function Navbar({ user, setWordEntered }) {
         setUser(null)
         }
       })
-      navigate('/signup')  
-    }
+    navigate('/login')  
+  }
+  
 
   return (
     <div>
@@ -98,7 +100,7 @@ function Navbar({ user, setWordEntered }) {
                   </button>
                 </Link>
                 <Link to="/login">  
-                  <button class="btn btn-primary m-1" onClick={()=> handleLogout()}>LogOut</button>
+                  <button class="btn btn-primary m-1" onClick={(e)=> handleLogout()}>LogOut</button>
                 </Link>
               </>
             ) : (
