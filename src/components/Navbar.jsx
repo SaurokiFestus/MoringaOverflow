@@ -4,21 +4,18 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Navbar({ user, setUser, setWordEntered }) {
   const flowColor = { color: "#f48d4f", fontSize: "20px" };
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const handleLogout = (e) => {
-
     fetch(`/logout`, {
-      method: "DELETE"
-    })
-    .then((res)=>{
-      if (res.ok){
-        setUser(null)
-        }
-      })
-    navigate('/login')  
-  }
-  
+      method: "DELETE",
+    }).then((res) => {
+      if (res.ok) {
+        setUser(null);
+      }
+    });
+    navigate("/login");
+  };
 
   return (
     <div>
@@ -39,17 +36,21 @@ function Navbar({ user, setUser, setWordEntered }) {
                 <ul className="dropdown-menu dropdown-menu-primary">
                   <li>
                     <a className="dropdown-item " href="/">
-                      Home
+                      <Link to="/">Home</Link>
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/questions">
-                      Questions
+                    <a
+                      className="dropdown-item text-decoration-none"
+                      href="#"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Link to="questions">Questions</Link>
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/about">
-                      About
+                    <a className="dropdown-item" href="#">
+                      <Link to="about">About</Link>
                     </a>
                   </li>
                 </ul>
@@ -131,8 +132,13 @@ function Navbar({ user, setUser, setWordEntered }) {
                     {user.username.charAt(0).toUpperCase()}
                   </button>
                 </Link>
-                <Link to="/login">  
-                  <button class="btn btn-primary m-1" onClick={(e)=> handleLogout()}>LogOut</button>
+                <Link to="/login">
+                  <button
+                    class="btn btn-primary m-1"
+                    onClick={(e) => handleLogout()}
+                  >
+                    LogOut
+                  </button>
                 </Link>
               </>
             ) : (
