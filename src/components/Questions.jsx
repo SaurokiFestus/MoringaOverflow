@@ -96,7 +96,7 @@ const questions = ({ user, wordEntered }) => {
           return (
             <>
               <div key={quiz.id} className="row">
-                <div className="col-2 text-end">
+                <div className="col-2  text-end">
                   <ul className="list-unstyled">
                     <li>{result} votes</li>
                     <li>{quiz.answers?.length} Answers</li>
@@ -118,7 +118,7 @@ const questions = ({ user, wordEntered }) => {
                 <div
                   key={quiz.id}
                   style={{ backgroundColor: "#f6f6f6" }}
-                  className="col-9 col-sm-8"
+                  className="col-9"
                 >
                   <ul className="list-unstyled">
                     <Link

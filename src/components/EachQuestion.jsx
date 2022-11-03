@@ -1,9 +1,11 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+
 import Comment from "./Comment";
 import AnswerQuiz from "./AnswerQuiz";
 
 function EachQuestion({ setQuestionForm, setTg, user }) {
+  const navigate = useNavigate();
   let { id } = useParams();
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState();
@@ -55,15 +57,19 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
     const obj = {
       downvote: answer.downvote - 1,
     };
-    fetch(`http://127.0.0.1:3000/answers/${id}/decrease`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    })
-      .then((r) => r.json())
-      .then((data) => updateList(data));
+    if (user) {
+      fetch(`http://127.0.0.1:3000/answers/${id}/decrease`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      })
+        .then((r) => r.json())
+        .then((data) => updateList(data));
+    } else {
+      navigate("/");
+    }
   }
   function handleEdit(answer) {
     setPostEdit(false);
@@ -76,15 +82,19 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
     const obj = {
       downvote: answer.downvote - 1,
     };
-    fetch(`http://127.0.0.1:3000/answers/${id}/increase`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    })
-      .then((r) => r.json())
-      .then((data) => updateList(data));
+    if (user) {
+      fetch(`http://127.0.0.1:3000/answers/${id}/increase`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      })
+        .then((r) => r.json())
+        .then((data) => updateList(data));
+    } else {
+      navigate("/login");
+    }
   }
   function updateList(updatedItem) {
     // console.log(updatedItem);
