@@ -51,11 +51,15 @@ function Signup() {
   }
   // console.log(errors);
   return (
-    <div className="container-fluid" style={flowColor}>
+    <div className="container-fluid">
       <div className="row">
         <div className="col-lg-6 col-sm-10 d-flex align-items-center p-5">
           <div>
-            <h1>Join the Moringa Overflow community</h1>
+            <h1>
+              Join the
+              <span style={{ color: "#f48d4f" }}> Moringa Overflow </span>
+              community
+            </h1>
             <h4>Get unstuck — ask a question</h4>
             <h5>Unlock new privileges like voting and commenting</h5>
             <h6>Save your favorite tags, filters, and jobs</h6>

@@ -36,6 +36,8 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
           if (r.ok) {
             r.json().then((data) => console.log(data));
             setQuestionForm({ title: "", body: "" });
+            setErrors("");
+            navigate("/questions");
           } else {
             r.json().then((error) => setErrors(error.errors));
           }
@@ -53,7 +55,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
             setQuestionForm({ title: "", body: "" });
             setTg(true);
           } else {
-            r.json().then((error) => console.log(Object.values(error)));
+            r.json().then((error) => setErrors(error.errors));
           }
         });
       }
@@ -107,7 +109,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
             ></textarea>
           </div>
         </div>
-        <Error errors={errors} />
+        {errors.length > 0 && <Error errors={errors} />}
 
         <Link to="/questions">
           <button

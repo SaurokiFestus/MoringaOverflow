@@ -4,21 +4,18 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Navbar({ user, setUser, setWordEntered }) {
   const flowColor = { color: "#f48d4f", fontSize: "20px" };
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const handleLogout = (e) => {
-
-    fetch(`http://127.0.0.1:3000/logout`, {
-      method: "DELETE"
-    })
-    .then((res)=>{
-      if (res.ok){
-        setUser(null)
-        }
-      })
-    navigate('/login')  
-  }
-  
+    fetch(`/logout`, {
+      method: "DELETE",
+    }).then((res) => {
+      if (res.ok) {
+        setUser(null);
+      }
+    });
+    navigate("/login");
+  };
 
   // let navigate = useNavigate();
 
@@ -39,7 +36,55 @@ function Navbar({ user, setUser, setWordEntered }) {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-light">
         <div className="container-fluid">
-          <div className="collapse navbar-collapse" id="">
+          <div className="navbar" id="navbarNavDarkDropdown">
+            <ul className="nav">
+              <li className="">
+                <a
+                  className=""
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i style={flowColor} class="bi bi-list"></i>
+                </a>
+                <ul className="dropdown-menu dropdown-menu-primary text-decoration-none">
+                  <li>
+                    <a className="dropdown-item" href="/">
+                      <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        to="/"
+                      >
+                        Home
+                      </Link>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item " href="#">
+                      <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        to="questions"
+                      >
+                        Questions
+                      </Link>
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        to="about"
+                      >
+                        About
+                      </Link>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul className="navbar-nav">
               <li className="nav-item dropdown">
                 <a
@@ -50,16 +95,19 @@ function Navbar({ user, setUser, setWordEntered }) {
                   data-bs-toggle="dropdown"
                   // aria-expanded="false"
                 >
-                  <i style={flowColor} class="bi bi-list  m-3"></i>
                   <Link
                     to="/"
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <i style={flowColor} class="bi bi-bezier m-2"></i>
-                    <span className="text-dark fs-5 mx-2">Moringa Flow</span>
+                    <i style={flowColor} class="bi bi-bezier mx-3"></i>
+
+                    {/* <i class="bi bi-stack-overflow m-2"></i> */}
+                    <span className="text-dark fs-5 mx-3">
+                      Moringa OverFlow
+                    </span>
                   </Link>
                 </a>
-                <ul
+                {/* <ul
                   className="dropdown-menu dropdown-menu-primary"
                   aria-labelledby="navbarDarkDropdownMenuLink"
                 >
@@ -78,7 +126,7 @@ function Navbar({ user, setUser, setWordEntered }) {
                       About
                     </a>
                   </li>
-                </ul>
+                </ul> */}
               </li>
             </ul>
             <Link
@@ -91,7 +139,7 @@ function Navbar({ user, setUser, setWordEntered }) {
               to="/about"
               style={{ textDecoration: "none", color: "black" }}
             >
-              <h5 className="m-2">About</h5>
+              <h5 className="mx-4 m-2">About</h5>
             </Link>
           </div>
 
@@ -112,8 +160,13 @@ function Navbar({ user, setUser, setWordEntered }) {
                     {user.username.charAt(0).toUpperCase()}
                   </button>
                 </Link>
-                <Link to="/login">  
-                  <button class="btn btn-primary m-1" onClick={(e)=> handleLogout()}>LogOut</button>
+                <Link to="/login">
+                  <button
+                    class="btn btn-primary m-1"
+                    onClick={(e) => handleLogout()}
+                  >
+                    LogOut
+                  </button>
                 </Link>
               </>
             ) : (
