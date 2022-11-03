@@ -52,12 +52,12 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
             r.json().then((data) => console.log(data));
             setQuestionForm({ title: "", body: "" });
             setTg(true);
-            navigate("/questions");
           } else {
             r.json().then((error) => console.log(Object.values(error)));
           }
         });
       }
+      navigate("/questions");
     } else {
       navigate("/login");
     }
