@@ -25,7 +25,7 @@ const questions = ({ user, wordEntered }) => {
   // console.log(questions)
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/questions", {
+    fetch("/questions", {
       method: "GET",
       headers: {
         accept: "application/json",

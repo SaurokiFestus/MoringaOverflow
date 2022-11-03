@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
 
 const Login = ({ setUser }) => {
   const flowColor = { backgroundColor: "#f1f2f3" };
@@ -11,7 +13,7 @@ const Login = ({ setUser }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await fetch("http://localhost:3000/login", {
+    await fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,6 +28,27 @@ const Login = ({ setUser }) => {
       }
     });
   }
+
+  //gapi gimmick
+    const clientId = '1046539588446-t5i427dqrv4of643arnatu2m9thmaq11.apps.googleusercontent.com';
+
+    useEffect(() => {
+      const initClient = () => {
+            gapi.client.init({
+            clientId: clientId,
+            scope: ''
+          });
+        };
+        gapi.load('client:auth2', initClient);
+    });
+
+    const onSuccess = (res) => {
+        console.log('success:', res);
+    };
+    const onFailure = (err) => {
+        console.log('failed:', err);
+    };
+
   // const errormessage = errors?.map((error) => {
   //   return (
   //     <>
@@ -38,9 +61,15 @@ const Login = ({ setUser }) => {
     <div className="container-fluid vh-100" style={flowColor}>
       <div className="d-flex justify-content-center align-items-center ">
         <div>
-          <button type="submit" className="btn bg-light mx-5 mt-4">
-            <i className="bi bi-google m-3  "></i>Log In With Google
-          </button>
+          <div className="btn bg-light mx-5 mt-4" >
+            <GoogleLogin
+          clientId={clientId}
+          buttonText="Sign in with Google"
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          cookiePolicy={'single_host_origin'}
+          isSignedIn={false}/>
+          </div>
           <form className="bg-light rounded  p-sm-3 mx-5 my-4">
             <div className="mb-3">
               <label htmlFor="username" className="form-label">

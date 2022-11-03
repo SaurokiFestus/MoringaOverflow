@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App vh-100">
       <BrowserRouter>
-        <Navbar user={user} setWordEntered={setWordEntered} />
+        <Navbar user={user} setUser={setUser} setWordEntered={setWordEntered} />
         <Routes>
           <Route exact="true" path="/" element={<Home />} />
           <Route
