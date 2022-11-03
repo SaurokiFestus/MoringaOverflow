@@ -1,46 +1,46 @@
 import React, {useState, useEffect} from "react";
 
 
-function Profile({user}) {
+function Profile() {
 
-  const [formData, setFormData] = useState({
-    full_name: '',
-    email: '',
-    age: '',
-    bio: '',
-  });
-  
+//   const [formData, setFormData] = useState({
+//     full_name: '',
+//     email: '',
+//     age: '',
+//     bio: '',
+//   });
+
   const flowColor = { backgroundColor: "#f1f2f3" };
-  const [userProfile, setProfile] = useState({});
+//   const [profile, setProfile] = useState({});
 
-  useEffect(() => {
-    fetch(`/profiles/${user.id}`)
-    .then(r => {
-      if (r.ok) {
-        r.json().then((user) => {
-          setProfile(user)
+//   useEffect(() => {
+//     fetch(`/profiles/${user.id}`)
+//     .then(r => {
+//       if (r.ok) {
+//         r.json().then((user) => {
+//           setProfile(user)
           
-        });
-      }
-    });
-  }, [])
+//         });
+//       }
+//     });
+//   }, [])
 
-  console.log(user)
+//   console.log(user)
 
-  function handleUpdateUser() {
-    fetch(`/profiles/${user.id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      full_name: formData.full_name,
-      email: formData.email,
-      age: formData.age,
-      bio: formData.bio
-    }),
-  })
-  }
+//   function handleUpdateUser() {
+//     fetch(`/profiles/${user.id}`, {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       full_name: formData.full_name,
+//       email: formData.email,
+//       age: formData.age,
+//       bio: formData.bio
+//     }),
+//   })
+//   }
 
 //   function deleteProfile(id){
 //     fetch(`/users/${id}`,{
@@ -48,11 +48,11 @@ function Profile({user}) {
 //     })
 //   }
 
-  function handleChange(e){
-    setFormData({
-        ...formData, [e.target.name]: e.target.value,
-    });
-  }
+//   function handleChange(e){
+//     setFormData({
+//         ...formData, [e.target.name]: e.target.value,
+//     });
+//   }
 
   return (
     <div className="container-fluid vh-100" style={flowColor}>
@@ -71,7 +71,7 @@ function Profile({user}) {
                 Display name
               </label>
               <input type="text" className="form-control">
-                {userProfile?.full_name}
+                {/* {user?.profile.full_name} */}
                 </input>
             </div>
             <div className="mb-3">
@@ -79,7 +79,7 @@ function Profile({user}) {
                 Email
               </label>
               <input type="text" className="form-control">
-                {userProfile?.email}
+                {/* {user?.profile.email} */}
                 </input>
             </div>
             <div className="mb-3">
@@ -87,7 +87,7 @@ function Profile({user}) {
                 Age
               </label>
               <input type="text" className="form-control">
-                {userProfile?.age}
+                {/* {user?.profile.age} */}
                 </input>
             </div>
             <div className="mb-3">
@@ -95,7 +95,7 @@ function Profile({user}) {
                 Bio
               </label>
               <input type="text" className="form-control">
-                {userProfile?.bio}
+                {/* {user?.profile.bio} */}
                 </input>
             </div>
             
