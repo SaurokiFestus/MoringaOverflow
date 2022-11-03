@@ -8,7 +8,7 @@ function Navbar({ user, setUser, setWordEntered }) {
 
   const handleLogout = (e) => {
 
-    fetch(`/logout`, {
+    fetch(`http://127.0.0.1:3000/logout`, {
       method: "DELETE"
     })
     .then((res)=>{
