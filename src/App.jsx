@@ -40,7 +40,7 @@ function App() {
   console.log(questionForm);
 
   return (
-    <div className="App">
+    <div className="App vh-100">
       <BrowserRouter>
         <Navbar user={user} setWordEntered={setWordEntered} />
         <Routes>

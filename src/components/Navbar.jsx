@@ -9,32 +9,19 @@ function Navbar({ user, setWordEntered }) {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-light">
         <div className="container-fluid">
-          <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
-            <ul className="navbar-nav">
-              <li className="nav-item dropdown">
+          <div className="navbar" id="navbarNavDarkDropdown">
+            <ul className="nav">
+              <li className="">
                 <a
-                  className="nav-link dropdown-toggle"
+                  className=""
                   href="#"
-                  id="navbarDarkDropdownMenuLink"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i style={flowColor} class="bi bi-list  m-3"></i>
-                  <Link
-                    to="/"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <i style={flowColor} class="bi bi-bezier m-2"></i>
-
-                    {/* <i class="bi bi-stack-overflow m-2"></i> */}
-                    <span className="text-dark fs-5 mx-2">Moringa Flow</span>
-                  </Link>
+                  <i style={flowColor} class="bi bi-list"></i>
                 </a>
-                <ul
-                  className="dropdown-menu dropdown-menu-primary"
-                  aria-labelledby="navbarDarkDropdownMenuLink"
-                >
+                <ul className="dropdown-menu dropdown-menu-primary">
                   <li>
                     <a className="dropdown-item " href="/">
                       Home
@@ -53,6 +40,51 @@ function Navbar({ user, setWordEntered }) {
                 </ul>
               </li>
             </ul>
+          </div>
+
+          <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul className="navbar-nav">
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDarkDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <Link
+                    to="/"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <i style={flowColor} class="bi bi-bezier mx-3"></i>
+
+                    {/* <i class="bi bi-stack-overflow m-2"></i> */}
+                    <span className="text-dark fs-5 mx-3">Moringa Flow</span>
+                  </Link>
+                </a>
+                {/* <ul
+                  className="dropdown-menu dropdown-menu-primary"
+                  aria-labelledby="navbarDarkDropdownMenuLink"
+                >
+                  <li>
+                    <a className="dropdown-item " href="/">
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="/questions">
+                      Questions
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="/about">
+                      About
+                    </a>
+                  </li>
+                </ul> */}
+              </li>
+            </ul>
             <Link
               to="/questions"
               style={{ textDecoration: "none", color: "black" }}
@@ -63,7 +95,7 @@ function Navbar({ user, setWordEntered }) {
               to="/about"
               style={{ textDecoration: "none", color: "black" }}
             >
-              <h5 className="m-2">About</h5>
+              <h5 className="mx-4 m-2">About</h5>
             </Link>
           </div>
 
