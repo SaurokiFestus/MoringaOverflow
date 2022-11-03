@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import Questions from "./components/Questions";
 import EachQuestion from "./components/EachQuestion";
 import AskQuestion from "./components/AskQuestion";
-// import Profile from "./components/Profile";
+import Profile from "./components/Profile";
 import About from "./components/About";
 
 function App() {
@@ -87,7 +87,7 @@ function App() {
           ) : (
             <Route exact="true" path="/" element={<Home />} />
           )} */}
-           {/* <Route path='/profile' element={<Profile user={user}/>}/> */}
+           <Route path='/profile' element={<Profile user={setUser}/>}/>
         </Routes>
       </BrowserRouter>
       <Footer />
