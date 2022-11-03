@@ -87,7 +87,9 @@ function Navbar({ user, setUser, setWordEntered }) {
                     <i style={flowColor} class="bi bi-bezier mx-3"></i>
 
                     {/* <i class="bi bi-stack-overflow m-2"></i> */}
-                    <span className="text-dark fs-5 mx-3">Moringa Flow</span>
+                    <span className="text-dark fs-5 mx-3">
+                      Moringa OverFlow
+                    </span>
                   </Link>
                 </a>
                 {/* <ul
