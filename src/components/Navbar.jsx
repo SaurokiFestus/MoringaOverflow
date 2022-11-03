@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import Questions from "./Questions"
 
-function Navbar({ user, setWordEntered }) {
+function Navbar({ user, setUser, setWordEntered }) {
   const flowColor = { color: "#f48d4f", fontSize: "20px" };
   let navigate = useNavigate()
 
