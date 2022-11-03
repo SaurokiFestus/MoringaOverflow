@@ -26,7 +26,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
     if (user) {
       console.log(questionForm);
       if (tg) {
-        fetch("http://127.0.0.1:3000/questions", {
+        fetch("https://vast-wildwood-37554.herokuapp.com/questions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -43,7 +43,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
           }
         });
       } else {
-        fetch(`http://127.0.0.1:3000/questions/${questionForm.id}`, {
+        fetch(`https://vast-wildwood-37554.herokuapp.com/questions/${questionForm.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

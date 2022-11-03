@@ -25,7 +25,7 @@ const questions = ({ user, wordEntered }) => {
   console.log(user)
 
   useEffect(() => {
-    fetch("/questions", {
+    fetch("https://vast-wildwood-37554.herokuapp.com/questions", {
       method: "GET",
       headers: {
         accept: "application/json",
@@ -41,7 +41,7 @@ const questions = ({ user, wordEntered }) => {
 
   function handleDelete(id) {
     console.log("delete");
-    fetch(`http://127.0.0.1:3000/questions/${id}`, {
+    fetch(`https://vast-wildwood-37554.herokuapp.com/questions/${id}`, {
       method: "DELETE",
     });
     const updatedEvents = questions?.filter((one) => one.id !== id);
@@ -49,7 +49,7 @@ const questions = ({ user, wordEntered }) => {
   }
   function increaseViews(id) {
     console.log(id);
-    fetch(`http://127.0.0.1:3000/views/${id}`, {
+    fetch(`https://vast-wildwood-37554.herokuapp.com/views/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

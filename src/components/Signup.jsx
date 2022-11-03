@@ -26,7 +26,7 @@ function Signup() {
 
     const userCreds = { ...formData };
 
-    fetch("http://localhost:3000/signup", {
+    fetch("https://vast-wildwood-37554.herokuapp.com/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

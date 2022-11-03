@@ -31,7 +31,7 @@ export default function AnswerQuiz({
     e.preventDefault();
     if (user) {
       if (postEdit) {
-        fetch("http://127.0.0.1:3000/answers", {
+        fetch("https://vast-wildwood-37554.herokuapp.com/answers", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function AnswerQuiz({
           }
         });
       } else {
-        fetch(`http://127.0.0.1:3000/answers/${askedQuiz.id}`, {
+        fetch(`https://vast-wildwood-37554.herokuapp.com/answers/${askedQuiz.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

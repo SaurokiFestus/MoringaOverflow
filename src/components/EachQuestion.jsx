@@ -20,7 +20,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
   });
 
   const fetchDetails = () => {
-    fetch(`http://127.0.0.1:3000/questions/${id}`)
+    fetch(`https://vast-wildwood-37554.herokuapp.com/questions/${id}`)
       .then((res) => res.json())
       .then((quiz) => {
         setQuestion(quiz);
@@ -58,7 +58,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
       downvote: answer.downvote - 1,
     };
     if (user) {
-      fetch(`http://127.0.0.1:3000/answers/${id}/decrease`, {
+      fetch(`https://vast-wildwood-37554.herokuapp.com/answers/${id}/decrease`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +83,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
       downvote: answer.downvote - 1,
     };
     if (user) {
-      fetch(`http://127.0.0.1:3000/answers/${id}/increase`, {
+      fetch(`https://vast-wildwood-37554.herokuapp.com/answers/${id}/increase`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -132,7 +132,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
 
   function handleDelete(id) {
     console.log("delete");
-    fetch(`http://127.0.0.1:3000/answers/${id}`, {
+    fetch(`https://vast-wildwood-37554.herokuapp.com/answers/${id}`, {
       method: "DELETE",
     });
     const updatedEvents = answers?.filter((one) => one.id !== id);
