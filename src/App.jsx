@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import Questions from "./components/Questions";
 import EachQuestion from "./components/EachQuestion";
 import AskQuestion from "./components/AskQuestion";
-import Profile from "./components/Profile";
+// import Profile from "./components/Profile";
 import About from "./components/About";
 
 function App() {
@@ -82,12 +82,12 @@ function App() {
           />
           <Route exact="true" path="/about" element={<About />} />
           <Route exact="true" path="/sidebar" element={<SideBar />} />
-          {user ? (
+          {/* {user ? (
             <Route exact="true" path="/profile" element={<Profile />} />
           ) : (
             <Route exact="true" path="/" element={<Home />} />
           )}
-           <Route path='/profile' element={<Profile user={user}/>}/>
+           <Route path='/profile' element={<Profile user={user}/>}/> */}
         </Routes>
       </BrowserRouter>
       <Footer />
