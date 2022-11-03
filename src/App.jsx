@@ -85,7 +85,7 @@ function App() {
           {user ? (
             <Route exact="true" path="/profile" element={<Profile />} />
           ) : (
-            <Route exact="true" path="/" element={<Home />} />
+            <Route exact="true" path="/home" element={<Home />} />
           )}
         </Routes>
       </BrowserRouter>
