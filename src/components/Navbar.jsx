@@ -33,24 +33,35 @@ function Navbar({ user, setUser, setWordEntered }) {
                 >
                   <i style={flowColor} class="bi bi-list"></i>
                 </a>
-                <ul className="dropdown-menu dropdown-menu-primary">
+                <ul className="dropdown-menu dropdown-menu-primary text-decoration-none">
                   <li>
-                    <a className="dropdown-item " href="/">
-                      <Link to="/">Home</Link>
+                    <a className="dropdown-item" href="/">
+                      <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        to="/"
+                      >
+                        Home
+                      </Link>
                     </a>
                   </li>
                   <li>
-                    <a
-                      className="dropdown-item text-decoration-none"
-                      href="#"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Link to="questions">Questions</Link>
+                    <a className="dropdown-item " href="#">
+                      <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        to="questions"
+                      >
+                        Questions
+                      </Link>
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      <Link to="about">About</Link>
+                      <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        to="about"
+                      >
+                        About
+                      </Link>
                     </a>
                   </li>
                 </ul>
