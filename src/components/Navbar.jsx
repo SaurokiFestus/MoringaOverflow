@@ -1,9 +1,23 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import Questions from "./Questions"
 
 function Navbar({ user, setWordEntered }) {
   const flowColor = { color: "#f48d4f", fontSize: "20px" };
+
+  function handleLogout (e) {
+
+        fetch(`/logout`, {
+            method: "DELETE"
+        })
+            .then((res)=>{
+                if (res.ok){
+                    setUser(null)
+                }
+            })
+        navigate('/signup')
+    
+    }
 
   return (
     <div>
@@ -84,7 +98,9 @@ function Navbar({ user, setWordEntered }) {
                     {user.username.charAt(0).toUpperCase()}
                   </button>
                 </Link>
-                <button class="btn btn-primary m-1">LogOut</button>
+                <Link to="/login">  
+                  <button class="btn btn-primary m-1" onClick={()=> handleLogout()}>LogOut</button>
+                </Link>
               </>
             ) : (
               <>
