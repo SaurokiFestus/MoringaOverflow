@@ -7,16 +7,15 @@ function Navbar({ user, setWordEntered }) {
 
   function handleLogout (e) {
 
-        fetch(`/logout`, {
-            method: "DELETE"
-        })
-            .then((res)=>{
-                if (res.ok){
-                    setUser(null)
-                }
-            })
-        navigate('/signup')
-    
+    fetch(`/logout`, {
+      method: "DELETE"
+    })
+    .then((res)=>{
+      if (res.ok){
+        setUser(null)
+        }
+      })
+      navigate('/signup')  
     }
 
   return (
