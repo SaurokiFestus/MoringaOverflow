@@ -1,25 +1,39 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 // import Questions from "./Questions"
 
-function Navbar({ user, setWordEntered }) {
+function Navbar({ user, setUser, setWordEntered }) {
   const flowColor = { color: "#f48d4f", fontSize: "20px" };
+  let navigate = useNavigate()
 
-  let navigate = useNavigate();
+  const handleLogout = (e) => {
+
+    fetch(`/logout`, {
+      method: "DELETE"
+    })
+    .then((res)=>{
+      if (res.ok){
+        setUser(null)
+        }
+      })
+    navigate('/login')  
+  }
+  
+
+  // let navigate = useNavigate();
 
   // console.log(user.name)
 
-  function handleLogout() {
-    fetch(`http://127.0.0.1:3000/logout`, {
-      method: "DELETE",
-    }).then((res) => {
-      if (res.ok) {
-        setUser(null);
-      }
-    });
-    // navigate('/signup')
-  }
+  // function handleLogout() {
+  //   fetch(`http://127.0.0.1:3000/logout`, {
+  //     method: "DELETE",
+  //   }).then((res) => {
+  //     if (res.ok) {
+  //       setUser(null);
+  //     }
+  //   });
+  //   navigate('/signup')
+  // }
 
   return (
     <div>
@@ -27,7 +41,7 @@ function Navbar({ user, setWordEntered }) {
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="">
             <ul className="navbar-nav">
-              <li className="">
+              <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle  navbar-expand-lg navbar-expand-sm"
                   href="#"
@@ -93,13 +107,14 @@ function Navbar({ user, setWordEntered }) {
           <span>
             {user ? (
               <>
-                <a href="/profile" class="btn btn-primary m-1">
-                  {user.username.charAt(0)}
-                </a>
-
-                <button class="btn btn-primary m-1" onClick={handleLogout}>
-                  LogOut
-                </button>
+                <Link to="/profile">
+                  <button class="btn btn-primary m-1">
+                    {user.username.charAt(0).toUpperCase()}
+                  </button>
+                </Link>
+                <Link to="/login">  
+                  <button class="btn btn-primary m-1" onClick={(e)=> handleLogout()}>LogOut</button>
+                </Link>
               </>
             ) : (
               <>
