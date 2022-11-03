@@ -7,7 +7,7 @@ function Navbar({ user, setUser, setWordEntered }) {
   let navigate = useNavigate();
 
   const handleLogout = (e) => {
-    fetch(`/logout`, {
+    fetch(`https://vast-wildwood-37554.herokuapp.com/logout`, {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {

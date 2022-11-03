@@ -13,7 +13,7 @@ const Login = ({ setUser }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await fetch("/login", {
+    await fetch("https://vast-wildwood-37554.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
