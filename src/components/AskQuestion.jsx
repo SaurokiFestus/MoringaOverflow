@@ -2,9 +2,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import EditorContainer from "./EditorContainer";
+import Error from "./Error";
 
 function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState([]);
+
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -12,6 +15,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
       ...questionForm,
       [name]: value,
       user_id: user?.id,
+      views: 0,
     });
   }
 
@@ -32,8 +36,10 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
           if (r.ok) {
             r.json().then((data) => console.log(data));
             setQuestionForm({ title: "", body: "" });
+            setErrors("");
+            navigate("/questions");
           } else {
-            r.json().then((error) => console.log(Object.values(error)));
+            r.json().then((error) => setErrors(error.errors));
           }
         });
       } else {
@@ -49,7 +55,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
             setQuestionForm({ title: "", body: "" });
             setTg(true);
           } else {
-            r.json().then((error) => console.log(Object.values(error)));
+            r.json().then((error) => setErrors(error.errors));
           }
         });
       }
@@ -103,6 +109,8 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
             ></textarea>
           </div>
         </div>
+        {errors.length > 0 && <Error errors={errors} />}
+
         <Link to="/questions">
           <button
             onClick={handleSubmit}

@@ -22,10 +22,10 @@ const questions = ({ user, wordEntered }) => {
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
   const currentQuizs = filteredData.slice(indexOfFirstQuiz, indexOfLastQuiz);
-  // console.log(questions)
+  console.log(user)
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/questions", {
+    fetch("/questions", {
       method: "GET",
       headers: {
         accept: "application/json",
@@ -47,6 +47,19 @@ const questions = ({ user, wordEntered }) => {
     const updatedEvents = questions?.filter((one) => one.id !== id);
     setQuestions(updatedEvents);
   }
+  function increaseViews(id) {
+    console.log(id);
+    fetch(`http://127.0.0.1:3000/views/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data));
+  }
+
+  console.log(questions)
 
   return (
     <div className="my-5 ">
@@ -85,11 +98,11 @@ const questions = ({ user, wordEntered }) => {
           return (
             <>
               <div key={quiz.id} className="row">
-                <div className="col-2 text-end">
+                <div className="col-2  text-end">
                   <ul className="list-unstyled">
                     <li>{result} votes</li>
                     <li>{quiz.answers?.length} Answers</li>
-                    <li>6 views</li>
+                    <li>{quiz.views} views</li>
                     <span>
                       {user?.id === quiz.user_id ? (
                         <button
@@ -107,14 +120,20 @@ const questions = ({ user, wordEntered }) => {
                 <div
                   key={quiz.id}
                   style={{ backgroundColor: "#f6f6f6" }}
-                  className="col-9 col-sm-8"
+                  className="col-9"
                 >
+          
                   <ul className="list-unstyled">
                     <Link
                       to={`/question/${quiz.id}`}
                       style={{ textDecoration: "none", color: "black" }}
                     >
-                      <li style={{ color: "#0b7dda" }}>{quiz.title}</li>
+                      <li
+                        onClick={() => increaseViews(quiz.id)}
+                        style={{ color: "#0b7dda" }}
+                      >
+                        {quiz.title}
+                      </li>
                     </Link>
                     <li>{quiz.body}</li>
                   </ul>

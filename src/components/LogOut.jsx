@@ -6,23 +6,23 @@ function LogOut({ user, setUser }) {
 
     // console.log(user.name)
 
-    function handleLogout (e) {
+    // function handleLogout () {
 
-        fetch(`/logout`, {
-            method: "DELETE"
-        })
-            .then((res)=>{
-                if (res.ok){
-                    setUser(null)
-                }
-            })
-        navigate('/signup')
+    //     fetch(`3000http://127.0.0.1:/logout`, {
+    //         method: "DELETE"
+    //     })
+    //         .then((res)=>{
+    //             if (res.ok){
+    //                 setUser(null)
+    //             }
+    //         })
+    //     navigate('/signup')
     
-    }
+    // }
 
     return (
         <div>
-            <Link to="/signout" onClick={()=> handleLogout() }>Sign Out</Link>
+            {/* <Link to="/signout" onClick={()=> handleLogout() }>Sign Out</Link> */}
         </div>
     )
 }

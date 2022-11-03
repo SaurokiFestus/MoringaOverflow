@@ -11,6 +11,7 @@ function Signup() {
     email: "",
   });
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -33,27 +34,32 @@ function Signup() {
       body: JSON.stringify({
         username: formData.username,
         password: formData.password,
-        email: formData.email,
+        email: formData.email
       }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
           console.log(user);
         });
+        navigate("/login");
       } else {
         res.json().then((errors) => {
-          console.log(errors);
+          setErrors(errors);
         });
       }
     });
   }
-
+  // console.log(errors);
   return (
-    <div className="container-fluid" style={flowColor}>
+    <div className="container-fluid">
       <div className="row">
         <div className="col-lg-6 col-sm-10 d-flex align-items-center p-5">
           <div>
-            <h1>Join the Moringa Overflow community</h1>
+            <h1>
+              Join the
+              <span style={{ color: "#f48d4f" }}> Moringa Overflow </span>
+              community
+            </h1>
             <h4>Get unstuck — ask a question</h4>
             <h5>Unlock new privileges like voting and commenting</h5>
             <h6>Save your favorite tags, filters, and jobs</h6>
@@ -96,7 +102,7 @@ function Signup() {
                 onChange={handleChange}
               />
             </div>
-            <div className="mb-3">
+            <div className="mb-2">
               <label htmlFor="exampleInputPassword1" className="form-label">
                 Password
               </label>
@@ -109,13 +115,11 @@ function Signup() {
                 onChange={handleChange}
               />
             </div>
-            <div className=" form-check"></div>
-            {errors.map((err) => (
-              <Error key={err} err={err} />
-            ))}
+            <Error errors={errors} />
+            {/* {errormessage} */}
             <button
               type="submit"
-              className="btn bg-info  mb-4"
+              className="btn bg-info  my-4"
               onClick={handleSubmit}
             >
               Sign Up

@@ -19,7 +19,7 @@ export default function Home() {
               knowledge.
             </h1>
             <p>
-              Our public platform 
+              Our public platform
               <span className="mx-1 text-secondary">
                 serves 100 million people every month,
               </span>
@@ -29,7 +29,7 @@ export default function Home() {
             <p>
               Our asynchronous knowledge management and collaboration offering,
               <span className="text-secondary">
-                Stack Overflow for Developers
+                Moringa Overflow for Developers
               </span>
               , is transforming how people work.
             </p>
@@ -75,16 +75,16 @@ export default function Home() {
       <div className="container my-3">
         <div className="row mt-5">
           <p className="col-lg-6 py-3 my-4">
-            Stack Overflow helps people find the answers they need, when they
+            Moringa Overflow helps people find the answers they need, when they
             need them. We're best known for our public Q&A platform that over
             100 million people visit every month to ask questions, learn, and
             share technical knowledge.
           </p>
           <p className="col-lg-6 py-3 my-4">
             Our products and tools empower people to find what they need to
-            develop technology at work or at home. These products include, Stack
-            Overflow for Teams, Stack Overflow Advertising, Collectives™ on
-            Stack Overflow, and Stack Overflow Talent.
+            develop technology at work or at home. These products include,
+            Moringa Overflow for Teams, Moringa Overflow Advertising,
+            Collectives™ on Moringa Overflow, and Moringa Overflow Talent.
           </p>
         </div>
       </div>
@@ -110,7 +110,7 @@ export default function Home() {
             <div class="card-body">
               <h5 class="card-title">Our Public Platform</h5>
               <p class="card-text">
-                Where developers and technologies go to gain and share knowledgr
+                Where developers and technologies go to gain and share knowledge
               </p>
               <a href="/questions" class="btn btn-primary">
                 Participate <i class="bi bi-box-arrow-up-right"></i>
