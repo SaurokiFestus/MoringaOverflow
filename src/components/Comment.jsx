@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Error from "./Error";
 
 export default function Comment({ x, answer, user }) {
   const [newC, setNewC] = useState({
@@ -8,11 +8,11 @@ export default function Comment({ x, answer, user }) {
     user_id: user?.id,
     answer_id: answer.id,
   });
+  const [errors, setErrors] = useState();
   const [comments, setComments] = useState(x);
   const [showComments, setShowComments] = useState(false);
   const [postEdit, setPostEdit] = useState(true);
   const navigate = useNavigate();
-
 
   function addList(added) {
     setComments([...comments, added]);
@@ -42,12 +42,15 @@ export default function Comment({ x, answer, user }) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newC),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            addList(data);
+        }).then((r) => {
+          if (r.ok) {
+            r.json().then((data) => addList(data));
             setNewC({ body: "", user_id: 2, answer_id: answer.id });
-          });
+            setErrors("");
+          } else {
+            r.json().then((error) => setErrors(error.errors));
+          }
+        });
       } else {
         console.log(newC);
         fetch(`http://127.0.0.1:3000/comments/${newC.id}`, {
@@ -63,7 +66,7 @@ export default function Comment({ x, answer, user }) {
             setPostEdit(true);
           });
       }
-    }else{
+    } else {
       navigate("/login");
     }
   }
@@ -146,6 +149,8 @@ export default function Comment({ x, answer, user }) {
             <ul className="list-unstyled">{body}</ul>
 
             <hr className=""></hr>
+            <li className="text-danger list-unstyled pb-2 px-1">{errors}</li>
+
             <div class="col-10 d-flex">
               <form>
                 <input

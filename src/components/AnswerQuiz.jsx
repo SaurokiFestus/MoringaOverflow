@@ -10,9 +10,10 @@ export default function AnswerQuiz({
   askedQuiz,
   setAskedQuiz,
   user,
+  id,
 }) {
   const navigate = useNavigate();
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState([]);
 
   function handleChange(e) {
     let name = e.target.name;
@@ -21,8 +22,10 @@ export default function AnswerQuiz({
       ...askedQuiz,
       [name]: value,
       user_id: user?.id,
+      question_id: id,
     });
   }
+  console.log(askedQuiz);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,6 +41,7 @@ export default function AnswerQuiz({
           if (r.ok) {
             r.json().then((data) => AddAnswer(data));
             setAskedQuiz({ body: "" });
+            setErrors("");
           } else {
             r.json().then((error) => setErrors(error.body));
           }
@@ -54,8 +58,9 @@ export default function AnswerQuiz({
             r.json().then((data) => updateList(data));
             setAskedQuiz({ body: "" });
             setPostEdit(true);
+            setErrors("");
           } else {
-            r.json().then((error) => setErrors(error));
+            r.json().then((error) => setErrors(error.body));
           }
         });
       }
@@ -63,6 +68,7 @@ export default function AnswerQuiz({
       navigate("/login");
     }
   }
+  // console.log(errors);
 
   return (
     <div>
@@ -82,7 +88,7 @@ export default function AnswerQuiz({
             ></textarea>
           </div>
         </div>
-        <Error errors={errors} />
+        {errors.length > 0 && <Error errors={errors} />}
 
         <button
           onClick={handleSubmit}
