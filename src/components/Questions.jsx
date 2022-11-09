@@ -117,7 +117,7 @@ const questions = ({ user, wordEntered }) => {
                 <div
                   key={quiz.id}
                   style={{ backgroundColor: "#f6f6f6" }}
-                  className="col-9"
+                  className="col"
                 >
                   <ul className="list-unstyled">
                     <Link

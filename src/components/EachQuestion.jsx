@@ -152,7 +152,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
   return (
     <Fragment>
       <div className="container d-flex">
-        <SideBar/>
+        {/* <SideBar/> */}
         <div>
         <div class=" mt-3 d-flex justify-content-between">
           <h2>{question.title}</h2>

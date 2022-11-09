@@ -1,5 +1,4 @@
 .side-bar-container {
-  width: 100px;
   margin-left: 10px;
   flex-shrink: 0;
   z-index: 1;
@@ -18,7 +17,7 @@
       p {
         padding: 5px 5px 5px 5px;
         border-right: 3px;
-        font-size: 13px;
+        font-size: 18px;
       }
      
     }
@@ -30,15 +29,13 @@
 
       p {
         display: flex;
-        padding: 5px 30px 5px 10px;
+        // padding: 5px 30px 5px 10px;
         margin-bottom: 5px;
         border-right: 3px solid transparent;
-        width: 160px;
-        font-size: 13px;
+        width: 300px;
+        font-size: 18px;
       }
-      .icon {
-        margin-right: 5px;
-      }
+     
      
 
         .icon {
@@ -57,7 +54,7 @@
         width: 100%;
         display: flex;
         align-items: center;
-        font-size: 13px;
+        font-size: 18px;
       }
      
     }
