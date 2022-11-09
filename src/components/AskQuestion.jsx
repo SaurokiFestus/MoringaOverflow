@@ -1,13 +1,12 @@
 // import React, { Fragment } from "react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import EditorContainer from "./EditorContainer";
+import EditorContainer from "./EditorContainer";
 import Error from "./Error";
 
 function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
-
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -26,7 +25,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
     if (user) {
       console.log(questionForm);
       if (tg) {
-        fetch("https://vast-wildwood-37554.herokuapp.com/questions", {
+        fetch("http://127.0.0.1:3000/questions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -43,7 +42,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
           }
         });
       } else {
-        fetch(`https://vast-wildwood-37554.herokuapp.com/questions/${questionForm.id}`, {
+        fetch(`http://127.0.0.1:3000/questions/${questionForm.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -94,19 +93,23 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
             </div>
           </div>
           <div className="">
-            {/* <EditorContainer
+            <EditorContainer
+              body={questionForm.body}
               onChange={(text) => {
-                console.log(text);
+                setQuestionForm({
+                  ...questionForm,
+                  body: text
+                });
               }}
-            /> */}
-            <textarea
+            />
+            {/* <textarea
               name="body"
               value={questionForm.body}
               className="form-control"
               id="exampleFormControlTextarea1"
               rows="5"
               onChange={handleChange}
-            ></textarea>
+            ></textarea> */}
           </div>
         </div>
         {errors.length > 0 && <Error errors={errors} />}

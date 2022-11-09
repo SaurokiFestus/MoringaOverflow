@@ -22,10 +22,9 @@ const questions = ({ user, wordEntered }) => {
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
   const currentQuizs = filteredData.slice(indexOfFirstQuiz, indexOfLastQuiz);
-  console.log(user)
 
   useEffect(() => {
-    fetch("https://vast-wildwood-37554.herokuapp.com/questions", {
+    fetch("http://127.0.0.1:3000/questions", {
       method: "GET",
       headers: {
         accept: "application/json",
@@ -41,15 +40,14 @@ const questions = ({ user, wordEntered }) => {
 
   function handleDelete(id) {
     console.log("delete");
-    fetch(`https://vast-wildwood-37554.herokuapp.com/questions/${id}`, {
+    fetch(`http://127.0.0.1:3000/questions/${id}`, {
       method: "DELETE",
     });
     const updatedEvents = questions?.filter((one) => one.id !== id);
     setQuestions(updatedEvents);
   }
   function increaseViews(id) {
-    console.log(id);
-    fetch(`https://vast-wildwood-37554.herokuapp.com/views/${id}`, {
+    fetch(`http://127.0.0.1:3000/views/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +57,6 @@ const questions = ({ user, wordEntered }) => {
       .then((data) => console.log(data));
   }
 
-  console.log(questions)
 
   return (
     <div className="my-5 ">
@@ -122,7 +119,6 @@ const questions = ({ user, wordEntered }) => {
                   style={{ backgroundColor: "#f6f6f6" }}
                   className="col-9"
                 >
-          
                   <ul className="list-unstyled">
                     <Link
                       to={`/question/${quiz.id}`}
@@ -135,14 +131,19 @@ const questions = ({ user, wordEntered }) => {
                         {quiz.title}
                       </li>
                     </Link>
-                    <li>{quiz.body}</li>
+                    <div
+                      className="brief"
+                      dangerouslySetInnerHTML={{
+                        __html: quiz.body,
+                      }}
+                    ></div>
                   </ul>
                 </div>
 
                 <div>
                   <hr
-                    className="mx-5"
-                    tyle={{ size: "80px", width: "100%" }}
+                    className=""
+                    style={{ size: "80px", width: "100%" }}
                   ></hr>
                 </div>
               </div>

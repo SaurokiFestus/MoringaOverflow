@@ -41,6 +41,7 @@ function App() {
 
   return (
     <div className="App">
+
       <div className="main">
         <BrowserRouter>
           <Navbar
@@ -73,6 +74,11 @@ function App() {
               exact="true"
               path="/questions"
               element={<Questions user={user} wordEntered={wordEntered} />}
+            />
+            <Route
+              exact="true"
+              path="/side"
+              element={<SideBar/>}
             />
             <Route
               exact="true"
