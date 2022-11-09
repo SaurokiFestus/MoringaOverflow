@@ -82,9 +82,9 @@ export default function Home() {
           </p>
           <p className="col-lg-6 py-3 my-4">
             Our products and tools empower people to find what they need to
-            develop technology at work or at home. These products include,
-            Moringa Overflow for Teams, Moringa Overflow Advertising,
-            Collectives™ on Moringa Overflow, and Moringa Overflow Talent.
+            develop technology at work or at home. These products include, Moringa
+            Overflow for Teams, Moringa Overflow Advertising, Collectives™ on
+            Moringa Overflow, and Moringa Overflow Talent.
           </p>
         </div>
       </div>

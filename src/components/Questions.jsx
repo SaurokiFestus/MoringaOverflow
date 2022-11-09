@@ -102,7 +102,7 @@ const questions = ({ user, wordEntered }) => {
                   <ul className="list-unstyled">
                     <li>{result} votes</li>
                     <li>{quiz.answers?.length} Answers</li>
-                    <li>{quiz.views} views</li>
+                    <li>{quiz?.views} views</li>
                     <span>
                       {user?.id === quiz.user_id ? (
                         <button
