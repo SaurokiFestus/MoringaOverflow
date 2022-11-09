@@ -7,7 +7,11 @@ function Footer() {
   const bg = { backgroundColor: "#232629" };
 
   return (
-    <div className=" container-fluid text-white pt-4" id="footer" style={bg}>
+    <div
+      className=" container-fluid text-white pt-4 m-0"
+      id="footer"
+      style={bg}
+    >
       <div className="row">
         <div className="col-5  pl-5 ">
           <i style={icons} class="bi bi-bezier m-2"></i>
@@ -35,9 +39,9 @@ function Footer() {
             </a>
           </div>
         </div>
-      </div>
-      <div className="text-center p-3">
-        <p>Copyright 2022 MoringaOverflow All rights Reserved</p>
+        <div className="text-center ">
+          <p>Copyright 2022 MoringaOverflow All rights Reserved</p>
+        </div>
       </div>
     </div>
   );

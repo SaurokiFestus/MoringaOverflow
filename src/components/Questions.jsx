@@ -97,7 +97,7 @@ const questions = ({ user, wordEntered }) => {
           // console.log(result);
           return (
             <>
-              <div key={quiz.id} className="row">
+              <div key={quiz.id} className="row ">
                 <div className="col-2  text-end">
                   <ul className="list-unstyled">
                     <li>{result} votes</li>
