@@ -57,7 +57,6 @@ const questions = ({ user, wordEntered }) => {
       .then((data) => console.log(data));
   }
 
-
   return (
     <div className="my-5 ">
       <div class="container  mt-3 d-flex justify-content-between">
@@ -116,10 +115,12 @@ const questions = ({ user, wordEntered }) => {
                 </div>
                 <div
                   key={quiz.id}
-                  style={{ backgroundColor: "#f6f6f6" }}
                   className="col"
+                  style={{ backgroundColor: "#f6f6f6" }}
+                  
                 >
-                  <ul className="list-unstyled">
+                  <ul className="list-unstyled"                   
+>
                     <Link
                       to={`/question/${quiz.id}`}
                       style={{ textDecoration: "none", color: "black" }}
@@ -138,13 +139,23 @@ const questions = ({ user, wordEntered }) => {
                       }}
                     ></div>
                   </ul>
+
+                  {quiz.tag_list?.map(tag=>{
+                    return(
+                      <a href='' className="p-1 text-black rounded "
+                      style={{ backgroundColor: "#e0ecf4", marginRight:'10px',textDecoration: "none" }}
+
+                       >
+                  {tag}</a>
+                    )
+                  })}
+                  
                 </div>
+                
+                
 
                 <div>
-                  <hr
-                    className=""
-                    style={{ size: "80px", width: "100%" }}
-                  ></hr>
+                  <hr className="" style={{ size: "80px", width: "100%" }}></hr>
                 </div>
               </div>
             </>

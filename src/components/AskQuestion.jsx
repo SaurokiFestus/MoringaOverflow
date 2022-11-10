@@ -1,12 +1,16 @@
 // import React, { Fragment } from "react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EditorContainer from "./EditorContainer";
+import Select from 'react-select'
 import Error from "./Error";
 
 function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState();
+
   function handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -19,6 +23,107 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
   }
 
   console.log(questionForm);
+
+  function handleSelect(e) {
+    console.log(e)
+    setSelectedOptions(e);
+  }
+  console.log(selectedOptions)
+ const quiz_tags= [
+    {
+    value: "javascript",
+    label: "Javascript",
+
+    },
+    {
+    value: "html",
+    label: "HTML",
+        },
+    {
+    value: "python",
+    label: "Python",
+    },
+    {
+    value: "java",
+    label: "Java",
+    },
+    {
+    value: "c#",
+    label: "C#",
+    },
+    {
+    value: "php",
+    label: "PHP",
+    },
+    {
+    value: "android",
+    label: "Android",
+    },
+    {
+    value: "css",
+    label: "CSS",
+    },
+    {
+    value: "reactjs",
+    label: "ReactJs",
+    },
+    {
+    value: "sql",
+    label: "SQL",
+    },
+    {
+    value: "ruby-on-rails",
+    label: "Ruby on Rails", 
+    },
+    {
+    label: "Ruby",
+    value: "Ruby"
+    },
+    {
+    value: "django",
+    label: "Django",},
+    {
+    value: "json",
+    label: "JSON" 
+    },
+    {
+    value: "postgresql",
+    label: "PostgreSQL" 
+    },
+    {
+    value: "git",
+    label: "Git"
+    },
+    {
+    value: "database",
+    label: "Database",
+    },
+    {
+    value: "argorithm",
+    label: "An algorithm" 
+    },
+    {
+    value: "c++",
+    label: "C++",
+    }
+    ]
+    
+    
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:3000/tag_qs", {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((tags) => {
+          setTags(tags);
+        });
+      }
+    });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -85,6 +190,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
               className="form-control"
             />
           </div>
+          
           <div class="">
             <span className="font-weight-bold">Body</span>
             <div id="emailHelp" class="form-text">
@@ -98,10 +204,36 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
               onChange={(text) => {
                 setQuestionForm({
                   ...questionForm,
-                  body: text
+                  body: text,
                 });
               }}
             />
+            <div class="">
+              <span className="font-weight-bold">Tags</span>
+              <div class="form-text">
+                Add tags to describe what your question is about
+              </div>
+            </div>
+            <Select
+                options={quiz_tags}
+                placeholder="Select Tags"
+                value={selectedOptions}
+                onChange={handleSelect}
+                isSearchable={true}
+                isMulti
+                onBlur={() => {
+                  const mappedOptions = selectedOptions.map(
+                    (option) => option.value
+                  );
+                  setQuestionForm({
+                    ...questionForm,
+                    tag_list: mappedOptions.toString()
+                  });
+                }}
+              />
+         
+            
+         
             {/* <textarea
               name="body"
               value={questionForm.body}
