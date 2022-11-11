@@ -8,7 +8,7 @@ function Footer() {
 
   return (
     <div
-      className=" container-fluid text-white pt-4 m-0"
+      className=" <my-5 container-fluid text-white pt-4 m-0"
       id="footer"
       style={bg}
     >

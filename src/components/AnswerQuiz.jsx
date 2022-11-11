@@ -16,7 +16,8 @@ export default function AnswerQuiz({
 }) {
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
-
+  
+  console.log(askedQuiz)
   // function handleChange(e) {
   //   let name = e.target.name;
   //   let value = e.target.value;
@@ -42,7 +43,7 @@ export default function AnswerQuiz({
         }).then((r) => {
           if (r.ok) {
             r.json().then((data) => AddAnswer(data));
-            setAskedQuiz({ body: "" });
+            setAskedQuiz({ body: '' });
             setErrors("");
           } else {
             r.json().then((error) => setErrors(error.body));

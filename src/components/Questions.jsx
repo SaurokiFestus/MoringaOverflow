@@ -7,9 +7,13 @@ const questions = ({ user, wordEntered }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [quizsPerPage] = useState(5);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  
   const filteredData = questions.filter((quiz) => {
+    
+
     if (wordEntered === "") {
       return quiz;
+
     } else {
       return (
         quiz.title.toLowerCase().includes(wordEntered.toLowerCase()) ||
@@ -18,6 +22,13 @@ const questions = ({ user, wordEntered }) => {
     }
   });
 
+
+  function week(data){
+   const x = data.filter((a)=>{
+    return a.created_at=== new Date()- 2
+   })
+   console.log(x)
+  }
   // Get current posts
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
@@ -58,7 +69,7 @@ const questions = ({ user, wordEntered }) => {
   }
 
   return (
-    <div className="my-5 ">
+    <div className="my-2 ">
       <div class="container  mt-3 d-flex justify-content-between">
         <h2>All Questions</h2>
 
@@ -67,19 +78,37 @@ const questions = ({ user, wordEntered }) => {
         </Link>
       </div>
 
-      <div className="container">
-        {questions.length === 0 ? (
-          <>
-            <div class="spinner-border text-primary mx-2" role="status"></div>
-            <span class="">Loading...</span>
-          </>
-        ) : (
-          ""
-        )}
-        <p>{questions?.length} questions</p>
-        <p className="text-warning">
-          {currentQuizs?.length === 0 ? "No record" : ""}
-        </p>
+      <div className="container d-flex justify-content-between">
+        <div>
+          {questions.length === 0 ? (
+            <>
+              <div class="spinner-border text-primary mx-2" role="status"></div>
+              <span class="">Loading...</span>
+            </>
+          ) : (
+            ""
+          )}
+          <p>{questions?.length} questions</p>
+          <p className="text-warning">
+            {currentQuizs?.length === 0 ? "No record" : ""}
+          </p>
+        </div>
+
+        <div
+          class="btn-group "
+          role="group"
+          aria-label="Basic example"
+        >
+          <button type="button" class="btn btn-primary border-secondary">
+            Today
+          </button>
+          <button type="button " class="btn btn-primary border-secondary" onClick={()=>week(questions)}>
+            Week
+          </button>
+          <button type="button" class="btn btn-primary border-secondary">
+            Month
+          </button>
+        </div>
       </div>
 
       <div>
@@ -117,10 +146,8 @@ const questions = ({ user, wordEntered }) => {
                   key={quiz.id}
                   className="col"
                   style={{ backgroundColor: "#f6f6f6" }}
-                  
                 >
-                  <ul className="list-unstyled"                   
->
+                  <ul className="list-unstyled">
                     <Link
                       to={`/question/${quiz.id}`}
                       style={{ textDecoration: "none", color: "black" }}
@@ -140,19 +167,22 @@ const questions = ({ user, wordEntered }) => {
                     ></div>
                   </ul>
 
-                  {quiz.tag_list?.map(tag=>{
-                    return(
-                      <a href='' className="p-1 text-black rounded "
-                      style={{ backgroundColor: "#e0ecf4", marginRight:'10px',textDecoration: "none" }}
-
-                       >
-                  {tag}</a>
-                    )
+                  {quiz.tag_list?.map((tag) => {
+                    return (
+                      <a
+                        href=""
+                        className="p-1 text-black rounded "
+                        style={{
+                          backgroundColor: "#e0ecf4",
+                          marginRight: "10px",
+                          textDecoration: "none",
+                        }}
+                      >
+                        {tag}
+                      </a>
+                    );
                   })}
-                  
                 </div>
-                
-                
 
                 <div>
                   <hr className="" style={{ size: "80px", width: "100%" }}></hr>

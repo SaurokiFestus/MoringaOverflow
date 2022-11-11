@@ -29,7 +29,7 @@ export default class EditorContainer extends Component {
 
     console.log(contentState)
     return (
-      <div>
+      <div className="">
         <Editor 
           editorState={editorState}
           wrapperClassNamdangerouslySetInnerHTMLe="wrapperClassName"
