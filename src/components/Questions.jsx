@@ -4,16 +4,14 @@ import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 const questions = ({ user, wordEntered }) => {
   const [questions, setQuestions] = useState([]);
+  const [mq, setMq] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [quizsPerPage] = useState(5);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  
-  const filteredData = questions.filter((quiz) => {
-    
 
+  const filteredData = questions.filter((quiz) => {
     if (wordEntered === "") {
       return quiz;
-
     } else {
       return (
         quiz.title.toLowerCase().includes(wordEntered.toLowerCase()) ||
@@ -21,14 +19,43 @@ const questions = ({ user, wordEntered }) => {
       );
     }
   });
+  let now = new Date();
 
+  function today(arr) {
+    let last7Days = new Date(new Date().getTime() - 1 * 24 * 60 * 60 * 1000);
+    const data = arr.filter(
+      (p) =>
+        new Date(p.created_at) <= now && new Date(p.created_at) >= last7Days
+    );
 
-  function week(data){
-   const x = data.filter((a)=>{
-    return a.created_at=== new Date()- 2
-   })
-   console.log(x)
+    setQuestions(data);
   }
+
+  function week(arr) {
+    let last7Days = new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000);
+
+    const data = arr.filter(
+      (p) =>
+        new Date(p.created_at) <= now && new Date(p.created_at) >= last7Days
+    );
+
+    setQuestions(data);
+  }
+  function month(arr) {
+    var date = new Date(),
+      y = date.getFullYear(),
+      m = date.getMonth();
+    var firstDay = new Date(y, m, 1);
+    const data = arr.filter(
+      (p) => new Date(p.created_at) <= now && new Date(p.created_at) >= firstDay
+    );
+
+    setQuestions(data);
+  }
+  function AllData(arr) {
+    setQuestions(arr);
+  }
+
   // Get current posts
   const indexOfLastQuiz = currentPage * quizsPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizsPerPage;
@@ -44,6 +71,7 @@ const questions = ({ user, wordEntered }) => {
       if (r.ok) {
         r.json().then((quizs) => {
           setQuestions(quizs);
+          setMq(quizs);
         });
       }
     });
@@ -94,19 +122,34 @@ const questions = ({ user, wordEntered }) => {
           </p>
         </div>
 
-        <div
-          class="btn-group "
-          role="group"
-          aria-label="Basic example"
-        >
-          <button type="button" class="btn btn-primary border-secondary">
+        <div class="btn-group " role="group" aria-label="Basic example">
+          <button
+            type="button"
+            class="btn btn-primary border-secondary"
+            onClick={() => today(mq)}
+          >
             Today
           </button>
-          <button type="button " class="btn btn-primary border-secondary" onClick={()=>week(questions)}>
+          <button
+            type="button "
+            class="btn btn-primary border-secondary"
+            onClick={() => week(mq)}
+          >
             Week
           </button>
-          <button type="button" class="btn btn-primary border-secondary">
+          <button
+            type="button"
+            class="btn btn-primary border-secondary"
+            onClick={() => month(mq)}
+          >
             Month
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary border-secondary"
+            onClick={() => AllData(mq)}
+          >
+            All
           </button>
         </div>
       </div>
