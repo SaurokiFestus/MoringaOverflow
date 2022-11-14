@@ -247,7 +247,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
                           }}
                         ></div>{" "}
                       </div>
-                      <div className="d-flex">
+                      <div className="d-flex  ">
                       {user?.id === answer.user_id ? (
                         <span>
                           <button

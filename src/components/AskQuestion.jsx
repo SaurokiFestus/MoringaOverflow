@@ -9,7 +9,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
   const [tags, setTags] = useState([]);
-  const [selectedOptions, setSelectedOptions] = useState();
+  const [selectedOptions, setSelectedOptions] = useState(questionForm.tag_list);
 
   function handleChange(e) {
     let name = e.target.name;
@@ -168,7 +168,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
       navigate("/login");
     }
   }
-
+console.log(questionForm.tag_list)
   return (
     <div
       className="container-fluid pb-4 vh-100"
@@ -223,7 +223,7 @@ function AskQuestion({ questionForm, setQuestionForm, tg, setTg, user }) {
                 isMulti
                 onBlur={() => {
                   const mappedOptions = selectedOptions.map(
-                    (option) => option.value
+                    (option) => option.value || option
                   );
                   setQuestionForm({
                     ...questionForm,

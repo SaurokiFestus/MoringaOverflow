@@ -7,6 +7,8 @@ const questions = ({ user, wordEntered }) => {
   const [mq, setMq] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [quizsPerPage] = useState(5);
+  const [timeQ, setTimeQ] = useState();
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const filteredData = questions.filter((quiz) => {
@@ -159,6 +161,19 @@ const questions = ({ user, wordEntered }) => {
       </div>
       <div className="container ">
         {currentQuizs.map((quiz) => {
+          var d1 = new Date();
+          var d2 = new Date(quiz?.created_at);
+          var gap = Math.abs(d1 - d2);
+          const second = 1000;
+          const minute = second * 60;
+          const hour = minute * 60;
+          const day = hour * 24;
+
+          const days = Math.floor(gap / day);
+          const hours = Math.floor((gap % day) / hour);
+          const minutes = Math.floor((gap % hour) / minute);
+          const seconds = Math.floor((gap % minute) / second);
+
           const result = quiz.answers?.reduce((accumulator, obj) => {
             return accumulator + (obj.upvote - obj.downvote);
           }, 0);
@@ -172,7 +187,7 @@ const questions = ({ user, wordEntered }) => {
                     <li>{quiz.answers?.length} Answers</li>
                     <li>{quiz?.views} views</li>
                     <span>
-                      {user?.id === quiz.user_id ? (
+                      {user?.id === quiz.user?.id ? (
                         <button
                           onClick={() => handleDelete(quiz.id)}
                           className="bg-danger text-white border-0"
@@ -209,22 +224,44 @@ const questions = ({ user, wordEntered }) => {
                       }}
                     ></div>
                   </ul>
+                  <div className="d-flex justify-content-between">
+                    <div>
+                      {quiz.tag_list?.map((tag) => {
+                        return (
+                          <a
+                            href=""
+                            className="p-1 text-black rounded"
+                            style={{
+                              backgroundColor: "#e0ecf4",
+                              marginRight: "10px",
+                              textDecoration: "none",
+                            }}
+                          >
+                            {tag}
+                          </a>
+                        );
+                      })}
+                    </div>
 
-                  {quiz.tag_list?.map((tag) => {
-                    return (
-                      <a
-                        href=""
-                        className="p-1 text-black rounded "
-                        style={{
-                          backgroundColor: "#e0ecf4",
-                          marginRight: "10px",
-                          textDecoration: "none",
-                        }}
-                      >
-                        {tag}
-                      </a>
-                    );
-                  })}
+                    <small>
+                      <i>{quiz.user.username} </i>
+                      asked{questions.length > 0 ?days > 0
+                        ? ` ${days} ${
+                            days == 1 ? "day" : "days"
+                          } ${hours} hours ${minutes} mins `
+                        : `${
+                            hours > 0
+                              ? `${hours} hours `
+                              : `${
+                                  minutes > 0
+                                    ? `${minutes} minutes `
+                                    : `${seconds} seconds `
+                                }  `
+                          }`:''}
+                      
+                      ago
+                    </small>
+                  </div>
                 </div>
 
                 <div>
