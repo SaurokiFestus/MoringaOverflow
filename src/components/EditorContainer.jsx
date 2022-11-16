@@ -4,7 +4,7 @@ import { EditorState, convertToRaw,convertFromRaw} from "draft-js";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
-
+// import htmlToDraft from "draftjs-to-html";
 
 export default class EditorContainer extends Component {
 
@@ -30,9 +30,9 @@ export default class EditorContainer extends Component {
 
 
   render() {
-    const contentBlocks = htmlToDraft(initialState)
-const contentState = ContentState.createFromBlockArray(contentBlocks)
-const rawHtml = convertToRaw(contentState)
+    // const contentBlocks = htmlToDraft(initialState)
+// const contentState = ContentState.createFromBlockArray(contentBlocks)
+// const rawHtml = convertToRaw(contentState)
 
     const { editorState } = this.state;
     

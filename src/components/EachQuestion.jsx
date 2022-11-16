@@ -190,12 +190,13 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
               ></div>
               {user?.id === question.user_id ? (
                 <Link to="/askquestion">
-                  <button
+                  <i class="bi bi-pen-fill bg-dark" onClick={() => handleEditQ(question)}></i>
+                  {/* <button
                     onClick={() => handleEditQ(question)}
                     class="bg-info text-white border-0"
                   >
                     Edit
-                  </button>
+                  </button> */}
                 </Link>
               ) : (
                 ""
@@ -250,18 +251,20 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
                       <div className="d-flex  ">
                       {user?.id === answer.user_id ? (
                         <span>
-                          <button
+                          <i class="bi bi-trash" onClick={() => handleDelete(answer.id)} style={{cursor: "pointer"}}></i>
+                          {/* <button
                             onClick={() => handleDelete(answer.id)}
                             className="bg-danger text-white border-0"
                           >
                             Delete
-                          </button>
-                          <button
+                          </button> */}
+                          <i class="bi bi-pen-fill rounded m-4" onClick={() => handleEdit(answer)} style={{cursor: "pointer"}}></i>
+                          {/* <button
                             onClick={() => handleEdit(answer)}
-                            className="bg-info mx-2 text-white border-0"
+                            className="bg-info mx-2 text-white border-0 rounded"
                           >
                             Edit
-                          </button>
+                          </button> */}
                         </span>
                       ) : (
                         ""
