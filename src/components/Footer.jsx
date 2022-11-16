@@ -1,3 +1,4 @@
+import "../App.css";
 import React from "react";
 
 function Footer() {
@@ -7,12 +8,13 @@ function Footer() {
 
   return (
     <div
-      className="container-fluid text-white pt-4"
+      className=" <my-5 container-fluid text-white pt-4 m-0"
+      id="footer"
       style={bg}
     >
       <div className="row">
         <div className="col-5  pl-5 ">
-        <i style={icons} class="bi bi-bezier m-2"></i>
+          <i style={icons} class="bi bi-bezier m-2"></i>
 
           {/* <i style={icons} class="bi bi-stack-overflow"></i> */}
           <span>Moringa OverFlow</span>
@@ -22,8 +24,8 @@ function Footer() {
             <span className="border-bottom  border-white  mx-1 pb-1">
               CONTACT US
             </span>
-              <div className="p-1">Moringa Overflow</div>
-              <div className="p-1">+2547********</div>
+            <div className="p-1">Moringa Overflow</div>
+            <div className="p-1">+2547********</div>
           </div>
           <div className="pt-2">
             <a href="#">
@@ -37,9 +39,9 @@ function Footer() {
             </a>
           </div>
         </div>
-      </div>
-      <div className="text-center p-3">
-        <p>Copyright 2022 MoringaOverflow All rights Reserved</p>
+        <div className="text-center ">
+          <p>Copyright 2022 MoringaOverflow All rights Reserved</p>
+        </div>
       </div>
     </div>
   );

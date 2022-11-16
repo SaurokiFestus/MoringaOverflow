@@ -15,7 +15,7 @@ const SideBar = () => (
                 <p className='title fc-light'>PUBLIC</p>
                 <NavLink activeClassName='active' className='icon-link nav_link' to='/questions' >
                     <p>
-                        Stack Overflow
+                        Questions
                     </p>
                 </NavLink>
                 <NavLink activeClassName='active' className='link nav_link' to='/tags' >
@@ -32,6 +32,7 @@ const SideBar = () => (
                 <p className='title fc-light'>TEAMS</p>
             </div>
         </div>
+        
     </div>
 
 );

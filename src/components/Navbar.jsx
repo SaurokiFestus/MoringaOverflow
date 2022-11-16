@@ -7,7 +7,7 @@ function Navbar({ user, setUser, setWordEntered }) {
   let navigate = useNavigate();
 
   const handleLogout = (e) => {
-    fetch(`/logout`, {
+    fetch(`http://127.0.0.1:3000/logout`, {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
@@ -16,6 +16,21 @@ function Navbar({ user, setUser, setWordEntered }) {
     });
     navigate("/login");
   };
+
+  // let navigate = useNavigate();
+
+  // console.log(user.name)
+
+  // function handleLogout() {
+  //   fetch(`http://127.0.0.1:3000/logout`, {
+  //     method: "DELETE",
+  //   }).then((res) => {
+  //     if (res.ok) {
+  //       setUser(null);
+  //     }
+  //   });
+  //   navigate('/signup')
+  // }
 
   return (
     <div>
@@ -73,12 +88,12 @@ function Navbar({ user, setUser, setWordEntered }) {
             <ul className="navbar-nav">
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle  navbar-expand-lg navbar-expand-sm"
                   href="#"
                   id="navbarDarkDropdownMenuLink"
                   role="button"
                   data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                  // aria-expanded="false"
                 >
                   <Link
                     to="/"
@@ -128,7 +143,7 @@ function Navbar({ user, setUser, setWordEntered }) {
             </Link>
           </div>
 
-          <form class="col mx-2">
+          <form class="navbar navbar-expand-lg navbar-expand-sm mx-2">
             <input
               class="form-control "
               type="text"

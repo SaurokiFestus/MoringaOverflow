@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Error from "./Error";
+import EditorContainer from "./EditorContainer";
+
 
 export default function AnswerQuiz({
   AddAnswer,
@@ -14,18 +16,19 @@ export default function AnswerQuiz({
 }) {
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
-
-  function handleChange(e) {
-    let name = e.target.name;
-    let value = e.target.value;
-    setAskedQuiz({
-      ...askedQuiz,
-      [name]: value,
-      user_id: user?.id,
-      question_id: id,
-    });
-  }
-  console.log(askedQuiz);
+  
+  console.log(askedQuiz)
+  // function handleChange(e) {
+  //   let name = e.target.name;
+  //   let value = e.target.value;
+  //   setAskedQuiz({
+  //     ...askedQuiz,
+  //     [name]: value,
+  //     user_id: user?.id,
+  //     question_id: id,
+  //   });
+  // }
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -40,7 +43,7 @@ export default function AnswerQuiz({
         }).then((r) => {
           if (r.ok) {
             r.json().then((data) => AddAnswer(data));
-            setAskedQuiz({ body: "" });
+            setAskedQuiz({ body: '' });
             setErrors("");
           } else {
             r.json().then((error) => setErrors(error.body));
@@ -78,14 +81,23 @@ export default function AnswerQuiz({
             <h3 className="font-weight-bold">Your Answer</h3>
           </div>
           <div className="mb-2">
-            <textarea
+          <EditorContainer
+              onChange={(text) => {
+                setAskedQuiz({
+                  ...askedQuiz,
+                  body: text,
+                  user_id: user?.id,
+                  question_id: id,
+                });
+              }}/>
+            {/* <textarea
               name="body"
               value={askedQuiz.body}
               className="form-control"
               id="exampleFormControlTextarea1"
               rows="5"
               onChange={handleChange}
-            ></textarea>
+            ></textarea> */}
           </div>
         </div>
         {errors.length > 0 && <Error errors={errors} />}
