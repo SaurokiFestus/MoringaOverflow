@@ -38,7 +38,7 @@ export default function Comment({ x, answer, user }) {
     console.log("vipi");
     if (user) {
       if (postEdit) {
-        fetch("https://vast-wildwood-37554.herokuapp.com/comments", {
+        fetch("http://127.0.0.1:3000/comments", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newC),
@@ -53,7 +53,7 @@ export default function Comment({ x, answer, user }) {
         });
       } else {
         console.log(newC);
-        fetch(`https://vast-wildwood-37554.herokuapp.com/comments/${newC.id}`, {
+        fetch(`http://127.0.0.1:3000/comments/${newC.id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newC),
@@ -84,7 +84,7 @@ export default function Comment({ x, answer, user }) {
     });
   }
   function handleDelete(id) {
-    fetch(`https://vast-wildwood-37554.herokuapp.com/comments/${id}`, {
+    fetch(`http://127.0.0.1:3000/comments/${id}`, {
       method: "DELETE",
     });
     deleteEvent(id);
