@@ -61,7 +61,7 @@ const Login = ({ setUser }) => {
     <div className="container-fluid vh-100" style={flowColor}>
       <div className="d-flex justify-content-center align-items-center ">
         <div>
-          <div className="btn bg-light mx-5 mt-4" >
+          {/* <div className="btn bg-light mx-5 mt-4" >
             <GoogleLogin
           clientId={clientId}
           buttonText="Sign in with Google"
@@ -69,7 +69,7 @@ const Login = ({ setUser }) => {
           onFailure={onFailure}
           cookiePolicy={'single_host_origin'}
           isSignedIn={false}/>
-          </div>
+          </div> */}
           <form className="bg-light rounded  p-sm-3 mx-5 my-4">
             <div className="mb-3">
               <label htmlFor="username" className="form-label">

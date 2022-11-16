@@ -5,7 +5,6 @@ import { EditorState, convertToRaw,convertFromRaw} from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 
-
 export default class EditorContainer extends Component {
 
   

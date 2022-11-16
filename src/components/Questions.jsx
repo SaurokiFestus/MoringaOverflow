@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Pagination from "./Pagination";
-const questions = ({ user, wordEntered }) => {
+const questions = ({ user, wordEntered}) => {
   const [questions, setQuestions] = useState([]);
   const [mq, setMq] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -188,12 +188,13 @@ const questions = ({ user, wordEntered }) => {
                     <li>{quiz?.views} views</li>
                     <span>
                       {user?.id === quiz.user?.id ? (
-                        <button
-                          onClick={() => handleDelete(quiz.id)}
-                          className="bg-danger text-white border-0"
-                        >
-                          Delete
-                        </button>
+                        <i className="bi bi-trash border-0" onClick={() => handleDelete(quiz.id)} style={{cursor: "pointer"}}></i>
+                        // <button
+                        //   onClick={() => handleDelete(quiz.id)}
+                        //   className="bg-danger text-white border-0"
+                        // >
+                        //   Delete
+                        // </button>
                       ) : (
                         ""
                       )}
@@ -243,7 +244,7 @@ const questions = ({ user, wordEntered }) => {
                       })}
                     </div>
 
-                    <small>
+                    {/* <small>
                       <i>{quiz.user.username} </i>
                       asked{questions.length > 0 ?days > 0
                         ? ` ${days} ${
@@ -260,7 +261,7 @@ const questions = ({ user, wordEntered }) => {
                           }`:''}
                       
                       ago
-                    </small>
+                    </small> */}
                   </div>
                 </div>
 
