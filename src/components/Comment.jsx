@@ -45,7 +45,7 @@ export default function Comment({ x, answer, user }) {
         }).then((r) => {
           if (r.ok) {
             r.json().then((data) => addList(data));
-            setNewC({ body: "", user_id: 2, answer_id: answer.id });
+            setNewC({ body: "", user_id: user?.id, answer_id: answer.id });
             setErrors("");
           } else {
             r.json().then((error) => setErrors(error.errors));
@@ -62,7 +62,7 @@ export default function Comment({ x, answer, user }) {
           .then((data) => {
             // console.log(data)
             updateList(data);
-            setNewC({ body: "", user_id: 2, answer_id: answer.id });
+            setNewC({ body: "", user_id: user?.id, answer_id: answer.id });
             setPostEdit(true);
           });
       }

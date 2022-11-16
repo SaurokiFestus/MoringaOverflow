@@ -82,6 +82,8 @@ export default function AnswerQuiz({
           </div>
           <div className="mb-2">
           <EditorContainer
+                        body={askedQuiz.body}
+
               onChange={(text) => {
                 setAskedQuiz({
                   ...askedQuiz,
