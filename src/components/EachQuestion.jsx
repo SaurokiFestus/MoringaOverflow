@@ -190,7 +190,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
               ></div>
               {user?.id === question.user_id ? (
                 <Link to="/askquestion">
-                  <i class="bi bi-pen-fill bg-dark" onClick={() => handleEditQ(question)}></i>
+                  <i class="bi bi-pen-fill" onClick={() => handleEditQ(question)}><small>edit</small></i>
                   {/* <button
                     onClick={() => handleEditQ(question)}
                     class="bg-info text-white border-0"
@@ -246,19 +246,19 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
                           dangerouslySetInnerHTML={{
                             __html: answer.body,
                           }}
-                        ></div>{" "}
+                        ></div>
                       </div>
                       <div className="d-flex  ">
                       {user?.id === answer.user_id ? (
                         <span>
-                          <i class="bi bi-trash" onClick={() => handleDelete(answer.id)} style={{cursor: "pointer"}}></i>
+                          <i class="bi bi-trash" onClick={() => handleDelete(answer.id)} style={{cursor: "pointer",color:'red'}}></i>
                           {/* <button
                             onClick={() => handleDelete(answer.id)}
                             className="bg-danger text-white border-0"
                           >
                             Delete
                           </button> */}
-                          <i class="bi bi-pen-fill rounded m-4" onClick={() => handleEdit(answer)} style={{cursor: "pointer"}}></i>
+                          <i class="bi bi-pen-fill rounded m-4" onClick={() => handleEdit(answer)} style={{cursor: "pointer",color:'#116dfa'}}></i>
                           {/* <button
                             onClick={() => handleEdit(answer)}
                             className="bg-info mx-2 text-white border-0 rounded"

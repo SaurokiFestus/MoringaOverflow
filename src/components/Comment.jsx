@@ -95,18 +95,22 @@ export default function Comment({ x, answer, user }) {
         {comment.body}
         {user?.id === comment.user_id ? (
           <span className="mx-2">
-            <button
+                                      <i class="bi bi-trash" onClick={() => handleDelete(comment.id)} style={{cursor: "pointer",color:'red'}}></i>
+
+            {/* <button
               onClick={() => handleDelete(comment.id)}
               className="bg-danger text-white shadow-none border-0"
             >
               X
-            </button>
-            <button
+            </button> */}
+                                      <i class="bi bi-pen-fill rounded m-4" onClick={() => handleEdit(comment)} style={{cursor: "pointer",color:'#116dfa'}}></i>
+
+            {/* <button
               onClick={() => handleEdit(comment)}
               className="bg-info mx-2 text-white shadow-none border-0"
             >
               Edit
-            </button>
+            </button> */}
           </span>
         ) : (
           ""

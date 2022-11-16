@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useState, useEffect, Fragment } from "react";
+import { useParams} from "react-router-dom";
 
 
 
 function Profile() {
+  const [profile,setProfile] =useState({})
+  let { id } = useParams();
+
+
+  useEffect(() => {
+    fetch(`http://127.0.0.1:3000/profiles/${id}`)
+    .then((res) => res.json())
+    .then((profile) => {
+      setProfile(profile);
+    });
+  }, []);
+  console.log(profile)
   return (
     <div className="">
-      <div className="container mt-5">
+      
+      <div className="container mt-2">
+      <div class="alert alert-warning" role="alert">
+  Please Update profile <a href="#" class="alert-link">edit</a>. 
+</div>
       <div className="row justify-content-center bg-light">
         <div className="col-md-10 mt-5 pt-5 ">
           <div className="row z-depth-3 ">
@@ -14,8 +31,9 @@ function Profile() {
                 <i className="fas fa-user-tie fa-7x mt-5"></i>
                 <h2 className="font-weight-bold mt-4">Sauroki</h2>
                 <p>Web Designer</p>
+                <img className="img-fluid" src="https://secure.gravatar.com/avatar/78?s=164&d=identicon" alt='log'/>
                 <i className="far fa-edit fa-2x mb-4"></i>
-              </div>
+                              </div>
             </div>
             <div className="col-sm-8 bg-white rounded-right">
               <h3 className="mt-3 text-center">Information</h3>
@@ -23,10 +41,10 @@ function Profile() {
               <div className="row">
                 <div className="col-sm-6">
                   <p className="font-weight-bold">Email</p>
-                  <h6 className="text-muted">sauroki</h6>
+                  <h6 className="text-muted">{profile.email}</h6>
                 </div>
                 <div className="col-sm-6">
-                  <p className="font-weight-bold">Phone</p>
+                  <p className="font-weight-bold">Bio</p>
                   <h6 className="text-muted">sauroki</h6>
                 </div>
               </div>
@@ -36,7 +54,7 @@ function Profile() {
                 
                   <div className="col-sm-6">
                     <p className="font-weight-bold"></p>
-                    <h6 className="text-mutated">School web</h6>
+                    <h6 className="text-mutated">Cohort</h6>
                   </div>
                   {/* <div className="col-sm-6">
                     <p className="font-weight-bold">Answers</p>
@@ -45,6 +63,7 @@ function Profile() {
                 
               </div>
               <hr className="bg-primary"/>
+              <i style={{color: "#f48d4f", fontSize: "20px",cursor:'pointer'}} class="bi bi-pencil-square">Edit</i>
               <ul className="list-unstyled d-flex justify-content-center mt-4">
                 <li> <a href="#"> <i className="fab fa-facebook-f px-3 h4 text-info"></i> </a> </li>
               </ul>

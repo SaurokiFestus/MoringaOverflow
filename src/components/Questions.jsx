@@ -7,7 +7,6 @@ const questions = ({ user, wordEntered}) => {
   const [mq, setMq] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [quizsPerPage] = useState(5);
-  const [timeQ, setTimeQ] = useState();
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -188,7 +187,7 @@ const questions = ({ user, wordEntered}) => {
                     <li>{quiz?.views} views</li>
                     <span>
                       {user?.id === quiz.user?.id ? (
-                        <i className="bi bi-trash border-0" onClick={() => handleDelete(quiz.id)} style={{cursor: "pointer"}}></i>
+                        <i className="bi bi-trash border-0" onClick={() => handleDelete(quiz.id)} style={{cursor: "pointer",color:'red'}}></i>
                         // <button
                         //   onClick={() => handleDelete(quiz.id)}
                         //   className="bg-danger text-white border-0"
@@ -244,9 +243,9 @@ const questions = ({ user, wordEntered}) => {
                       })}
                     </div>
 
-                    {/* <small>
+                    <small>
                       <i>{quiz.user.username} </i>
-                      asked{questions.length > 0 ?days > 0
+                      asked {questions.length > 0 ?days > 0
                         ? ` ${days} ${
                             days == 1 ? "day" : "days"
                           } ${hours} hours ${minutes} mins `
@@ -261,7 +260,7 @@ const questions = ({ user, wordEntered}) => {
                           }`:''}
                       
                       ago
-                    </small> */}
+                    </small>
                   </div>
                 </div>
 
