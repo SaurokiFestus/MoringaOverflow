@@ -155,9 +155,7 @@ function Navbar({ user, setUser, setWordEntered }) {
           <span>
             {user ? (
               <>
-                <Link
-                      to={`/profile/${user.id}`}
-                      >
+                <Link to="/profile">
                   <button class="btn btn-primary m-1">
                     {user.username.charAt(0).toUpperCase()}
                   </button>

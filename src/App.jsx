@@ -92,7 +92,7 @@ function App() {
             <Route exact="true" path="/about" element={<About />} />
             <Route exact="true" path="/sidebar" element={<SideBar />} />
             {user ? (
-              <Route exact="true" path="/profile/:id" element={<Profile />} />
+              <Route exact="true" path="/profile" element={<Profile />} />
             ) : (
               <Route exact="true" path="/home" element={<Home />} />
             )}
