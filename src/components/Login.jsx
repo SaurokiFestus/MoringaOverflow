@@ -4,7 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 
 const Login = ({ setUser }) => {
-  const flowColor = { backgroundColor: "#f1f2f3" };
+  const flowColor = { backgroundColor: "#adb5bd" };
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -58,8 +58,19 @@ const Login = ({ setUser }) => {
   // });
 
   return (
-    <div className="container-fluid vh-100" style={flowColor}>
-      <div className="d-flex justify-content-center align-items-center ">
+    <div className="container-fluid">
+    <div className="row">
+    <div className="col-lg-5 col-sm-10 d-flex align-items-center p-5">
+          <div>
+            <h1>
+              <span style={{ color: "#f48d4f" }}> Moringa Overflow </span>
+              Technological community
+            </h1>
+            <h5>Home for all developer...junior and senior, join us today and ease your path.</h5>
+          </div>
+        </div>
+    {/* <div className="container-fluid vh-100" style={flowColor}> */}
+      <div className="col-lg-7 d-flex justify-content-center align-items-center ">
         <div>
           <div className="btn bg-light mx-5 mt-4" >
             <GoogleLogin
@@ -114,6 +125,8 @@ const Login = ({ setUser }) => {
         </div>
       </div>
     </div>
+    </div>
+    // </div>
   );
 };
 
