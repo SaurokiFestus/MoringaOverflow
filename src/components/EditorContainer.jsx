@@ -29,7 +29,9 @@ export default class EditorContainer extends Component {
 
 
   render() {
-  
+    const contentBlocks = htmlToDraft(initialState)
+const contentState = ContentState.createFromBlockArray(contentBlocks)
+const rawHtml = convertToRaw(contentState)
 
     const { editorState } = this.state;
     
