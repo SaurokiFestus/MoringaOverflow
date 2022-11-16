@@ -1,113 +1,61 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
+
 
 
 function Profile() {
-
-//   const [formData, setFormData] = useState({
-//     full_name: '',
-//     email: '',
-//     age: '',
-//     bio: '',
-//   });
-
-  const flowColor = { backgroundColor: "#f1f2f3" };
-//   const [profile, setProfile] = useState({});
-
-//   useEffect(() => {
-//     fetch(`/profiles/${user.id}`)
-//     .then(r => {
-//       if (r.ok) {
-//         r.json().then((user) => {
-//           setProfile(user)
-          
-//         });
-//       }
-//     });
-//   }, [])
-
-//   console.log(user)
-
-//   function handleUpdateUser() {
-//     fetch(`/profiles/${user.id}`, {
-//     method: "PATCH",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       full_name: formData.full_name,
-//       email: formData.email,
-//       age: formData.age,
-//       bio: formData.bio
-//     }),
-//   })
-//   }
-
-//   function deleteProfile(id){
-//     fetch(`/users/${id}`,{
-//         method: "DELETE",
-//     })
-//   }
-
-//   function handleChange(e){
-//     setFormData({
-//         ...formData, [e.target.name]: e.target.value,
-//     });
-//   }
-
   return (
-    <div className="container-fluid vh-100" style={flowColor}>
-      <div className="d-flex justify-content-center align-items-center ">
-        <div>
-          <button type="submit" className="btn bg-light mx-5 mt-4">
-            Edit Your Profile
-          </button>
-          <form className="bg-light rounded  p-sm-3 mx-5 my-4">
-            <div className="align-items-center">
-              <h1><i class="bi bi-person-circle"></i></h1>
+    <div className="">
+      <div className="container mt-5">
+      <div className="row justify-content-center bg-light">
+        <div className="col-md-10 mt-5 pt-5 ">
+          <div className="row z-depth-3 ">
+            <div className="col-sm-4 bg-info rounded-left">
+              <div className="card-block text-center text-white">
+                <i className="fas fa-user-tie fa-7x mt-5"></i>
+                <h2 className="font-weight-bold mt-4">Sauroki</h2>
+                <p>Web Designer</p>
+                <i className="far fa-edit fa-2x mb-4"></i>
+              </div>
             </div>
-
-            <div className="mb-3">
-              <label for="exampleInputEmail1" className="form-label">
-                Display name
-              </label>
-              <input type="text" className="form-control">
-                {/* {user?.profile.full_name} */}
-                </input>
+            <div className="col-sm-8 bg-white rounded-right">
+              <h3 className="mt-3 text-center">Information</h3>
+              <hr className="badge-primary mt-0"/>
+              <div className="row">
+                <div className="col-sm-6">
+                  <p className="font-weight-bold">Email</p>
+                  <h6 className="text-muted">sauroki</h6>
+                </div>
+                <div className="col-sm-6">
+                  <p className="font-weight-bold">Phone</p>
+                  <h6 className="text-muted">sauroki</h6>
+                </div>
+              </div>
+              <h4 className="mt-3">My Questions</h4>
+              <hr className="bg-primary"/>
+              <div className="row">
+                
+                  <div className="col-sm-6">
+                    <p className="font-weight-bold"></p>
+                    <h6 className="text-mutated">School web</h6>
+                  </div>
+                  {/* <div className="col-sm-6">
+                    <p className="font-weight-bold">Answers</p>
+                    <h6 className="text-mutated">32131231232</h6>
+                  </div> */}
+                
+              </div>
+              <hr className="bg-primary"/>
+              <ul className="list-unstyled d-flex justify-content-center mt-4">
+                <li> <a href="#"> <i className="fab fa-facebook-f px-3 h4 text-info"></i> </a> </li>
+              </ul>
             </div>
-            <div className="mb-3">
-              <label for="exampleInputPassword1" className="form-label">
-                Email
-              </label>
-              <input type="text" className="form-control">
-                {/* {user?.profile.email} */}
-                </input>
-            </div>
-            <div className="mb-3">
-              <label for="exampleInputPassword1" className="form-label">
-                Age
-              </label>
-              <input type="text" className="form-control">
-                {/* {user?.profile.age} */}
-                </input>
-            </div>
-            <div className="mb-3">
-              <label for="exampleInputPassword1" className="form-label">
-                Bio
-              </label>
-              <input type="text" className="form-control">
-                {/* {user?.profile.bio} */}
-                </input>
-            </div>
-            
-            <div className="mb-3 form-check"></div>
-            <button type="submit" className="btn bg-info mb-4 ">
-              Save Profile
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-  );
+    </div>
+    
+  )
 }
 
-export default Profile;
+export default Profile
