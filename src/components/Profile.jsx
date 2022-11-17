@@ -1,4 +1,3 @@
-import { PrinterFilled } from "@ant-design/icons";
 import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 
@@ -33,7 +32,7 @@ console.log(profileForm)
         body: JSON.stringify(profileForm),
       })
         .then((r) => r.json())
-        .then((data) => console.log(data));
+        .then((data) => setProfile(data));
   }
 
   useEffect(() => {
@@ -46,7 +45,7 @@ console.log(profileForm)
   return (
     <div className="">
       <div className="container my-2">
-        {profile ? (
+        {profile.bio == null  ? (
           <div class="alert alert-warning" role="alert">
             Please Update profile{" "}
             <a
@@ -70,7 +69,7 @@ console.log(profileForm)
                 <div className="card-block text-center text-white">
                   <i className="fas fa-user-tie fa-7x mt-5"></i>
                   <h2 className="font-weight-bold mt-4">{profile.name}</h2>
-                  <p>Web Designer</p>
+                  <p>{profile.interests}</p>
                   <img
                     className="img-fluid"
                     src="https://secure.gravatar.com/avatar/78?s=164&d=identicon"
@@ -92,17 +91,13 @@ console.log(profileForm)
                     <h6 className="text-muted">{profile.bio}</h6>
                   </div>
                 </div>
-                <h4 className="mt-3">My Questions</h4>
                 <hr className="bg-primary" />
                 <div className="row">
                   <div className="col-sm-6">
                     <p className="font-weight-bold">Cohort</p>
                     <h6 className="text-mutated">{profile.cohort}</h6>
                   </div>
-                  {/* <div className="col-sm-6">
-                    <p className="font-weight-bold">Answers</p>
-                    <h6 className="text-mutated">32131231232</h6>
-                  </div> */}
+                 
                 </div>
                 <hr className="bg-primary" />
                 <i
@@ -119,11 +114,11 @@ console.log(profileForm)
                 </i>
                 <ul className="list-unstyled d-flex justify-content-center mt-4">
                   <li>
-                    {" "}
+                  
                     <a href="#">
-                      {" "}
+                      
                       <i className="fab fa-facebook-f px-3 h4 text-info"></i>{" "}
-                    </a>{" "}
+                    </a>
                   </li>
                 </ul>
               </div>

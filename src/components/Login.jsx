@@ -59,7 +59,7 @@ const Login = ({ setUser }) => {
 
   return (
     <div className="container-fluid">
-    <div className="row mx-3">
+    <div className="row mx-3 py-5">
     <div className="col-lg-5 col-sm-10 d-flex align-items-center py-5">
           <div>
             <h1>
@@ -81,7 +81,7 @@ const Login = ({ setUser }) => {
           cookiePolicy={'single_host_origin'}
           isSignedIn={false}/>
           </div> */}
-          <form className="bg-light rounded  p-sm-3 mx-5 my-4">
+          <form className="bg-light rounded  p-sm-3 my-4">
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
                 Username
