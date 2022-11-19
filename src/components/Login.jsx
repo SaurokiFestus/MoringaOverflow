@@ -4,7 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 
 const Login = ({ setUser }) => {
-  const flowColor = { backgroundColor: "#f1f2f3" };
+  const flowColor = { backgroundColor: "#adb5bd" };
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +13,7 @@ const Login = ({ setUser }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await fetch("https://vast-wildwood-37554.herokuapp.com/login", {
+    await fetch("http://127.0.0.1:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,10 +58,21 @@ const Login = ({ setUser }) => {
   // });
 
   return (
-    <div className="container-fluid vh-100" style={flowColor}>
-      <div className="d-flex justify-content-center align-items-center ">
+    <div className="container-fluid">
+    <div className="row mx-3 py-5">
+    <div className="col-lg-5 col-sm-10 d-flex align-items-center py-5">
+          <div>
+            <h1>
+              <span style={{ color: "#f48d4f" }}> Moringa Overflow </span>
+              Technological community
+            </h1>
+            <h5>Home for all developer...junior and senior, join us today and ease your path.</h5>
+          </div>
+        </div>
+    {/* <div className="container-fluid vh-100" style={flowColor}> */}
+      <div className="col-lg-7 d-flex justify-content-center align-items-center ">
         <div>
-          <div className="btn bg-light mx-5 mt-4" >
+          {/* <div className="btn bg-light mx-5 mt-4" >
             <GoogleLogin
           clientId={clientId}
           buttonText="Sign in with Google"
@@ -69,8 +80,8 @@ const Login = ({ setUser }) => {
           onFailure={onFailure}
           cookiePolicy={'single_host_origin'}
           isSignedIn={false}/>
-          </div>
-          <form className="bg-light rounded  p-sm-3 mx-5 my-4">
+          </div> */}
+          <form className="bg-light rounded  p-sm-3 my-4">
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
                 Username
@@ -114,6 +125,8 @@ const Login = ({ setUser }) => {
         </div>
       </div>
     </div>
+    </div>
+    // </div>
   );
 };
 

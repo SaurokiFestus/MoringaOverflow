@@ -17,7 +17,6 @@ function App() {
   const [wordEntered, setWordEntered] = useState("");
   const [user, setUser] = useState();
   // const navigate = useNavigate();
-  console.log(user);
   useEffect(() => {
     fetch("/me").then((res) => {
       if (res.ok) {
@@ -27,20 +26,20 @@ function App() {
       }
     });
   }, []);
-  console.log(user?.id);
 
   const [questionForm, setQuestionForm] = useState({
     title: "",
     body: "",
     user_id: user?.id,
+    tag_list:''
   });
 
   const [tg, setTg] = useState(true);
 
-  console.log(questionForm);
 
   return (
     <div className="App">
+
       <div className="main">
         <BrowserRouter>
           <Navbar
@@ -76,6 +75,11 @@ function App() {
             />
             <Route
               exact="true"
+              path="/side"
+              element={<SideBar/>}
+            />
+            <Route
+              exact="true"
               path="/question/:id"
               element={
                 <EachQuestion
@@ -88,8 +92,7 @@ function App() {
             <Route exact="true" path="/about" element={<About />} />
             <Route exact="true" path="/sidebar" element={<SideBar />} />
             {user ? (
-              <Route exact="true" path="/profile" element={<Profile />} />
-            ) : (
+              <Route exact="true" path="/profile/:id" element={<Profile />} />            ) : (
               <Route exact="true" path="/home" element={<Home />} />
             )}
           </Routes>

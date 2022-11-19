@@ -7,7 +7,7 @@ function Navbar({ user, setUser, setWordEntered }) {
   let navigate = useNavigate();
 
   const handleLogout = (e) => {
-    fetch(`https://vast-wildwood-37554.herokuapp.com/logout`, {
+    fetch(`http://127.0.0.1:3000/logout`, {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
@@ -155,7 +155,9 @@ function Navbar({ user, setUser, setWordEntered }) {
           <span>
             {user ? (
               <>
-                <Link to="/profile">
+                 <Link
+                      to={`/profile/${user.id}`}
+                      >
                   <button class="btn btn-primary m-1">
                     {user.username.charAt(0).toUpperCase()}
                   </button>

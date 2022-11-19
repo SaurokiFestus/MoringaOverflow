@@ -1,13 +1,31 @@
 import React, { Component } from "react";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from "draft-js";
+import {
+  EditorState,
+  convertToRaw,
+  convertFromRaw,
+  convertFromHTML,
+  ContentState,
+} from "draft-js";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 
 export default class EditorContainer extends Component {
+  initEditorState = (markup) => {
+    if (markup === undefined) return EditorState.createEmpty();
+    const blocksFromHTML = convertFromHTML(markup);
+    const state = ContentState.createFromBlockArray(
+      blocksFromHTML.contentBlocks,
+      blocksFromHTML.entityMap
+    );
+
+    return EditorState.createWithContent(state);
+
+  };
+
   state = {
-    editorState: EditorState.createEmpty(),
+    editorState: this.initEditorState(this.props?.body),
   };
 
   onEditorStateChange = (editorState) => {
@@ -21,19 +39,16 @@ export default class EditorContainer extends Component {
   render() {
     const { editorState } = this.state;
 
+
     return (
-      <div>
+      <div className="">
         <Editor
           editorState={editorState}
-          toolbarClassName="toolbarClassName"
+          wrapperClassName="demo-wrapper"
+          editorClassName="template-editor"
           wrapperClassNamdangerouslySetInnerHTMLe="wrapperClassName"
-          editorClassName="editorClassName"
           onEditorStateChange={this.onEditorStateChange}
         />
-        {/* <textarea
-          // disabled
-          // value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-        ></textarea> */}
       </div>
     );
   }

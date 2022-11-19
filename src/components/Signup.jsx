@@ -26,7 +26,7 @@ function Signup() {
 
     const userCreds = { ...formData };
 
-    fetch("https://vast-wildwood-37554.herokuapp.com/signup", {
+    fetch("http://127.0.0.1:3000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ function Signup() {
       body: JSON.stringify({
         username: formData.username,
         password: formData.password,
-        email: formData.email
+        email: formData.email,
       }),
     }).then((res) => {
       if (res.ok) {
@@ -95,6 +95,7 @@ function Signup() {
               </label>
               <input
                 type="email"
+                id="email"
                 name="email"
                 className="form-control"
                 placeholder="Email"

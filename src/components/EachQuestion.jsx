@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 
 import Comment from "./Comment";
 import AnswerQuiz from "./AnswerQuiz";
+import SideBar from "./Sidebar/Sidebar";
 
 function EachQuestion({ setQuestionForm, setTg, user }) {
   const navigate = useNavigate();
@@ -19,8 +20,9 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
     question_id: id,
   });
 
+
   const fetchDetails = () => {
-    fetch(`https://vast-wildwood-37554.herokuapp.com/questions/${id}`)
+    fetch(`http://127.0.0.1:3000/questions/${id}`)
       .then((res) => res.json())
       .then((quiz) => {
         setQuestion(quiz);
@@ -58,7 +60,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
       downvote: answer.downvote - 1,
     };
     if (user) {
-      fetch(`https://vast-wildwood-37554.herokuapp.com/answers/${id}/decrease`, {
+      fetch(`http://127.0.0.1:3000/answers/${id}/decrease`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +85,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
       downvote: answer.downvote - 1,
     };
     if (user) {
-      fetch(`https://vast-wildwood-37554.herokuapp.com/answers/${id}/increase`, {
+      fetch(`http://127.0.0.1:3000/answers/${id}/increase`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -132,9 +134,10 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
 
   function handleDelete(id) {
     console.log("delete");
-    fetch(`https://vast-wildwood-37554.herokuapp.com/answers/${id}`, {
+    fetch(`http://127.0.0.1:3000/answers/${id}`, {
       method: "DELETE",
     });
+
     const updatedEvents = answers?.filter((one) => one.id !== id);
     setAnswers(updatedEvents);
   }
@@ -148,7 +151,9 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
 
   return (
     <Fragment>
-      <div className="container">
+      <div className="container d-flex">
+        {/* <SideBar/> */}
+        <div>
         <div class=" mt-3 d-flex justify-content-between">
           <h2>{question.title}</h2>
           <Link to="/askquestion">
@@ -172,26 +177,31 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
               }`}
           ago
         </span>
-        <span className="px-5">{question.views} Views </span>
+        <span className="px-5">{question.views} Viewed </span>
         <hr></hr>
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <p>{question.body}</p>
+              <div
+                className="brief"
+                dangerouslySetInnerHTML={{
+                  __html: question.body,
+                }}
+              ></div>
               {user?.id === question.user_id ? (
                 <Link to="/askquestion">
-                  <button
+                  <i class="bi bi-pen-fill" onClick={() => handleEditQ(question)}><small>edit</small></i>
+                  {/* <button
                     onClick={() => handleEditQ(question)}
                     class="bg-info text-white border-0"
                   >
                     Edit
-                  </button>
+                  </button> */}
                 </Link>
               ) : (
                 ""
               )}
-
-              <h6>{answers?.length} Answers</h6>
+              <h6 className="mt-2">{answers?.length} Answers</h6>
               {answers?.map((answer) => {
                 const x = answer.comments;
                 return (
@@ -231,26 +241,35 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
                         </ul>
                       </div>
                       <div className="col fs-5 pt-3">
-                        <p>{answer.body}</p>
+                        <div
+                          className="brief"
+                          dangerouslySetInnerHTML={{
+                            __html: answer.body,
+                          }}
+                        ></div>
                       </div>
+                      <div className="d-flex  ">
                       {user?.id === answer.user_id ? (
                         <span>
-                          <button
+                          <i class="bi bi-trash" onClick={() => handleDelete(answer.id)} style={{cursor: "pointer",color:'red'}}></i>
+                          {/* <button
                             onClick={() => handleDelete(answer.id)}
                             className="bg-danger text-white border-0"
                           >
                             Delete
-                          </button>
-                          <button
+                          </button> */}
+                          <i class="bi bi-pen-fill rounded m-4" onClick={() => handleEdit(answer)} style={{cursor: "pointer",color:'#116dfa'}}></i>
+                          {/* <button
                             onClick={() => handleEdit(answer)}
-                            className="bg-info mx-2 text-white border-0"
+                            className="bg-info mx-2 text-white border-0 rounded"
                           >
                             Edit
-                          </button>
+                          </button> */}
                         </span>
                       ) : (
                         ""
                       )}
+                      </div>
                     </div>
                     {<Comment answer={answer} user={user} x={x} />}
                   </div>
@@ -268,6 +287,7 @@ function EachQuestion({ setQuestionForm, setTg, user }) {
             askedQuiz={askedQuiz}
             setAskedQuiz={setAskedQuiz}
           />
+        </div>
         </div>
       </div>
     </Fragment>
